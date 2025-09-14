@@ -1,0 +1,50 @@
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /signup
+Allow: /terms-of-service
+Allow: /privacy-policy
+Allow: /cookie-policy
+Allow: /legal-notices
+
+# Disallow protected/private routes
+Disallow: /dashboard
+Disallow: /sessions
+Disallow: /clients
+Disallow: /projects
+Disallow: /reports
+Disallow: /billing
+Disallow: /settings
+Disallow: /subscription
+Disallow: /auth/
+
+# Specific bot permissions
+User-agent: Googlebot
+Allow: /
+Allow: /login
+Allow: /signup
+Allow: /terms-of-service
+Allow: /privacy-policy
+Allow: /cookie-policy
+Allow: /legal-notices
+
+User-agent: Bingbot
+Allow: /
+Allow: /login
+Allow: /signup
+Allow: /terms-of-service
+Allow: /privacy-policy
+Allow: /cookie-policy
+Allow: /legal-notices
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+# Sitemap location (corrected URL without www)
+Sitemap: https://tracksy.me/sitemap.xml
+
+# Crawl-delay for general bots
+Crawl-delay: 1

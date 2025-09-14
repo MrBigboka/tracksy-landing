@@ -1,0 +1,67 @@
+{
+  "name": "Tracksy - Free Time Tracking & Financial Management",
+  "short_name": "Tracksy",
+  "description": "Free time tracking and financial management tool for freelancers. Track projects, manage clients, and generate professional PDF reports.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e5e059",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["business", "productivity", "finance"],
+  "icons": [
+    {
+      "src": "/logo_browser.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo_browser.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/logo_browser.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Tracksy Dashboard"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Start Timer",
+      "short_name": "Timer",
+      "description": "Start tracking time on a project",
+      "url": "/dashboard",
+      "icons": [
+        {
+          "src": "/logo_browser.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Sign In",
+      "short_name": "Sign In",
+      "description": "Sign in to your account",
+      "url": "/#sign-in",
+      "icons": [
+        {
+          "src": "/logo_browser.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

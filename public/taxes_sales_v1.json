@@ -1,0 +1,667 @@
+{
+  "version": "2025-08-11",
+  "context": "Use this dataset to calculate SALES TAXES on invoices by region. In the app's Reports filter, show a country toggle (Canada/USA), then province/state. Apply the 'combined' rate when present; otherwise sum component rates (e.g., GST + PST, GST + QST). Rates change—keep this file versioned and audited.",
+  "modes": [
+    "canada",
+    "usa"
+  ],
+  "canada": {
+    "federal": {
+      "gst": 0.05
+    },
+    "provinces": [
+      {
+        "code": "AB",
+        "name": "Alberta",
+        "sales_tax": {
+          "type": "GST",
+          "gst": 0.05,
+          "combined": 0.05
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "No PST. Charge 5% GST if registered."
+      },
+      {
+        "code": "BC",
+        "name": "British Columbia",
+        "sales_tax": {
+          "type": "GST+PST",
+          "gst": 0.05,
+          "pst": 0.07,
+          "combined": 0.12
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "PST 7% on most services; verify exemptions."
+      },
+      {
+        "code": "MB",
+        "name": "Manitoba",
+        "sales_tax": {
+          "type": "GST+PST",
+          "gst": 0.05,
+          "pst": 0.07,
+          "combined": 0.12
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "PST 7%."
+      },
+      {
+        "code": "NB",
+        "name": "New Brunswick",
+        "sales_tax": {
+          "type": "HST",
+          "hst": 0.15,
+          "combined": 0.15
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "HST province."
+      },
+      {
+        "code": "NL",
+        "name": "Newfoundland and Labrador",
+        "sales_tax": {
+          "type": "HST",
+          "hst": 0.15,
+          "combined": 0.15
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "HST province."
+      },
+      {
+        "code": "NS",
+        "name": "Nova Scotia",
+        "sales_tax": {
+          "type": "HST",
+          "hst": 0.15,
+          "combined": 0.15
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "HST province."
+      },
+      {
+        "code": "NT",
+        "name": "Northwest Territories",
+        "sales_tax": {
+          "type": "GST",
+          "gst": 0.05,
+          "combined": 0.05
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "No territorial sales tax; GST only."
+      },
+      {
+        "code": "NU",
+        "name": "Nunavut",
+        "sales_tax": {
+          "type": "GST",
+          "gst": 0.05,
+          "combined": 0.05
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "No territorial sales tax; GST only."
+      },
+      {
+        "code": "ON",
+        "name": "Ontario",
+        "sales_tax": {
+          "type": "HST",
+          "hst": 0.13,
+          "combined": 0.13
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "HST province (13%)."
+      },
+      {
+        "code": "PE",
+        "name": "Prince Edward Island",
+        "sales_tax": {
+          "type": "HST",
+          "hst": 0.15,
+          "combined": 0.15
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "HST province."
+      },
+      {
+        "code": "QC",
+        "name": "Québec",
+        "sales_tax": {
+          "type": "GST+QST",
+          "gst": 0.05,
+          "qst": 0.09975,
+          "combined": 0.14975
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "QST administered by Revenu Québec. Combined 14.975%."
+      },
+      {
+        "code": "SK",
+        "name": "Saskatchewan",
+        "sales_tax": {
+          "type": "GST+PST",
+          "gst": 0.05,
+          "pst": 0.06,
+          "combined": 0.11
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "PST 6%."
+      },
+      {
+        "code": "YT",
+        "name": "Yukon",
+        "sales_tax": {
+          "type": "GST",
+          "gst": 0.05,
+          "combined": 0.05
+        },
+        "registration_threshold": {
+          "small_supplier_rule": 30000,
+          "currency": "CAD"
+        },
+        "notes": "No territorial sales tax; GST only."
+      }
+    ]
+  },
+  "usa": {
+    "federal": {
+      "note": "No federal sales tax on services. State and local rules apply; taxability of services varies by state and by service type."
+    },
+    "states": [
+      {
+        "code": "AK",
+        "name": "Alaska",
+        "has_state_sales_tax": false,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "No state sales tax; many municipalities levy local sales tax."
+      },
+      {
+        "code": "DE",
+        "name": "Delaware",
+        "has_state_sales_tax": false,
+        "allows_local": false,
+        "base_state_rate": null,
+        "service_taxability": "generally_no_sales_tax",
+        "notes": "No general state or local sales tax."
+      },
+      {
+        "code": "MT",
+        "name": "Montana",
+        "has_state_sales_tax": false,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "No state sales tax; some resort/local taxes exist."
+      },
+      {
+        "code": "NH",
+        "name": "New Hampshire",
+        "has_state_sales_tax": false,
+        "allows_local": false,
+        "base_state_rate": null,
+        "service_taxability": "generally_no_sales_tax",
+        "notes": "No general sales tax."
+      },
+      {
+        "code": "OR",
+        "name": "Oregon",
+        "has_state_sales_tax": false,
+        "allows_local": false,
+        "base_state_rate": null,
+        "service_taxability": "generally_no_sales_tax",
+        "notes": "No general sales tax."
+      },
+      {
+        "code": "AL",
+        "name": "Alabama",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "AR",
+        "name": "Arkansas",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "AZ",
+        "name": "Arizona",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "CA",
+        "name": "California",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "CO",
+        "name": "Colorado",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "CT",
+        "name": "Connecticut",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "DC",
+        "name": "District of Columbia",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "FL",
+        "name": "Florida",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "GA",
+        "name": "Georgia",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "HI",
+        "name": "Hawaii",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "IA",
+        "name": "Iowa",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "ID",
+        "name": "Idaho",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "IL",
+        "name": "Illinois",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "IN",
+        "name": "Indiana",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "KS",
+        "name": "Kansas",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "KY",
+        "name": "Kentucky",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "LA",
+        "name": "Louisiana",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "MA",
+        "name": "Massachusetts",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "MD",
+        "name": "Maryland",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "ME",
+        "name": "Maine",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "MI",
+        "name": "Michigan",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "MN",
+        "name": "Minnesota",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "MO",
+        "name": "Missouri",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "MS",
+        "name": "Mississippi",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "NC",
+        "name": "North Carolina",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "ND",
+        "name": "North Dakota",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "NE",
+        "name": "Nebraska",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "NJ",
+        "name": "New Jersey",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "NM",
+        "name": "New Mexico",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "NY",
+        "name": "New York",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "NV",
+        "name": "Nevada",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "OH",
+        "name": "Ohio",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "OK",
+        "name": "Oklahoma",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "PA",
+        "name": "Pennsylvania",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "RI",
+        "name": "Rhode Island",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "SC",
+        "name": "South Carolina",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "SD",
+        "name": "South Dakota",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "TN",
+        "name": "Tennessee",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "TX",
+        "name": "Texas",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "UT",
+        "name": "Utah",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "VA",
+        "name": "Virginia",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "VT",
+        "name": "Vermont",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "WA",
+        "name": "Washington",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "WI",
+        "name": "Wisconsin",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "WV",
+        "name": "West Virginia",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      },
+      {
+        "code": "WY",
+        "name": "Wyoming",
+        "has_state_sales_tax": true,
+        "allows_local": true,
+        "base_state_rate": null,
+        "service_taxability": "varies",
+        "notes": "Provide base state rate and service rules via data feed."
+      }
+    ]
+  }
+}
