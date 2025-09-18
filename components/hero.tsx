@@ -1,15 +1,9 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
-import LazyVideo from "./lazy-video"
 
 export function Hero() {
-  const buttonNew = (
-    <Button asChild className="rounded-full bg-[#D5FF3F] px-6 text-[#0B0E12] hover:bg-[#B9E832]">
-      <a href="https://wa.link/rc25na" target="_blank" rel="noopener noreferrer">
-        Chat With Us
-      </a>
-    </Button>
-  )
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -46,26 +40,30 @@ export function Hero() {
           </div>
 
           {/* Tracksy App Preview - Real Demo Video */}
-          <div className="mt-16 max-w-6xl mx-auto">
+          <div className="mt-16 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative rounded-xl bg-[#0B0E12] border border-[#1E232C] overflow-hidden shadow-2xl">
-              <div className="aspect-video relative min-h-[400px]">
+              <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                 <video
-                  className="absolute inset-0 h-full w-full object-contain rounded-xl bg-[#141820]"
+                  className="absolute top-0 left-0 w-full h-full object-contain rounded-xl bg-[#0B0E12]"
                   controls
                   muted
                   playsInline
                   preload="metadata"
-                  poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'%3E%3Crect width='1920' height='1080' fill='%23141820'/%3E%3C/svg%3E"
+                  poster="https://www.tracksy.me/tracksy.me.mp4#t=1"
+                  onLoadedMetadata={(e) => {
+                    const video = e.target as HTMLVideoElement;
+                    video.currentTime = 1;
+                  }}
                 >
                   <source src="https://www.tracksy.me/tracksy.me.mp4" type="video/mp4" />
                   <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#141820] to-[#0B0E12]">
                     <div className="text-center">
-                      <div className="w-24 h-24 bg-[#D5FF3F] rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg className="w-12 h-12 text-[#0B0E12]" fill="currentColor" viewBox="0 0 24 24">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-[#D5FF3F] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                        <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[#0B0E12]" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
-                      <p className="text-[#A1A5B0] text-xl font-medium">Votre navigateur ne supporte pas la vidéo</p>
+                      <p className="text-[#A1A5B0] text-lg sm:text-xl font-medium px-4">Votre navigateur ne supporte pas la vidéo</p>
                     </div>
                   </div>
                 </video>
@@ -78,26 +76,3 @@ export function Hero() {
   )
 }
 
-// Component removed - using new Tracksy preview instead
-
-// Tracksy features data
-const tracksyFeatures = [
-  {
-    title: "Time Tracking",
-    sub: "Démarre/arrête tes sessions avec un clic.",
-    tone: "tracking",
-    gradient: "from-[#0B0E12] via-[#141820] to-[#1A1F27]",
-  },
-  {
-    title: "Projects & Clients",
-    sub: "Organise ton travail facilement.",
-    tone: "projects",
-    gradient: "from-[#0B0E12] via-[#141820] to-[#1A1F27]",
-  },
-  {
-    title: "Billing & Reports",
-    sub: "Génère tes factures automatiquement.",
-    tone: "billing",
-    gradient: "from-[#0B0E12] via-[#141820] to-[#1A1F27]",
-  },
-]

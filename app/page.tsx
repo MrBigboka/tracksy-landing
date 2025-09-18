@@ -1,10 +1,9 @@
 import { SiteHeader } from "@/components/site-header"
 import { Hero } from "@/components/hero"
-import { Features } from "@/components/features"
+import Features from "@/components/features"
 import { Pricing } from "@/components/pricing"
 import { FAQ } from "@/components/faq"
 import { AppverseFooter } from "@/components/appverse-footer"
-import { Plasma } from "@/components/plasma"
 import Script from "next/script"
 
 // ✅ Force static generation for low TTFB
