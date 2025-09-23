@@ -25,8 +25,8 @@ export default function Features() {
           
           <div className="relative z-10 group-hover/bento:translate-x-2 transition-all duration-300">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D5FF3F] to-[#3DDC97] flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0B0E12]" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                 </svg>
               </div>
@@ -44,75 +44,75 @@ export default function Features() {
           {/* Client Projects Grid */}
           <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
             {/* TechFlow Inc - Website Redesign */}
-            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+            <div className="group p-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl hover:border-white/20 transition-all duration-300">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                     <span className="text-white font-bold text-sm">TF</span>
                   </div>
                   <div>
-                    <div className="text-[#F2F3F5] font-semibold text-sm">TechFlow Inc</div>
-                    <div className="text-[#A1A5B0] text-xs">Sarah Chen • Contact</div>
+                    <div className="text-white font-semibold text-sm">TechFlow Inc</div>
+                    <div className="text-white/60 text-xs">Sarah Chen • Contact</div>
                   </div>
                 </div>
-                <div className="text-[#3DDC97] text-sm font-bold bg-[#3DDC97]/10 px-2 py-1 rounded-lg">24h</div>
+                <div className="text-white/80 text-sm font-bold bg-white/10 px-2 py-1 rounded-lg">24h</div>
               </div>
-              <div className="text-[#D5FF3F] font-medium text-sm">Website Redesign</div>
-              <div className="text-[#A1A5B0] text-xs mt-1">UX/UI Design • Active</div>
+              <div className="text-[#C8D64F] font-medium text-sm">Website Redesign</div>
+              <div className="text-white/60 text-xs mt-1">UX/UI Design • Active</div>
             </div>
             
             {/* StartupLab - Mobile App */}
-            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+            <div className="group p-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl hover:border-white/20 transition-all duration-300">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                     <span className="text-white font-bold text-sm">SL</span>
                   </div>
                   <div>
-                    <div className="text-[#F2F3F5] font-semibold text-sm">StartupLab</div>
-                    <div className="text-[#A1A5B0] text-xs">Marcus Johnson • CEO</div>
+                    <div className="text-white font-semibold text-sm">StartupLab</div>
+                    <div className="text-white/60 text-xs">Marcus Johnson • CEO</div>
                   </div>
                 </div>
-                <div className="text-[#D5FF3F] text-sm font-bold bg-[#D5FF3F]/10 px-2 py-1 rounded-lg">18h</div>
+                <div className="text-white/80 text-sm font-bold bg-white/10 px-2 py-1 rounded-lg">18h</div>
               </div>
-              <div className="text-[#D5FF3F] font-medium text-sm">Mobile App Development</div>
-              <div className="text-[#A1A5B0] text-xs mt-1">React Native • In Progress</div>
+              <div className="text-[#C8D64F] font-medium text-sm">Mobile App Development</div>
+              <div className="text-white/60 text-xs mt-1">React Native • In Progress</div>
             </div>
             
             {/* E-Store Solutions - Database */}
-            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+            <div className="group p-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl hover:border-white/20 transition-all duration-300">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                     <span className="text-white font-bold text-sm">ES</span>
                   </div>
                   <div>
-                    <div className="text-[#F2F3F5] font-semibold text-sm">E-Store Solutions</div>
-                    <div className="text-[#A1A5B0] text-xs">Emma Rodriguez • CTO</div>
+                    <div className="text-white font-semibold text-sm">E-Store Solutions</div>
+                    <div className="text-white/60 text-xs">Emma Rodriguez • CTO</div>
                   </div>
                 </div>
-                <div className="text-[#3DDC97] text-sm font-bold bg-[#3DDC97]/10 px-2 py-1 rounded-lg">32h</div>
+                <div className="text-white/80 text-sm font-bold bg-white/10 px-2 py-1 rounded-lg">32h</div>
               </div>
-              <div className="text-[#D5FF3F] font-medium text-sm">Database Optimization</div>
-              <div className="text-[#A1A5B0] text-xs mt-1">Backend • Completed</div>
+              <div className="text-[#C8D64F] font-medium text-sm">Database Optimization</div>
+              <div className="text-white/60 text-xs mt-1">Backend • Completed</div>
             </div>
             
             {/* Creative Studio X - Branding */}
-            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+            <div className="group p-4 bg-black/40 backdrop-blur-xl border border-white/10 rounded-xl hover:border-white/20 transition-all duration-300">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#8b5cf6] to-[#7c3aed] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                     <span className="text-white font-bold text-sm">CS</span>
                   </div>
                   <div>
-                    <div className="text-[#F2F3F5] font-semibold text-sm">Creative Studio X</div>
-                    <div className="text-[#A1A5B0] text-xs">Alex Kim • Director</div>
+                    <div className="text-white font-semibold text-sm">Creative Studio X</div>
+                    <div className="text-white/60 text-xs">Alex Kim • Director</div>
                   </div>
                 </div>
-                <div className="text-[#D5FF3F] text-sm font-bold bg-[#D5FF3F]/10 px-2 py-1 rounded-lg">15h</div>
+                <div className="text-white/80 text-sm font-bold bg-white/10 px-2 py-1 rounded-lg">15h</div>
               </div>
-              <div className="text-[#D5FF3F] font-medium text-sm">Brand Identity Design</div>
-              <div className="text-[#A1A5B0] text-xs mt-1">Creative • Planning</div>
+              <div className="text-[#C8D64F] font-medium text-sm">Brand Identity Design</div>
+              <div className="text-white/60 text-xs mt-1">Creative • Planning</div>
             </div>
           </div>
         </div>
@@ -124,8 +124,8 @@ export default function Features() {
           
           <div className="relative z-10 group-hover/bento:translate-x-2 transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#3DDC97] to-[#D5FF3F] flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0B0E12]" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
               </div>
@@ -181,8 +181,8 @@ export default function Features() {
           
           <div className="relative z-10 group-hover/bento:translate-x-2 transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D5FF3F] to-[#3DDC97] flex items-center justify-center">
-                <svg className="w-6 h-6 text-[#0B0E12]" fill="currentColor" viewBox="0 0 24 24">
+              <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h16c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
                 </svg>
               </div>
@@ -237,7 +237,7 @@ export default function Features() {
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#3DDC97]/40 transition-all duration-300">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                       <span className="text-white font-bold">TF</span>
                     </div>
                     <div>
@@ -253,7 +253,7 @@ export default function Features() {
                 
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                       <span className="text-white font-bold">SL</span>
                     </div>
                     <div>
@@ -269,7 +269,7 @@ export default function Features() {
                 
                 <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#3DDC97]/40 transition-all duration-300">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center">
                       <span className="text-white font-bold">ES</span>
                     </div>
                     <div>

@@ -33,13 +33,13 @@ export function Hero() {
           <p className="mt-6 text-center text-xl text-[#A1A5B0] max-w-3xl mx-auto leading-relaxed mb-8">
             {t('hero.subtitle')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Button asChild className="rounded-full bg-[#D5FF3F] px-8 py-3 text-[#0B0E12] hover:bg-[#B9E832] font-semibold text-lg">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+            <Button asChild className="rounded-full bg-[#C8D64F] px-10 py-4 text-[#0B0E12] hover:bg-[#A8B940] font-bold text-xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-200">
               <a href="#contact" rel="noopener noreferrer">
                 {t('hero.cta')}
               </a>
             </Button>
-            <Button onClick={handleWatchDemo} variant="outline" className="rounded-full border-[#1E232C] bg-transparent px-8 py-3 text-[#F2F3F5] hover:bg-[#1A1F27] hover:text-[#F2F3F5] text-lg">
+            <Button onClick={handleWatchDemo} variant="outline" className="rounded-full border-2 border-white/30 bg-transparent px-10 py-4 text-white hover:bg-white/10 hover:border-white/50 hover:text-white font-semibold text-xl hover:scale-[1.02] transition-all duration-200">
               {t('hero.watchDemo')}
             </Button>
           </div>
@@ -59,10 +59,15 @@ export function Hero() {
                   muted
                   playsInline
                   preload="metadata"
-                  poster="https://www.tracksy.me/tracksy.me.mp4#t=1"
-                  onLoadedMetadata={(e) => {
+                  onLoadedData={(e) => {
                     const video = e.target as HTMLVideoElement;
                     video.currentTime = 1;
+                  }}
+                  onCanPlay={(e) => {
+                    const video = e.target as HTMLVideoElement;
+                    if (video.currentTime === 0) {
+                      video.currentTime = 1;
+                    }
                   }}
                 >
                   <source src="https://www.tracksy.me/tracksy.me.mp4" type="video/mp4" />
