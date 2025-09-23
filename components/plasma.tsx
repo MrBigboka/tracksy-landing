@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Renderer, Program, Mesh, Triangle } from 'ogl'
 import './Plasma.css'
 
@@ -11,6 +11,12 @@ interface PlasmaProps {
   scale?: number
   opacity?: number
   mouseInteractive?: boolean
+}
+
+// Mobile detection utility
+const isMobile = () => {
+  if (typeof window === 'undefined') return false
+  return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 }
 
 const hexToRgb = (hex: string): [number, number, number] => {
@@ -91,6 +97,30 @@ void main() {
   fragColor = vec4(finalColor, alpha);
 }`
 
+// Simple mobile fallback component
+const MobilePlasmaFallback: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6 }) => {
+  return (
+    <>
+      <style>{`
+        @keyframes subtle-float {
+          0% { transform: translate(0, 0) rotate(0deg); }
+          50% { transform: translate(-5px, -3px) rotate(0.5deg); }
+          100% { transform: translate(3px, -5px) rotate(-0.3deg); }
+        }
+        .mobile-plasma-bg {
+          background: radial-gradient(circle at 30% 20%, ${color}08 0%, transparent 50%), 
+                      radial-gradient(circle at 70% 80%, ${color}05 0%, transparent 60%);
+          animation: subtle-float 15s ease-in-out infinite alternate;
+          will-change: transform;
+        }
+      `}</style>
+      <div className="plasma-container">
+        <div className="mobile-plasma-bg absolute inset-0 opacity-20" />
+      </div>
+    </>
+  )
+}
+
 export const Plasma: React.FC<PlasmaProps> = ({
   color = '#C8D64F',
   speed = 1,
@@ -101,6 +131,24 @@ export const Plasma: React.FC<PlasmaProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
+  const [isMobileDevice, setIsMobileDevice] = useState(false)
+
+  // Check if mobile on mount
+  useEffect(() => {
+    setIsMobileDevice(isMobile())
+    
+    const handleResize = () => {
+      setIsMobileDevice(isMobile())
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Use simple fallback for mobile
+  if (isMobileDevice) {
+    return <MobilePlasmaFallback color={color} opacity={opacity} />
+  }
 
   useEffect(() => {
     if (!containerRef.current) return

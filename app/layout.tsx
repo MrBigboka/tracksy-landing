@@ -99,17 +99,19 @@ export default function RootLayout({
       <body>
         <TranslationProvider defaultLanguage="en">
           <ClientWrapper>
-            <div className="fixed inset-0 z-0 bg-black">
+            <div className="fixed inset-0 z-0 bg-black will-change-transform">
               <Plasma
                 color="#8B9A3F"
                 speed={0.6}
                 direction="forward"
                 scale={1.1}
                 opacity={0.25}
-                mouseInteractive={true}
+                mouseInteractive={false}
               />
             </div>
-            <div className="relative z-10">{children}</div>
+            <div className="relative z-10 will-change-scroll" style={{ contain: 'layout style paint' }}>
+              {children}
+            </div>
           </ClientWrapper>
         </TranslationProvider>
       </body>
