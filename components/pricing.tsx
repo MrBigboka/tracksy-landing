@@ -3,19 +3,16 @@
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { CheckCircle2 } from "lucide-react"
 import { useTranslation } from "@/hooks/use-translation"
 
 type Feature = { text: string; muted?: boolean }
 
-const ACCENT = "#D5FF3F"
-
 function FeatureItem({ text, muted = false }: Feature) {
   return (
-    <li className="flex items-start gap-2">
-      <CheckCircle2 className="mt-0.5 h-4 w-4" style={{ color: ACCENT }} />
-      <span className={`text-sm ${muted ? "text-neutral-500" : "text-neutral-200"}`}>{text}</span>
+    <li className="flex items-start gap-3">
+      <CheckCircle2 className="mt-0.5 h-4 w-4 text-white/60 flex-shrink-0" />
+      <span className={`text-sm ${muted ? "text-white/40" : "text-white/80"}`}>{text}</span>
     </li>
   )
 }
@@ -44,48 +41,8 @@ function guessLocalCurrency(): Currency {
   return "CAD"
 }
 
-// Startup demo videos
-const startupVideos = [
-  "ysz5S6PUM-U",
-  "aqz-KE-bpKQ",
-  "ScMzIvxBSi4",
-  "dQw4w9WgXcQ",
-  "VYOjWnS4cMY",
-  "9bZkp7q19f0",
-  "3JZ_D3ELwOQ",
-  "e-ORhEE9VVg",
-  "fJ9rUzIMcZQ",
-]
-
-// Pro demo videos
-const proVideos = [
-  "ASV2myPRfKA",
-  "eTfS2lqwf6A",
-  "KALbYHmGV4I",
-  "Go0AA9hZ4as",
-  "sB7RZ9QCOAg",
-  "TK2WboJOJaw",
-  "5Xq7UdXXOxI",
-  "kMjWCidQSK0",
-  "RKKdQvwKOhQ",
-]
-
-// Premium demo videos
-const premiumVideos = [
-  "v2AC41dglnM",
-  "pRpeEdMmmQ0",
-  "3AtDnEC4zak",
-  "JRfuAukYTKg",
-  "LsoLEjrDogU",
-  "RB-RcX5DS5A",
-  "hTWKbfoikeg",
-  "YQHsXMglC9A",
-  "09R8_2nJtjg",
-]
-
 export function Pricing() {
   const { t } = useTranslation()
-  const [openPlan, setOpenPlan] = useState<null | "Trial" | "Pro" | "Business">(null)
   const [currency, setCurrency] = useState<Currency>("CAD")
   const [mounted, setMounted] = useState(false)
 
@@ -111,28 +68,26 @@ export function Pricing() {
   // Helper function to safely get translations
   const safeT = (key: string): string | string[] => {
     if (!mounted) {
-      // Return fallback values during SSR
       const fallbacks: Record<string, any> = {
-        'pricing.badge': 'Our Pricing',
+        'pricing.badge': 'Pricing',
         'pricing.title': 'Simple. Transparent. Effective.',
         'pricing.subtitle': 'No hidden fees. Start free and scale as you grow.',
-        'pricing.mainCta': 'Start for free',
         'pricing.free.title': 'Free',
         'pricing.free.price': '$0',
         'pricing.free.period': 'forever',
-        'pricing.free.cta': 'Start for free',
-        'pricing.free.features': ['1 client', '3 projects', 'Timer and time tracking', 'Basic reports', 'PDF export (with watermark)'],
+        'pricing.free.cta': 'Get started',
+        'pricing.free.features': ['1 client', '3 projects', 'Basic time tracking', 'Basic reports', 'Email support'],
         'pricing.pro.title': 'Pro',
-        'pricing.pro.price': '$9 USD',
+        'pricing.pro.price': '$19 CAD',
         'pricing.pro.period': '/month',
-        'pricing.pro.popular': 'POPULAR',
+        'pricing.pro.popular': 'Popular',
         'pricing.pro.cta': 'Start free trial',
-        'pricing.pro.features': ['Everything in Free +', 'Unlimited clients & projects', 'Advanced reports and analytics', 'Custom invoice templates', 'Clean PDF/CSV export', 'Priority email support'],
+        'pricing.pro.features': ['Everything in Free', 'Unlimited clients & projects', 'Advanced reports', 'Custom invoicing', 'Priority support'],
         'pricing.business.title': 'Business',
-        'pricing.business.price': 'Custom pricing',
+        'pricing.business.price': 'Custom',
         'pricing.business.period': '',
-        'pricing.business.cta': 'Contact us',
-        'pricing.business.features': ['Everything in Pro +', 'Team collaboration', 'Advanced integrations', 'Dedicated phone support', 'Custom training']
+        'pricing.business.cta': 'Contact sales',
+        'pricing.business.features': ['Everything in Pro', 'Team collaboration', 'Advanced integrations', 'Dedicated support', 'Custom training']
       }
       return fallbacks[key] || key
     }
@@ -140,159 +95,137 @@ export function Pricing() {
   }
 
   return (
-    <section id="pricing" className="text-white" itemScope itemType="https://schema.org/PriceSpecification">
-      <div className="container mx-auto px-4 py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D5FF3F]/10 border border-[#D5FF3F]/20 mb-6">
-            <span className="text-[#D5FF3F] text-sm font-medium">{safeT('pricing.badge')}</span>
+    <section id="pricing" className="text-white">
+      <div className="container mx-auto px-4 py-24 sm:py-32">
+        
+        {/* Header */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#C8D64F]/10 border border-[#C8D64F]/20 mb-6">
+            <span className="text-[#C8D64F] text-sm font-medium">{safeT('pricing.badge')}</span>
           </div>
-          <h2 className="text-4xl font-extrabold tracking-tight text-[#F2F3F5] sm:text-5xl" itemProp="name">
+          <h2 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6">
             {safeT('pricing.title')}
           </h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-[#A1A5B0]" itemProp="description">
+          <p className="text-xl text-white/60 max-w-2xl mx-auto">
             {safeT('pricing.subtitle')}
           </p>
-          <div className="mt-6">
-            <Button
-              asChild
-              className="rounded-full px-8 py-3 text-[#0B0E12] hover:brightness-95 font-semibold"
-              style={{ backgroundColor: ACCENT }}
-            >
-              <Link href="#contact" target="_blank">
-                {safeT('pricing.mainCta')}
-              </Link>
-            </Button>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            {/* Free Plan */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
+              <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full">
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {safeT('pricing.free.title')}
+                  </h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-bold text-white">$0</span>
+                    <span className="text-white/60 text-sm">forever</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  asChild 
+                  variant="outline"
+                  className="w-full mb-8 bg-transparent border-white/20 text-white hover:bg-white/5 hover:border-white/30"
+                >
+                  <Link href="/signup?plan=free">Get started</Link>
+                </Button>
+
+                <ul className="space-y-4">
+                  {(Array.isArray(safeT('pricing.free.features')) ? safeT('pricing.free.features') as string[] : []).map((feature: string, i: number) => (
+                    <FeatureItem key={i} text={feature} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Pro Plan - Featured */}
+            <div className="relative group scale-105 lg:scale-110">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-2xl"></div>
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="bg-white text-black text-xs font-semibold px-3 py-1 rounded-full">
+                  Popular
+                </div>
+              </div>
+              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full">
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {safeT('pricing.pro.title')}
+                  </h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-4xl font-bold text-white">$19</span>
+                    <span className="text-white/60 text-sm">CAD /month</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  asChild
+                  className="w-full mb-8 bg-white text-black hover:bg-white/90 font-semibold"
+                >
+                  <Link href="/signup?plan=pro">Start free trial</Link>
+                </Button>
+
+                <ul className="space-y-4">
+                  {(Array.isArray(safeT('pricing.pro.features')) ? safeT('pricing.pro.features') as string[] : []).map((feature: string, i: number) => (
+                    <FeatureItem key={i} text={feature} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Business Plan */}
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
+              <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full">
+                <div className="mb-8">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {safeT('pricing.business.title')}
+                  </h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl font-bold text-white">Custom</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  asChild 
+                  variant="outline"
+                  className="w-full mb-8 bg-transparent border-white/20 text-white hover:bg-white/5 hover:border-white/30"
+                >
+                  <Link href="/contact">Contact sales</Link>
+                </Button>
+
+                <ul className="space-y-4">
+                  {(Array.isArray(safeT('pricing.business.features')) ? safeT('pricing.business.features') as string[] : []).map((feature: string, i: number) => (
+                    <FeatureItem key={i} text={feature} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {/* Free */}
-          <Card
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1F2E]/80 via-[#141820]/90 to-[#0B0E12] border border-[#2A2F3C] shadow-[0_12px_40px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-300 hover:scale-[1.02]"
-            itemScope
-            itemType="https://schema.org/Offer"
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-white/60 mb-6">
+            All plans include a 14-day free trial. No credit card required.
+          </p>
+          <Button 
+            asChild
+            variant="outline"
+            className="bg-transparent border-white/20 text-white hover:bg-white/5"
           >
-            <CardHeader className="space-y-3 pb-4">
-              <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
-                {safeT('pricing.free.title')}
-              </div>
-              <div className="flex items-end gap-2 text-[#F2F3F5]">
-                <div className="text-xl font-bold tracking-tight" itemProp="price">
-                  {safeT('pricing.free.price')}
-                </div>
-                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">{safeT('pricing.free.period')}</span>
-                <meta itemProp="priceCurrency" content="USD" />
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  asChild
-                  className="w-full rounded-full px-4 py-2 text-sm font-medium border border-[#1E232C] text-[#F2F3F5] hover:bg-[#1A1F27] transition-colors"
-                >
-                  <Link href="/signup?plan=free">{safeT('pricing.free.cta')}</Link>
-                </Button>
-              </div>
-            </CardHeader>
-
-            <CardContent className="pt-0">
-              <ul className="grid gap-2" itemProp="description">
-                {(Array.isArray(safeT('pricing.free.features')) ? safeT('pricing.free.features') as string[] : []).map((f: string, i: number) => (
-                  <FeatureItem key={i} text={f} />
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter />
-          </Card>
-
-          {/* Pro */}
-          <Card
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1F2E]/80 via-[#141820]/90 to-[#0B0E12] border-2 border-[#D5FF3F] shadow-[0_12px_40px_rgba(213,255,63,0.2)] hover:shadow-[0_25px_60px_rgba(213,255,63,0.3)] transition-all duration-300 hover:scale-[1.02] transform-gpu"
-            itemScope
-            itemType="https://schema.org/Offer"
-          >
-            {/* Glow effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#D5FF3F]/5 via-transparent to-[#3DDC97]/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-            <div
-              className="absolute right-4 top-4 rounded-full px-2 py-0.5 text-[10px] font-semibold"
-              style={{ backgroundColor: ACCENT, color: "#0B0E12" }}
-            >
-              {safeT('pricing.pro.popular')}
-            </div>
-            <CardHeader className="relative z-10 space-y-3 pb-4">
-              <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
-                {safeT('pricing.pro.title')}
-              </div>
-              <div className="flex items-end gap-2 text-[#F2F3F5]">
-                <div className="text-xl font-bold tracking-tight" itemProp="price">
-                  {safeT('pricing.pro.price')}
-                </div>
-                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">{safeT('pricing.pro.period')}</span>
-                <meta itemProp="priceCurrency" content={currency} />
-              </div>
-
-              <div className="flex gap-2">
-                <Button
-                  asChild
-                  className="w-full rounded-full px-4 py-2 text-sm font-medium text-[#0B0E12] shadow transition-[box-shadow,transform,filter] active:translate-y-[1px]"
-                  style={{ backgroundColor: ACCENT }}
-                >
-                  <Link href="/signup?plan=pro">{safeT('pricing.pro.cta')}</Link>
-                </Button>
-              </div>
-            </CardHeader>
-
-            <CardContent className="relative z-10 pt-0">
-              <ul className="grid gap-2" itemProp="description">
-                {(Array.isArray(safeT('pricing.pro.features')) ? safeT('pricing.pro.features') as string[] : []).map((f: string, i: number) => (
-                  <FeatureItem key={i} text={f} />
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter />
-          </Card>
-
-          {/* Business */}
-          <Card
-            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1F2E]/80 via-[#141820]/90 to-[#0B0E12] border border-[#2A2F3C] shadow-[0_16px_50px_rgba(0,0,0,0.4)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[1.02]"
-            itemScope
-            itemType="https://schema.org/Offer"
-          >
-            <CardHeader className="relative space-y-3 pb-4">
-              <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
-                {safeT('pricing.business.title')}
-              </div>
-              <div className="flex items-end gap-2 text-[#F2F3F5]">
-                <div className="text-xl font-bold tracking-tight" itemProp="price">
-                  {safeT('pricing.business.price')}
-                </div>
-                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">{safeT('pricing.business.period')}</span>
-                <meta itemProp="priceCurrency" content={currency} />
-              </div>
-              <div className="flex gap-2">
-                <Button
-                  asChild
-                  className="w-full rounded-full px-4 py-2 text-sm font-medium border border-[#1E232C] text-[#F2F3F5] hover:bg-[#1A1F27] transition-colors"
-                >
-                  <Link href="/contact">{safeT('pricing.business.cta')}</Link>
-                </Button>
-              </div>
-            </CardHeader>
-
-            <CardContent className="relative pt-0">
-              <ul className="grid gap-2" itemProp="description">
-                {(Array.isArray(safeT('pricing.business.features')) ? safeT('pricing.business.features') as string[] : []).map((f: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4" style={{ color: ACCENT }} />
-                    <span className="text-sm text-[#F2F3F5]">{f}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-            <CardFooter />
-          </Card>
+            <Link href="#faq">View FAQ</Link>
+          </Button>
         </div>
-      </div>
 
-      {/* Note: Modals removed for Tracksy - no video examples needed */}
+      </div>
     </section>
   )
 }
