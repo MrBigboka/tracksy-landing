@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { CheckCircle2 } from "lucide-react"
-import { ExamplesDialog } from "./examples-dialog"
+import { useTranslation } from "@/hooks/use-translation"
 
 type Feature = { text: string; muted?: boolean }
 
@@ -84,10 +84,13 @@ const premiumVideos = [
 ]
 
 export function Pricing() {
+  const { t } = useTranslation()
   const [openPlan, setOpenPlan] = useState<null | "Trial" | "Pro" | "Business">(null)
   const [currency, setCurrency] = useState<Currency>("CAD")
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     let cancelled = false
     async function load() {
       try {
@@ -105,6 +108,38 @@ export function Pricing() {
     }
   }, [])
 
+  // Helper function to safely get translations
+  const safeT = (key: string): string | string[] => {
+    if (!mounted) {
+      // Return fallback values during SSR
+      const fallbacks: Record<string, any> = {
+        'pricing.badge': 'Our Pricing',
+        'pricing.title': 'Simple. Transparent. Effective.',
+        'pricing.subtitle': 'No hidden fees. Start free and scale as you grow.',
+        'pricing.mainCta': 'Start for free',
+        'pricing.free.title': 'Free',
+        'pricing.free.price': '$0',
+        'pricing.free.period': 'forever',
+        'pricing.free.cta': 'Start for free',
+        'pricing.free.features': ['1 client', '3 projects', 'Timer and time tracking', 'Basic reports', 'PDF export (with watermark)'],
+        'pricing.pro.title': 'Pro',
+        'pricing.pro.price': '$9 USD',
+        'pricing.pro.period': '/month',
+        'pricing.pro.popular': 'POPULAR',
+        'pricing.pro.trial': '14-day free trial',
+        'pricing.pro.cta': 'Start free trial',
+        'pricing.pro.features': ['Everything in Free +', 'Unlimited clients & projects', 'Advanced reports and analytics', 'Custom invoice templates', 'Clean PDF/CSV export', 'Priority email support'],
+        'pricing.business.title': 'Business',
+        'pricing.business.price': 'Custom pricing',
+        'pricing.business.period': '',
+        'pricing.business.cta': 'Contact us',
+        'pricing.business.features': ['Everything in Pro +', 'Team collaboration', 'Advanced integrations', 'Dedicated phone support', 'Custom training']
+      }
+      return fallbacks[key] || key
+    }
+    return t(key)
+  }
+
   return (
     <section id="pricing" className="text-white" itemScope itemType="https://schema.org/PriceSpecification">
       <div className="container mx-auto px-4 py-16 sm:py-20">
@@ -113,13 +148,13 @@ export function Pricing() {
             className="mx-auto mb-4 inline-flex items-center rounded-full px-3 py-1 text-xs font-medium"
             style={{ backgroundColor: "rgba(213,255,63,0.12)", color: ACCENT }}
           >
-            Nos tarifs
+            {safeT('pricing.badge')}
           </div>
           <h2 className="text-4xl font-extrabold tracking-tight text-[#F2F3F5] sm:text-5xl" itemProp="name">
-            Simple. Transparent. Efficace.
+            {safeT('pricing.title')}
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-sm text-[#A1A5B0]" itemProp="description">
-            Aucun frais cachés. Commencez gratuitement et évoluez selon vos besoins.
+            {safeT('pricing.subtitle')}
           </p>
           <div className="mt-6">
             <Button
@@ -128,58 +163,43 @@ export function Pricing() {
               style={{ backgroundColor: ACCENT }}
             >
               <Link href="#contact" target="_blank">
-                Commencer gratuitement
+                {safeT('pricing.mainCta')}
               </Link>
             </Button>
           </div>
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          {/* Free Trial */}
+          {/* Free */}
           <Card
             className="relative overflow-hidden rounded-2xl bg-[#141820] border border-[#1E232C] shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-300"
             itemScope
             itemType="https://schema.org/Offer"
           >
-            <div
-              className="absolute right-4 top-11 rounded-full px-2 py-0.5 text-[10px]"
-              style={{ backgroundColor: "#3DDC97", color: "#0B0E12" }}
-            >
-              {PRICES[currency].save}
-            </div>
-
             <CardHeader className="space-y-3 pb-4">
               <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
-                Essai gratuit
+                {safeT('pricing.free.title')}
               </div>
               <div className="flex items-end gap-2 text-[#F2F3F5]">
                 <div className="text-xl font-bold tracking-tight" itemProp="price">
-                  {PRICES[currency].trial}
+                  {safeT('pricing.free.price')}
                 </div>
-                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">pendant 14 jours</span>
-                <meta itemProp="priceCurrency" content={currency} />
+                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">{safeT('pricing.free.period')}</span>
+                <meta itemProp="priceCurrency" content="USD" />
               </div>
               <div className="flex gap-2">
                 <Button
                   asChild
-                  className="w-full rounded-full px-4 py-2 text-sm font-medium text-[#0B0E12] shadow transition-[box-shadow,transform,filter] active:translate-y-[1px]"
-                  style={{ backgroundColor: ACCENT }}
+                  className="w-full rounded-full px-4 py-2 text-sm font-medium border border-[#1E232C] text-[#F2F3F5] hover:bg-[#1A1F27] transition-colors"
                 >
-                  <Link href="/signup?plan=trial">Commencer maintenant</Link>
+                  <Link href="/signup?plan=free">{safeT('pricing.free.cta')}</Link>
                 </Button>
               </div>
             </CardHeader>
 
             <CardContent className="pt-0">
               <ul className="grid gap-2" itemProp="description">
-                {[
-                  "Toutes les fonctionnalités",
-                  "Projets et clients illimités",
-                  "Timer et suivi du temps",
-                  "Génération de factures",
-                  "Rapports de base",
-                  "Support par email",
-                ].map((f, i) => (
+                {(Array.isArray(safeT('pricing.free.features')) ? safeT('pricing.free.features') as string[] : []).map((f: string, i: number) => (
                   <FeatureItem key={i} text={f} />
                 ))}
               </ul>
@@ -197,17 +217,23 @@ export function Pricing() {
               className="absolute right-4 top-4 rounded-full px-2 py-0.5 text-[10px] font-semibold"
               style={{ backgroundColor: ACCENT, color: "#0B0E12" }}
             >
-              POPULAIRE
+              {safeT('pricing.pro.popular')}
+            </div>
+            <div
+              className="absolute right-4 top-11 rounded-full px-2 py-0.5 text-[10px] mt-6"
+              style={{ backgroundColor: "#3DDC97", color: "#0B0E12" }}
+            >
+              {safeT('pricing.pro.trial')}
             </div>
             <CardHeader className="space-y-3 pb-4">
               <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
-                Pro
+                {safeT('pricing.pro.title')}
               </div>
               <div className="flex items-end gap-2 text-[#F2F3F5]">
                 <div className="text-xl font-bold tracking-tight" itemProp="price">
-                  {PRICES[currency].pro}
+                  {safeT('pricing.pro.price')}
                 </div>
-                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">/mois</span>
+                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">{safeT('pricing.pro.period')}</span>
                 <meta itemProp="priceCurrency" content={currency} />
               </div>
 
@@ -217,21 +243,14 @@ export function Pricing() {
                   className="w-full rounded-full px-4 py-2 text-sm font-medium text-[#0B0E12] shadow transition-[box-shadow,transform,filter] active:translate-y-[1px]"
                   style={{ backgroundColor: ACCENT }}
                 >
-                  <Link href="/signup?plan=pro">Choisir Pro</Link>
+                  <Link href="/signup?plan=pro">{safeT('pricing.pro.cta')}</Link>
                 </Button>
               </div>
             </CardHeader>
 
             <CardContent className="pt-0">
               <ul className="grid gap-2" itemProp="description">
-                {[
-                  "Tout de l'essai gratuit +",
-                  "Rapports avancés et analytics",
-                  "Intégration fiscale québécoise",
-                  "Templates de factures personnalisés",
-                  "Export PDF/CSV avancé",
-                  "Support prioritaire",
-                ].map((f, i) => (
+                {(Array.isArray(safeT('pricing.pro.features')) ? safeT('pricing.pro.features') as string[] : []).map((f: string, i: number) => (
                   <FeatureItem key={i} text={f} />
                 ))}
               </ul>
@@ -247,13 +266,13 @@ export function Pricing() {
           >
             <CardHeader className="relative space-y-3 pb-4">
               <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
-                Business
+                {safeT('pricing.business.title')}
               </div>
               <div className="flex items-end gap-2 text-[#F2F3F5]">
                 <div className="text-xl font-bold tracking-tight" itemProp="price">
-                  {PRICES[currency].business}
+                  {safeT('pricing.business.price')}
                 </div>
-                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">/mois</span>
+                <span className="pb-0.5 text-[11px] text-[#A1A5B0]">{safeT('pricing.business.period')}</span>
                 <meta itemProp="priceCurrency" content={currency} />
               </div>
               <div className="flex gap-2">
@@ -261,21 +280,14 @@ export function Pricing() {
                   asChild
                   className="w-full rounded-full px-4 py-2 text-sm font-medium border border-[#1E232C] text-[#F2F3F5] hover:bg-[#1A1F27] transition-colors"
                 >
-                  <Link href="/contact">Nous contacter</Link>
+                  <Link href="/contact">{safeT('pricing.business.cta')}</Link>
                 </Button>
               </div>
             </CardHeader>
 
             <CardContent className="relative pt-0">
               <ul className="grid gap-2" itemProp="description">
-                {[
-                  "Tout du plan Pro +",
-                  "Gestion d'équipe (jusqu'à 10 membres)",
-                  "Tableaux de bord collaboratifs",
-                  "API et intégrations avancées",
-                  "Support téléphonique dédié",
-                  "Onboarding personnalisé",
-                ].map((f, i) => (
+                {(Array.isArray(safeT('pricing.business.features')) ? safeT('pricing.business.features') as string[] : []).map((f: string, i: number) => (
                   <li key={i} className="flex items-start gap-2">
                     <CheckCircle2 className="mt-0.5 h-4 w-4" style={{ color: ACCENT }} />
                     <span className="text-sm text-[#F2F3F5]">{f}</span>

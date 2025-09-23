@@ -1,19 +1,21 @@
+"use client"
+
+import { useTranslation } from "@/hooks/use-translation"
+
 export default function Features() {
-  const content = {
-    title: "Pourquoi choisir Tracksy?",
-  };
+  const { t } = useTranslation()
 
   return (
     <section id="features" className="container mx-auto px-4 py-24 sm:py-32">
       <div className="text-center mb-20">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D5FF3F]/10 border border-[#D5FF3F]/20 mb-6">
-          <span className="text-[#D5FF3F] text-sm font-medium">✨ Fonctionnalités</span>
+          <span className="text-[#D5FF3F] text-sm font-medium">{t('features.badge')}</span>
         </div>
         <h2 className="mb-6 text-5xl font-bold tracking-tight text-[#F2F3F5] sm:text-6xl bg-gradient-to-r from-[#F2F3F5] to-[#D5FF3F] bg-clip-text text-transparent">
-          {content.title}
+          {t('features.title')}
         </h2>
         <p className="text-xl text-[#A1A5B0] max-w-3xl mx-auto leading-relaxed">
-          Tout ce dont tu as besoin pour gérer ton business de freelance en un seul endroit
+          {t('features.subtitle')}
         </p>
       </div>
 
@@ -33,79 +35,87 @@ export default function Features() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[#F2F3F5] mb-1">
-                  Organise ton travail par client et projet
+                  {t('features.organizework.title')}
                 </h3>
                 <p className="text-[#A1A5B0] text-sm">
-                  Suivi en temps réel de tes projets et clients
+                  {t('features.organizework.subtitle')}
                 </p>
               </div>
             </div>
           </div>
           
-          {/* Clients Grid */}
-          <div className="relative z-10 grid grid-cols-2 gap-6 mt-8">
-            <div className="group flex items-center gap-4 p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48&h=48&fit=crop&crop=face" 
-                  alt="Sarah Chen" 
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#D5FF3F]/20 group-hover:ring-[#D5FF3F]/40 transition-all"
-                />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#3DDC97] rounded-full border-2 border-[#0B0E12] animate-pulse"></div>
+          {/* Client Projects Grid */}
+          <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+            {/* TechFlow Inc - Website Redesign */}
+            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">TF</span>
+                  </div>
+                  <div>
+                    <div className="text-[#F2F3F5] font-semibold text-sm">TechFlow Inc</div>
+                    <div className="text-[#A1A5B0] text-xs">Sarah Chen • Contact</div>
+                  </div>
+                </div>
+                <div className="text-[#3DDC97] text-sm font-bold bg-[#3DDC97]/10 px-2 py-1 rounded-lg">24h</div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[#F2F3F5] font-semibold text-base truncate">Sarah Chen</div>
-                <div className="text-[#A1A5B0] text-sm">UX Designer</div>
-              </div>
-              <div className="text-[#3DDC97] text-sm font-bold bg-[#3DDC97]/10 px-2 py-1 rounded-lg">24h</div>
+              <div className="text-[#D5FF3F] font-medium text-sm">Website Redesign</div>
+              <div className="text-[#A1A5B0] text-xs mt-1">UX/UI Design • Active</div>
             </div>
             
-            <div className="group flex items-center gap-4 p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=48&h=48&fit=crop&crop=face" 
-                  alt="Marcus Johnson" 
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#D5FF3F]/20 group-hover:ring-[#D5FF3F]/40 transition-all"
-                />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#D5FF3F] rounded-full border-2 border-[#0B0E12]"></div>
+            {/* StartupLab - Mobile App */}
+            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">SL</span>
+                  </div>
+                  <div>
+                    <div className="text-[#F2F3F5] font-semibold text-sm">StartupLab</div>
+                    <div className="text-[#A1A5B0] text-xs">Marcus Johnson • CEO</div>
+                  </div>
+                </div>
+                <div className="text-[#D5FF3F] text-sm font-bold bg-[#D5FF3F]/10 px-2 py-1 rounded-lg">18h</div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[#F2F3F5] font-semibold text-base truncate">Marcus Johnson</div>
-                <div className="text-[#A1A5B0] text-sm">Tech CEO</div>
-              </div>
-              <div className="text-[#D5FF3F] text-sm font-bold bg-[#D5FF3F]/10 px-2 py-1 rounded-lg">18h</div>
+              <div className="text-[#D5FF3F] font-medium text-sm">Mobile App Development</div>
+              <div className="text-[#A1A5B0] text-xs mt-1">React Native • In Progress</div>
             </div>
             
-            <div className="group flex items-center gap-4 p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=48&h=48&fit=crop&crop=face" 
-                  alt="Emma Rodriguez" 
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#D5FF3F]/20 group-hover:ring-[#D5FF3F]/40 transition-all"
-                />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#3DDC97] rounded-full border-2 border-[#0B0E12] animate-pulse"></div>
+            {/* E-Store Solutions - Database */}
+            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">ES</span>
+                  </div>
+                  <div>
+                    <div className="text-[#F2F3F5] font-semibold text-sm">E-Store Solutions</div>
+                    <div className="text-[#A1A5B0] text-xs">Emma Rodriguez • CTO</div>
+                  </div>
+                </div>
+                <div className="text-[#3DDC97] text-sm font-bold bg-[#3DDC97]/10 px-2 py-1 rounded-lg">32h</div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[#F2F3F5] font-semibold text-base truncate">Emma Rodriguez</div>
-                <div className="text-[#A1A5B0] text-sm">E-commerce</div>
-              </div>
-              <div className="text-[#3DDC97] text-sm font-bold bg-[#3DDC97]/10 px-2 py-1 rounded-lg">32h</div>
+              <div className="text-[#D5FF3F] font-medium text-sm">Database Optimization</div>
+              <div className="text-[#A1A5B0] text-xs mt-1">Backend • Completed</div>
             </div>
             
-            <div className="group flex items-center gap-4 p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
-              <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?w=48&h=48&fit=crop&crop=face" 
-                  alt="Alex Kim" 
-                  className="w-12 h-12 rounded-full object-cover ring-2 ring-[#D5FF3F]/20 group-hover:ring-[#D5FF3F]/40 transition-all"
-                />
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#D5FF3F] rounded-full border-2 border-[#0B0E12]"></div>
+            {/* Creative Studio X - Branding */}
+            <div className="group p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#D5FF3F]/10">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#8b5cf6] to-[#7c3aed] flex items-center justify-center">
+                    <span className="text-white font-bold text-sm">CS</span>
+                  </div>
+                  <div>
+                    <div className="text-[#F2F3F5] font-semibold text-sm">Creative Studio X</div>
+                    <div className="text-[#A1A5B0] text-xs">Alex Kim • Director</div>
+                  </div>
+                </div>
+                <div className="text-[#D5FF3F] text-sm font-bold bg-[#D5FF3F]/10 px-2 py-1 rounded-lg">15h</div>
               </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-[#F2F3F5] font-semibold text-base truncate">Alex Kim</div>
-                <div className="text-[#A1A5B0] text-sm">Creative Agency</div>
-              </div>
-              <div className="text-[#D5FF3F] text-sm font-bold bg-[#D5FF3F]/10 px-2 py-1 rounded-lg">15h</div>
+              <div className="text-[#D5FF3F] font-medium text-sm">Brand Identity Design</div>
+              <div className="text-[#A1A5B0] text-xs mt-1">Creative • Planning</div>
             </div>
           </div>
         </div>
@@ -124,42 +134,65 @@ export default function Features() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[#F2F3F5] mb-1">
-                  Timer précis
+                  {t('features.timer.title')}
                 </h3>
                 <p className="text-[#A1A5B0] text-sm">
-                  Sessions automatiques
+                  {t('features.timer.subtitle')}
                 </p>
               </div>
             </div>
           </div>
           
-          <div className="relative z-10 mt-8">
-            <div className="flex items-center justify-between p-6 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 mb-6 hover:border-[#3DDC97]/40 transition-all duration-300">
-              <div className="flex items-center gap-4">
-                <div className="relative">
-                  <div className="w-4 h-4 bg-[#3DDC97] rounded-full animate-pulse"></div>
-                  <div className="absolute inset-0 w-4 h-4 bg-[#3DDC97] rounded-full animate-ping opacity-75"></div>
-                </div>
+          <div className="relative z-10 mt-8 space-y-4">
+            {/* Active Timer */}
+            <div className="p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#3DDC97]/40 hover:border-[#3DDC97]/60 transition-all duration-300">
+              <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" 
-                    alt="Sarah" 
-                    className="w-8 h-8 rounded-full object-cover ring-2 ring-[#3DDC97]/30"
-                  />
-                  <span className="text-[#F2F3F5] font-semibold text-base">Sarah</span>
+                  <div className="relative">
+                    <div className="w-3 h-3 bg-[#3DDC97] rounded-full animate-pulse"></div>
+                    <div className="absolute inset-0 w-3 h-3 bg-[#3DDC97] rounded-full animate-ping opacity-75"></div>
+                  </div>
+                  <span className="text-[#3DDC97] font-semibold text-sm">ACTIVE</span>
+                </div>
+                <span className="text-[#3DDC97] font-mono text-xl font-bold">02:34:12</span>
+              </div>
+              <div className="text-[#F2F3F5] font-medium">TechFlow Inc • Website Redesign</div>
+              <div className="text-[#A1A5B0] text-sm">UX Research & Wireframing</div>
+            </div>
+
+            {/* Recent Sessions */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between p-3 bg-gradient-to-r from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
+                <div>
+                  <div className="text-[#F2F3F5] font-medium text-sm">StartupLab • Mobile App</div>
+                  <div className="text-[#A1A5B0] text-xs">React Native Development</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-[#F2F3F5] font-mono font-bold">1:45:30</div>
+                  <div className="text-[#A1A5B0] text-xs">Completed</div>
                 </div>
               </div>
-              <span className="text-[#3DDC97] font-mono text-2xl font-bold">02:34:12</span>
+              
+              <div className="flex items-center justify-between p-3 bg-gradient-to-r from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
+                <div>
+                  <div className="text-[#F2F3F5] font-medium text-sm">E-Store Solutions • Database</div>
+                  <div className="text-[#A1A5B0] text-xs">Query optimization</div>
+                </div>
+                <div className="text-right">
+                  <div className="text-[#F2F3F5] font-mono font-bold">0:58:15</div>
+                  <div className="text-[#A1A5B0] text-xs">Yesterday</div>
+                </div>
+              </div>
             </div>
             
-            <div className="grid grid-cols-2 gap-4">
-              <div className="p-4 bg-gradient-to-br from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
-                <div className="text-[#A1A5B0] text-sm mb-1">Aujourd'hui</div>
-                <div className="text-[#F2F3F5] text-xl font-bold">6h 45m</div>
+            <div className="grid grid-cols-2 gap-4 pt-2">
+              <div className="p-3 bg-gradient-to-br from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
+                <div className="text-[#A1A5B0] text-xs mb-1">{t('features.today')}</div>
+                <div className="text-[#F2F3F5] text-lg font-bold">6h 45m</div>
               </div>
-              <div className="p-4 bg-gradient-to-br from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
-                <div className="text-[#A1A5B0] text-sm mb-1">Cette semaine</div>
-                <div className="text-[#F2F3F5] text-xl font-bold">32h 15m</div>
+              <div className="p-3 bg-gradient-to-br from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
+                <div className="text-[#A1A5B0] text-xs mb-1">{t('features.thisWeek')}</div>
+                <div className="text-[#F2F3F5] text-lg font-bold">32h 15m</div>
               </div>
             </div>
           </div>
@@ -179,10 +212,10 @@ export default function Features() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-[#F2F3F5] mb-1">
-                  Génère tes factures en 1 clic et garde le contrôle de tes revenus
+                  {t('features.billing.title')}
                 </h3>
                 <p className="text-[#A1A5B0] text-sm">
-                  Facturation automatique et suivi des paiements
+                  {t('features.billing.subtitle')}
                 </p>
               </div>
             </div>
@@ -192,68 +225,79 @@ export default function Features() {
             {/* Revenue Overview */}
             <div className="flex items-center justify-between p-4 bg-[#0B0E12]/50 rounded-lg border border-[#1E232C]/50">
               <div>
-                <div className="text-[#F2F3F5] font-medium">Revenus ce mois</div>
-                <div className="text-2xl font-bold text-[#3DDC97]">4,250 CAD</div>
+                <div className="text-[#F2F3F5] font-medium">{t('features.billing.revenueThisMonth')}</div>
+                <div className="text-2xl font-bold text-[#3DDC97]">6,290 CAD</div>
               </div>
               <div className="text-right">
-                <div className="text-[#A1A5B0] text-sm">Factures</div>
-                <div className="text-[#D5FF3F] font-semibold">12/12 payées</div>
+                <div className="text-[#A1A5B0] text-sm">{t('features.billing.invoices')}</div>
+                <div className="text-[#D5FF3F] font-semibold">2/3 {t('features.billing.paid')}</div>
               </div>
             </div>
             
             {/* Recent Invoices */}
             <div className="space-y-2">
-              <div className="text-[#F2F3F5] text-sm font-medium mb-2">Factures récentes</div>
+              <div className="text-[#F2F3F5] text-sm font-medium mb-2">{t('features.billing.recentInvoices')}</div>
               <div className="flex items-center justify-between p-3 bg-[#0B0E12]/30 rounded-lg">
                 <div className="flex items-center gap-2">
-                  <img 
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=24&h=24&fit=crop&crop=face" 
-                    alt="Sarah" 
-                    className="w-6 h-6 rounded-full object-cover"
-                  />
+                  <div className="w-6 h-6 rounded bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">TF</span>
+                  </div>
                   <div>
                     <div className="text-[#F2F3F5] text-xs font-medium">#2025-001</div>
-                    <div className="text-[#A1A5B0] text-xs">Sarah Chen</div>
+                    <div className="text-[#A1A5B0] text-xs">TechFlow Inc</div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[#3DDC97] text-xs font-semibold">1,850 CAD</div>
+                  <div className="text-[#3DDC97] text-xs font-semibold">2,040 CAD</div>
                   <div className="text-[#A1A5B0] text-xs">Payée</div>
                 </div>
               </div>
               <div className="flex items-center justify-between p-3 bg-[#0B0E12]/30 rounded-lg">
                 <div className="flex items-center gap-2">
-                  <img 
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=24&h=24&fit=crop&crop=face" 
-                    alt="Marcus" 
-                    className="w-6 h-6 rounded-full object-cover"
-                  />
+                  <div className="w-6 h-6 rounded bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">SL</span>
+                  </div>
                   <div>
                     <div className="text-[#F2F3F5] text-xs font-medium">#2025-002</div>
-                    <div className="text-[#A1A5B0] text-xs">Marcus Johnson</div>
+                    <div className="text-[#A1A5B0] text-xs">StartupLab</div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-[#D5FF3F] text-xs font-semibold">680 CAD</div>
-                  <div className="text-[#A1A5B0] text-xs">En attente</div>
+                  <div className="text-[#D5FF3F] text-xs font-semibold">1,530 CAD</div>
+                  <div className="text-[#A1A5B0] text-xs">{t('features.billing.pending')}</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-[#0B0E12]/30 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <div className="w-6 h-6 rounded bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center">
+                    <span className="text-white font-bold text-xs">ES</span>
+                  </div>
+                  <div>
+                    <div className="text-[#F2F3F5] text-xs font-medium">#2024-078</div>
+                    <div className="text-[#A1A5B0] text-xs">E-Store Solutions</div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="text-[#3DDC97] text-xs font-semibold">2,720 CAD</div>
+                  <div className="text-[#A1A5B0] text-xs">Payée</div>
                 </div>
               </div>
             </div>
             
             {/* Stats */}
             <div className="space-y-3">
-              <div className="text-[#F2F3F5] text-sm font-medium mb-2">Statistiques</div>
+              <div className="text-[#F2F3F5] text-sm font-medium mb-2">{t('features.billing.statistics')}</div>
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#A1A5B0]">Taux horaire moyen</span>
-                  <span className="text-[#F2F3F5] font-medium">85 CAD/h</span>
+                  <span className="text-[#A1A5B0]">{t('features.billing.averageRate')}</span>
+                  <span className="text-[#F2F3F5] font-medium">82 CAD/h</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#A1A5B0]">Heures facturées</span>
-                  <span className="text-[#F2F3F5] font-medium">50h</span>
+                  <span className="text-[#A1A5B0]">{t('features.billing.billedHours')}</span>
+                  <span className="text-[#F2F3F5] font-medium">89h</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-[#A1A5B0]">Clients actifs</span>
+                  <span className="text-[#A1A5B0]">{t('features.billing.activeClients')}</span>
                   <span className="text-[#F2F3F5] font-medium">4</span>
                 </div>
               </div>

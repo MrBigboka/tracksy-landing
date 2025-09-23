@@ -1,41 +1,52 @@
 {
-  "name": "Tracksy - Free Time Tracking & Financial Management",
+  "name": "Tracksy - Time Tracking & Business Management",
   "short_name": "Tracksy",
-  "description": "Free time tracking and financial management tool for freelancers. Track projects, manage clients, and generate professional PDF reports.",
+  "description": "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#e5e059",
+  "background_color": "#0B0E12",
+  "theme_color": "#D5FF3F",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
   "categories": ["business", "productivity", "finance"],
   "icons": [
     {
-      "src": "/logo_browser.png",
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32", 
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/logo_browser.png", 
-      "sizes": "512x512",
+      "src": "/logo_browser.png",
+      "sizes": "256x256",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/logo_browser.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Tracksy Dashboard"
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ],
   "shortcuts": [
@@ -46,20 +57,20 @@
       "url": "/dashboard",
       "icons": [
         {
-          "src": "/logo_browser.png",
-          "sizes": "96x96"
+          "src": "/favicon-192x192.png",
+          "sizes": "192x192"
         }
       ]
     },
     {
-      "name": "Sign In",
-      "short_name": "Sign In",
-      "description": "Sign in to your account",
-      "url": "/#sign-in",
+      "name": "View Reports",
+      "short_name": "Reports", 
+      "description": "View time tracking reports and analytics",
+      "url": "/reports",
       "icons": [
         {
-          "src": "/logo_browser.png",
-          "sizes": "96x96"
+          "src": "/favicon-192x192.png",
+          "sizes": "192x192"
         }
       ]
     }

@@ -4,14 +4,41 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import Plasma from "@/components/plasma"
+import { TranslationProvider } from "@/components/translation-provider"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
 export const metadata: Metadata = {
-  title: "Skitbit | 3D Animation Made Simple, Reliable & Scalable",
+  title: "Tracksy | Track your time. Simplify your business.",
   description:
-    "From product launches to full-scale campaigns, Skitbit delivers 3D animation that's fast, consistent, and built to wow your audience.",
-  generator: "v0.app",
+    "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
+  generator: "Next.js",
+  metadataBase: new URL("https://tracksy.me"),
+  openGraph: {
+    title: "Tracksy | Track your time. Simplify your business.",
+    description: "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
+    url: "https://tracksy.me",
+    siteName: "Tracksy",
+    images: [
+      {
+        url: "/favicon-192x192.png",
+        width: 192,
+        height: 192,
+        alt: "Tracksy Logo",
+      },
+    ],
+    locale: "en_CA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tracksy | Track your time. Simplify your business.",
+    description: "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
+    images: ["/favicon-192x192.png"],
+  },
+  alternates: {
+    canonical: "https://tracksy.me",
+  },
 }
 
 export default function RootLayout({
@@ -32,25 +59,20 @@ export default function RootLayout({
           fetchPriority="high"
         />
 
-        {/* Dynamic Favicon Script */}
-        <Script id="dynamic-favicon" strategy="beforeInteractive">
-          {`
-            function updateFavicon() {
-              const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-              const faviconHref = darkMode ? '/icons/skitbit-white.svg' : '/icons/favicon-dark.svg';
-              let link = document.querySelector("link[rel~='icon']");
-              if (!link) {
-                link = document.createElement('link');
-                link.rel = 'icon';
-                document.getElementsByTagName('head')[0].appendChild(link);
-              }
-              link.href = faviconHref;
-            }
-            updateFavicon();
-            // Listen for changes in theme
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
-          `}
-        </Script>
+        {/* Favicon et icônes - Format optimisé pour Google */}
+        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=2" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=2" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#D5FF3F" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Tracksy" />
 
         {/* Google Tag Manager (deferred) */}
         <Script id="gtm-script" strategy="lazyOnload">
@@ -73,17 +95,19 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
-        <div className="fixed inset-0 z-0 bg-black">
-          <Plasma
-            color="#8b5cf6"
-            speed={0.8}
-            direction="forward"
-            scale={1.5}
-            opacity={0.4}
-            mouseInteractive={true}
-          />
-        </div>
-        <div className="relative z-10">{children}</div>
+        <TranslationProvider defaultLanguage="en">
+          <div className="fixed inset-0 z-0 bg-black">
+            <Plasma
+              color="#8b5cf6"
+              speed={0.8}
+              direction="forward"
+              scale={1.5}
+              opacity={0.4}
+              mouseInteractive={true}
+            />
+          </div>
+          <div className="relative z-10">{children}</div>
+        </TranslationProvider>
       </body>
     </html>
   )

@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "about": "About",
+    "login": "Login",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "TRACK YOUR TIME.",
+    "titleHighlight": "SIMPLIFY",
+    "titleEnd": "YOUR BUSINESS.",
+    "subtitle": "Stop juggling between Toggl, QuickBooks and Excel. Tracksy combines everything in one tool: time tracking, project management, automatic invoicing.",
+    "cta": "Start free trial",
+    "watchDemo": "Watch demo",
+    "freeTrial": "14-day free trial",
+    "noCard": "No card required",
+    "quickSetup": "2-minute setup",
+    "browserNotSupported": "Your browser does not support video"
+  },
+  "features": {
+    "title": "Why choose Tracksy?",
+    "subtitle": "Everything you need to manage your freelance business in one place",
+    "badge": "✨ Features",
+    "organizework": {
+      "title": "Organize your work by client and project",
+      "subtitle": "Real-time tracking of your projects and clients"
+    },
+    "timer": {
+      "title": "Precise timer",
+      "subtitle": "Automatic sessions"
+    },
+    "billing": {
+      "title": "Generate your invoices in 1 click and keep control of your revenue",
+      "subtitle": "Automatic billing and payment tracking",
+      "revenueThisMonth": "Revenue this month",
+      "invoices": "Invoices",
+      "paid": "paid",
+      "recentInvoices": "Recent invoices",
+      "pending": "Pending",
+      "statistics": "Statistics",
+      "averageRate": "Average hourly rate",
+      "billedHours": "Billed hours",
+      "activeClients": "Active clients"
+    },
+    "today": "Today",
+    "thisWeek": "This week"
+  },
+  "pricing": {
+    "badge": "Our Pricing",
+    "title": "Simple. Transparent. Effective.",
+    "subtitle": "No hidden fees. Start free and scale as you grow.",
+    "mainCta": "Start for free",
+    "free": {
+      "title": "Free",
+      "price": "$0",
+      "period": "forever",
+      "features": [
+        "1 client",
+        "3 projects",
+        "Timer and time tracking",
+        "Basic reports",
+        "PDF export (with watermark)"
+      ],
+      "cta": "Start for free"
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "$9 USD",
+      "period": "/month",
+      "popular": "POPULAR",
+      "trial": "14-day free trial",
+      "features": [
+        "Everything in Free +",
+        "Unlimited clients & projects",
+        "Advanced reports and analytics",
+        "Custom invoice templates",
+        "Clean PDF/CSV export",
+        "Priority email support"
+      ],
+      "cta": "Start free trial"
+    },
+    "business": {
+      "title": "Business",
+      "price": "Custom pricing",
+      "period": "",
+      "features": [
+        "Everything in Pro +",
+        "Team collaboration",
+        "Advanced integrations",
+        "Dedicated phone support",
+        "Custom training"
+      ],
+      "cta": "Contact us"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Everything you need to know about Tracksy to get started",
+    "moreQuestions": "Have more questions?",
+    "contactUs": "Contact us",
+    "items": [
+      {
+        "question": "How does the 14-day free trial work?",
+        "answer": "You can use all Pro features of Tracksy for 14 days without any restrictions. No credit card is required to start. At the end of the trial period, you can choose the paid Pro plan or continue with the limited free plan."
+      },
+      {
+        "question": "What's the difference between the Free and Pro plan?",
+        "answer": "The Free plan includes 1 client, 3 projects and basic features. The Pro plan at $9 USD/month offers unlimited clients and projects, advanced reports, clean PDF exports and priority support."
+      },
+      {
+        "question": "Is Tracksy suitable for Quebec freelancers?",
+        "answer": "Absolutely! Tracksy is designed specifically for the Quebec market with local tax support (GST/QST), billing in Canadian dollars, and compliance with Quebec tax regulations."
+      },
+      {
+        "question": "How does automatic billing work?",
+        "answer": "Tracksy automatically generates your invoices based on recorded time and your hourly rates. You can customize templates, add additional fees, and send invoices directly from the application."
+      },
+      {
+        "question": "Is my data secure?",
+        "answer": "Security is our priority. All your data is encrypted in transit and at rest, hosted on Canadian servers, and we comply with all Canadian data protection laws."
+      },
+      {
+        "question": "Is there a mobile app?",
+        "answer": "The Tracksy mobile app is in development and will be available soon on iOS and Android. In the meantime, our web interface is fully responsive and works perfectly on mobile."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Time tracking and business management solution for freelancers.",
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "company": "Company",
+    "about": "About",
+    "contact": "Contact",
+    "legal": "Legal",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy",
+    "allRightsReserved": "All rights reserved"
+  },
+  "mobile": {
+    "badge": "READY TO START?",
+    "title": "Join thousands of freelancers who trust Tracksy",
+    "subtitle": "Start your 14-day free trial today. No credit card required. 2-minute setup.",
+    "cta": "Start for free",
+    "appStore": "Download on",
+    "googlePlay": "Available on",
+    "appTitle": "Tracksy Mobile",
+    "appSubtitle": "Track your time everywhere",
+    "comingSoon": "Coming soon",
+    "appAvailable": "Mobile app coming soon",
+    "navigation": "Navigation",
+    "home": "Home",
+    "blog": "Blog",
+    "support": "Support",
+    "socialMedia": "Social Media",
+    "copyright": "© 2025 — Tracksy"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How we collect, use and protect your information.",
+      "about": "About this policy",
+      "aboutText": "This Privacy Policy describes how Tracksy Inc. (\"we\", \"our\") collects, uses, communicates, retains and protects your personal information in connection with our TRACKSY service (the \"Service\").",
+      "dataCollection": "Data Collection",
+      "dataCollectionText": "We collect information you provide directly to us, such as your name, email address, and profile information when you create an account.",
+      "dataUse": "Data Use",
+      "dataUseText": "We use your information to provide, maintain, and improve our services, communicate with you, and comply with legal obligations.",
+      "dataProtection": "Data Protection",
+      "dataProtectionText": "We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Please read and accept our terms of service.",
+      "acceptance": "Acceptance of Terms",
+      "acceptanceText": "By accessing and using the Tracksy service, you agree to be bound by these terms of service.",
+      "serviceDescription": "Service Description",
+      "serviceDescriptionText": "Tracksy is a time tracking and business management application designed for freelancers and independent workers.",
+      "userResponsibilities": "User Responsibilities",
+      "userResponsibilitiesText": "You are responsible for maintaining the confidentiality of your account and all activities that occur under your account."
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "description": "How we use cookies and similar technologies.",
+      "whatAreCookies": "What are cookies?",
+      "whatAreCookiesText": "Cookies are small data files stored on your device when you visit a website.",
+      "howWeUseCookies": "How we use cookies",
+      "howWeUseCookiesText": "We use cookies to enhance your experience, analyze site traffic, and personalize content.",
+      "manageCookies": "Managing cookies",
+      "manageCookiesText": "You can control and manage cookies through your browser settings."
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "or": "or",
+    "and": "and"
+  }
+}

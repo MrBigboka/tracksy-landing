@@ -1,0 +1,211 @@
+{
+  "nav": {
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "about": "À propos",
+    "login": "Connexion",
+    "getStarted": "Commencer"
+  },
+  "hero": {
+    "title": "SUIVEZ VOTRE TEMPS.",
+    "titleHighlight": "SIMPLIFIEZ",
+    "titleEnd": "VOTRE BUSINESS.",
+    "subtitle": "Fini de jongler entre Toggl, QuickBooks et Excel. Tracksy combine tout en un seul outil : suivi du temps, gestion de projets, facturation automatique.",
+    "cta": "Commencer gratuitement",
+    "watchDemo": "Voir la démo",
+    "freeTrial": "14 jours d'essai gratuit",
+    "noCard": "Aucune carte requise",
+    "quickSetup": "Setup en 2 minutes",
+    "browserNotSupported": "Votre navigateur ne supporte pas la vidéo"
+  },
+  "features": {
+    "title": "Pourquoi choisir Tracksy?",
+    "subtitle": "Tout ce dont tu as besoin pour gérer ton business de freelance en un seul endroit",
+    "badge": "✨ Fonctionnalités",
+    "organizework": {
+      "title": "Organise ton travail par client et projet",
+      "subtitle": "Suivi en temps réel de tes projets et clients"
+    },
+    "timer": {
+      "title": "Timer précis",
+      "subtitle": "Sessions automatiques"
+    },
+    "billing": {
+      "title": "Génère tes factures en 1 clic et garde le contrôle de tes revenus",
+      "subtitle": "Facturation automatique et suivi des paiements",
+      "revenueThisMonth": "Revenus ce mois",
+      "invoices": "Factures",
+      "paid": "payées",
+      "recentInvoices": "Factures récentes",
+      "pending": "En attente",
+      "statistics": "Statistiques",
+      "averageRate": "Taux horaire moyen",
+      "billedHours": "Heures facturées",
+      "activeClients": "Clients actifs"
+    },
+    "today": "Aujourd'hui",
+    "thisWeek": "Cette semaine"
+  },
+  "pricing": {
+    "badge": "Nos tarifs",
+    "title": "Simple. Transparent. Efficace.",
+    "subtitle": "Aucun frais cachés. Commencez gratuitement et évoluez selon vos besoins.",
+    "mainCta": "Commencer gratuitement",
+    "free": {
+      "title": "Gratuit",
+      "price": "0$",
+      "period": "pour toujours",
+      "features": [
+        "1 client",
+        "3 projets",
+        "Timer et suivi du temps",
+        "Rapports de base",
+        "Export PDF (avec filigrane)"
+      ],
+      "cta": "Commencer gratuitement"
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "9$ US",
+      "period": "/mois",
+      "popular": "POPULAIRE",
+      "trial": "Essai gratuit 14 jours",
+      "features": [
+        "Tout du plan Gratuit +",
+        "Clients et projets illimités",
+        "Rapports avancés et analytics",
+        "Templates de factures personnalisés",
+        "Export PDF/CSV propre",
+        "Support prioritaire par email"
+      ],
+      "cta": "Commencer l'essai gratuit"
+    },
+    "business": {
+      "title": "Business",
+      "price": "Tarif personnalisé",
+      "period": "",
+      "features": [
+        "Tout du plan Pro +",
+        "Collaboration d'équipe",
+        "Intégrations avancées",
+        "Support dédié par téléphone",
+        "Formation personnalisée"
+      ],
+      "cta": "Nous contacter"
+    }
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "subtitle": "Tout ce que vous devez savoir sur Tracksy pour commencer",
+    "moreQuestions": "Vous avez d'autres questions ?",
+    "contactUs": "Contactez-nous",
+    "items": [
+      {
+        "question": "Comment fonctionne l'essai gratuit de 14 jours ?",
+        "answer": "Vous pouvez utiliser toutes les fonctionnalités Pro de Tracksy pendant 14 jours sans aucune restriction. Aucune carte de crédit n'est requise pour commencer. À la fin de la période d'essai, vous pouvez choisir le plan Pro payant ou continuer avec le plan gratuit limité."
+      },
+      {
+        "question": "Quelle est la différence entre le plan Gratuit et Pro ?",
+        "answer": "Le plan Gratuit inclut 1 client, 3 projets et les fonctionnalités de base. Le plan Pro à 9$ US/mois offre des clients et projets illimités, des rapports avancés, des exports PDF propres et un support prioritaire."
+      },
+      {
+        "question": "Tracksy est-il adapté aux freelances québécois ?",
+        "answer": "Absolument ! Tracksy est conçu spécifiquement pour le marché québécois avec support des taxes locales (TPS/TVQ), facturation en dollars canadiens, et conformité aux réglementations fiscales du Québec."
+      },
+      {
+        "question": "Comment fonctionne la facturation automatique ?",
+        "answer": "Tracksy génère automatiquement vos factures basées sur le temps enregistré et vos taux horaires. Vous pouvez personnaliser les modèles, ajouter des frais supplémentaires, et envoyer les factures directement depuis l'application."
+      },
+      {
+        "question": "Mes données sont-elles sécurisées ?",
+        "answer": "La sécurité est notre priorité. Toutes vos données sont chiffrées en transit et au repos, hébergées sur des serveurs canadiens, et nous respectons toutes les lois sur la protection des données du Canada."
+      },
+      {
+        "question": "Y a-t-il une application mobile ?",
+        "answer": "L'application mobile Tracksy est en développement et sera disponible bientôt sur iOS et Android. En attendant, notre interface web est entièrement responsive et fonctionne parfaitement sur mobile."
+      }
+    ]
+  },
+  "footer": {
+    "description": "Solution de suivi du temps et de gestion d'entreprise pour les freelances.",
+    "product": "Produit",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "company": "Entreprise",
+    "about": "À propos",
+    "contact": "Contact",
+    "legal": "Légal",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation",
+    "cookies": "Politique de cookies",
+    "allRightsReserved": "Tous droits réservés"
+  },
+  "mobile": {
+    "badge": "PRÊT À COMMENCER?",
+    "title": "Rejoignez des milliers de freelances qui font confiance à Tracksy",
+    "subtitle": "Commencez votre essai gratuit de 14 jours dès aujourd'hui. Aucune carte de crédit requise. Setup en 2 minutes.",
+    "cta": "Commencer gratuitement",
+    "appStore": "Télécharger sur",
+    "googlePlay": "Disponible sur",
+    "appTitle": "Tracksy Mobile",
+    "appSubtitle": "Suivez votre temps partout",
+    "comingSoon": "Bientôt",
+    "appAvailable": "App mobile bientôt disponible",
+    "navigation": "Navigation",
+    "home": "Accueil",
+    "blog": "Blog",
+    "support": "Support",
+    "socialMedia": "Réseaux sociaux",
+    "copyright": "© 2025 — Tracksy"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Politique de confidentialité",
+      "description": "Comment nous collectons, utilisons et protégeons vos informations.",
+      "about": "À propos de cette politique",
+      "aboutText": "Cette Politique de confidentialité décrit comment Tracksy Inc. (\"nous\", \"notre\") collecte, utilise, communique, conserve et protège vos renseignements personnels dans le cadre de notre service TRACKSY (le \"Service\").",
+      "dataCollection": "Collecte des données",
+      "dataCollectionText": "Nous collectons les informations que vous nous fournissez directement, telles que votre nom, adresse e-mail et informations de profil lorsque vous créez un compte.",
+      "dataUse": "Utilisation des données",
+      "dataUseText": "Nous utilisons vos informations pour fournir, maintenir et améliorer nos services, communiquer avec vous et respecter nos obligations légales.",
+      "dataProtection": "Protection des données",
+      "dataProtectionText": "Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations personnelles contre l'accès, l'altération, la divulgation ou la destruction non autorisés."
+    },
+    "terms": {
+      "title": "Conditions générales d'utilisation",
+      "description": "Veuillez lire et accepter nos conditions d'utilisation.",
+      "acceptance": "Acceptation des conditions",
+      "acceptanceText": "En accédant et en utilisant le service Tracksy, vous acceptez d'être lié par ces conditions d'utilisation.",
+      "serviceDescription": "Description du service",
+      "serviceDescriptionText": "Tracksy est une application de suivi du temps et de gestion d'entreprise conçue pour les freelances et les travailleurs indépendants.",
+      "userResponsibilities": "Responsabilités de l'utilisateur",
+      "userResponsibilitiesText": "Vous êtes responsable de maintenir la confidentialité de votre compte et de toutes les activités qui se produisent sous votre compte."
+    },
+    "cookies": {
+      "title": "Politique de cookies",
+      "description": "Comment nous utilisons les cookies et technologies similaires.",
+      "whatAreCookies": "Que sont les cookies ?",
+      "whatAreCookiesText": "Les cookies sont de petits fichiers de données stockés sur votre appareil lorsque vous visitez un site web.",
+      "howWeUseCookies": "Comment nous utilisons les cookies",
+      "howWeUseCookiesText": "Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic du site et personnaliser le contenu.",
+      "manageCookies": "Gérer les cookies",
+      "manageCookiesText": "Vous pouvez contrôler et gérer les cookies dans les paramètres de votre navigateur."
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "cancel": "Annuler",
+    "save": "Sauvegarder",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "back": "Retour",
+    "next": "Suivant",
+    "close": "Fermer",
+    "or": "ou",
+    "and": "et"
+  }
+}

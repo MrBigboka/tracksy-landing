@@ -5,13 +5,16 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
 import { Menu, Briefcase, Tag, HelpCircle, FileText, Info } from "lucide-react"
+import { LanguageSelector } from "@/components/language-selector"
+import { useTranslation } from "@/hooks/use-translation"
 
 export function SiteHeader() {
+  const { t } = useTranslation()
+  
   const links = [
-    { href: "/", label: "Accueil", icon: Briefcase },
-    { href: "#features", label: "Fonctionnalités", icon: Tag },
-    { href: "#pricing", label: "Tarifs", icon: HelpCircle },
-    { href: "#faq", label: "FAQ", icon: FileText },
+    { href: "#features", label: t('nav.features'), icon: Tag },
+    { href: "#pricing", label: t('nav.pricing'), icon: HelpCircle },
+    { href: "#faq", label: t('nav.faq'), icon: FileText },
   ]
 
   return (
@@ -42,15 +45,16 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex">
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageSelector />
             <Button
               asChild
               className="bg-[#D5FF3F] text-[#0B0E12] font-medium rounded-lg px-6 py-2.5
                          hover:bg-[#B9E832] hover:shadow-md hover:scale-[1.02]
                          transition-all"
             >
-              <Link href="#contact">Essai gratuit</Link>
+              <Link href="#contact">{t('hero.cta')}</Link>
             </Button>
           </div>
 
@@ -98,6 +102,11 @@ export function SiteHeader() {
                   ))}
                 </nav>
 
+                {/* Language Selector */}
+                <div className="mt-4 px-4">
+                  <LanguageSelector />
+                </div>
+
                 {/* CTA Button at Bottom */}
                 <div className="mt-auto border-t border-gray-800 p-4">
                   <Button
@@ -106,7 +115,7 @@ export function SiteHeader() {
                                hover:bg-[#B9E832] hover:shadow-md hover:scale-[1.02]
                                transition-all"
                   >
-                    <Link href="#contact">Essai gratuit</Link>
+                    <Link href="#contact">{t('hero.cta')}</Link>
                   </Button>
                 </div>
               </SheetContent>

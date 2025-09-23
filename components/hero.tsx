@@ -1,9 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import { useTranslation } from "@/hooks/use-translation"
 import Image from "next/image"
 
 export function Hero() {
+  const { t } = useTranslation()
 
   return (
     <section className="relative isolate overflow-hidden">
@@ -13,30 +15,29 @@ export function Hero() {
             <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={200} height={60} className="h-12 w-auto" />
           </div>
           <h1 className="mt-6 text-center text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-            <span className="block text-[#F2F3F5]">SUIVEZ VOTRE TEMPS.</span>
-            <span className="block text-[#D5FF3F] drop-shadow-[0_0_20px_rgba(213,255,63,0.35)]">SIMPLIFIEZ</span>
-            <span className="block text-[#F2F3F5]">VOTRE BUSINESS.</span>
+            <span className="block text-[#F2F3F5]">{t('hero.title')}</span>
+            <span className="block text-[#D5FF3F] drop-shadow-[0_0_20px_rgba(213,255,63,0.35)]">{t('hero.titleHighlight')}</span>
+            <span className="block text-[#F2F3F5]">{t('hero.titleEnd')}</span>
           </h1>
           <p className="mt-6 text-center text-xl text-[#A1A5B0] max-w-3xl mx-auto leading-relaxed mb-8">
-            Fini de jongler entre Toggl, QuickBooks et Excel. Tracksy combine tout en un seul outil : 
-            suivi du temps, gestion de projets, facturation automatique.
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Button asChild className="rounded-full bg-[#D5FF3F] px-8 py-3 text-[#0B0E12] hover:bg-[#B9E832] font-semibold text-lg">
               <a href="#contact" rel="noopener noreferrer">
-                Commencer gratuitement
+                {t('hero.cta')}
               </a>
             </Button>
             <Button asChild variant="outline" className="rounded-full border-[#1E232C] bg-transparent px-8 py-3 text-[#F2F3F5] hover:bg-[#1A1F27] hover:text-[#F2F3F5] text-lg">
               <a href="#demo" rel="noopener noreferrer">
-                Voir la démo
+                {t('hero.watchDemo')}
               </a>
             </Button>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-[#A1A5B0] text-sm">
-            <span>✓ 14 jours d'essai gratuit</span>
-            <span>✓ Aucune carte requise</span>
-            <span>✓ Setup en 2 minutes</span>
+            <span>✓ {t('hero.freeTrial')}</span>
+            <span>✓ {t('hero.noCard')}</span>
+            <span>✓ {t('hero.quickSetup')}</span>
           </div>
 
           {/* Tracksy App Preview - Real Demo Video */}
@@ -63,7 +64,7 @@ export function Hero() {
                           <path d="M8 5v14l11-7z"/>
                         </svg>
                       </div>
-                      <p className="text-[#A1A5B0] text-lg sm:text-xl font-medium px-4">Votre navigateur ne supporte pas la vidéo</p>
+                      <p className="text-[#A1A5B0] text-lg sm:text-xl font-medium px-4">{t('hero.browserNotSupported')}</p>
                     </div>
                   </div>
                 </video>
