@@ -49,38 +49,48 @@ const fragmentShader = `
     if (u_mouseInteractive > 0.5) {
       vec2 mouse = u_mouse / u_resolution.xy;
       float dist = distance(uv, mouse);
-      uv += (mouse - uv) * 0.1 * exp(-dist * 5.0);
+      uv += (mouse - uv) * 0.15 * exp(-dist * 3.0);
     }
     
     float time = u_time * u_speed * u_direction;
     
-    // Plasma effect
+    // Enhanced plasma effect with more complexity
     float x = uv.x;
     float y = uv.y;
     
     float v = 0.0;
-    v += sin((x + time) * 10.0);
-    v += sin((y + time / 2.0) * 10.0);
-    v += sin((x + y + time / 2.0) * 10.0);
+    // Primary waves
+    v += sin((x + time) * 8.0);
+    v += sin((y + time * 1.2) * 8.0);
+    v += sin((x + y + time * 0.8) * 8.0);
     
-    float cx = x + 0.5 * sin(time / 5.0);
-    float cy = y + 0.5 * cos(time / 3.0);
-    v += sin(sqrt(100.0 * (cx * cx + cy * cy)) + time);
+    // Secondary complexity
+    float cx = x + 0.6 * sin(time / 4.0);
+    float cy = y + 0.6 * cos(time / 3.0);
+    v += sin(sqrt(80.0 * (cx * cx + cy * cy)) + time * 1.5);
     
-    v = v / 4.0;
+    // Additional layers for richness
+    v += 0.5 * sin((x * 2.0 + time * 0.7) * 6.0);
+    v += 0.3 * sin((y * 3.0 + time * 0.9) * 4.0);
     
-    // Create smooth plasma colors
+    v = v / 6.5;
+    
+    // Create vibrant plasma colors with better distribution
     vec3 col = vec3(
-      sin(v * 3.14159),
-      sin(v * 3.14159 + 2.0 * 3.14159 / 3.0),
-      sin(v * 3.14159 + 4.0 * 3.14159 / 3.0)
+      sin(v * 3.14159 + time * 0.3),
+      sin(v * 3.14159 + 2.094 + time * 0.2), // 2π/3
+      sin(v * 3.14159 + 4.188 + time * 0.4)  // 4π/3
     );
     
-    // Apply custom color tint
-    col = mix(col, col * u_color, 0.8);
+    // Enhance with custom color tint
+    col = mix(col * 0.8, col * u_color, 0.9);
     col = abs(col);
     
-    gl_FragColor = vec4(col * u_opacity, u_opacity * 0.8);
+    // Add brightness and saturation
+    col = pow(col, vec3(0.8));
+    col = mix(col, col * u_color, 0.6);
+    
+    gl_FragColor = vec4(col * u_opacity, u_opacity);
   }
 `
 
