@@ -126,7 +126,6 @@ export function Pricing() {
         'pricing.pro.price': '$9 USD',
         'pricing.pro.period': '/month',
         'pricing.pro.popular': 'POPULAR',
-        'pricing.pro.trial': '14-day free trial',
         'pricing.pro.cta': 'Start free trial',
         'pricing.pro.features': ['Everything in Free +', 'Unlimited clients & projects', 'Advanced reports and analytics', 'Custom invoice templates', 'Clean PDF/CSV export', 'Priority email support'],
         'pricing.business.title': 'Business',
@@ -218,12 +217,6 @@ export function Pricing() {
               style={{ backgroundColor: ACCENT, color: "#0B0E12" }}
             >
               {safeT('pricing.pro.popular')}
-            </div>
-            <div
-              className="absolute right-4 top-11 rounded-full px-2 py-0.5 text-[10px] mt-6"
-              style={{ backgroundColor: "#3DDC97", color: "#0B0E12" }}
-            >
-              {safeT('pricing.pro.trial')}
             </div>
             <CardHeader className="space-y-3 pb-4">
               <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">

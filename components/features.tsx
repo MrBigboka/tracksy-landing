@@ -143,57 +143,45 @@ export default function Features() {
             </div>
           </div>
           
-          <div className="relative z-10 mt-8 space-y-4">
-            {/* Active Timer */}
-            <div className="p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#3DDC97]/40 hover:border-[#3DDC97]/60 transition-all duration-300">
-              <div className="flex items-center justify-between mb-2">
+          <div className="relative z-10 mt-8 space-y-5">
+            {/* Active Timer - Featured */}
+            <div className="p-5 bg-gradient-to-r from-[#0B0E12]/80 to-[#1A1F2E]/60 rounded-xl border-2 border-[#3DDC97]/40 hover:border-[#3DDC97]/60 transition-all duration-300 shadow-lg shadow-[#3DDC97]/10">
+              <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <div className="relative">
-                    <div className="w-3 h-3 bg-[#3DDC97] rounded-full animate-pulse"></div>
-                    <div className="absolute inset-0 w-3 h-3 bg-[#3DDC97] rounded-full animate-ping opacity-75"></div>
+                    <div className="w-4 h-4 bg-[#3DDC97] rounded-full animate-pulse"></div>
+                    <div className="absolute inset-0 w-4 h-4 bg-[#3DDC97] rounded-full animate-ping opacity-75"></div>
                   </div>
-                  <span className="text-[#3DDC97] font-semibold text-sm">ACTIVE</span>
+                  <span className="text-[#3DDC97] font-bold text-sm tracking-wider">ACTIVE SESSION</span>
                 </div>
-                <span className="text-[#3DDC97] font-mono text-xl font-bold">02:34:12</span>
+                <span className="text-[#3DDC97] font-mono text-2xl font-bold">02:34:12</span>
               </div>
-              <div className="text-[#F2F3F5] font-medium">TechFlow Inc • Website Redesign</div>
-              <div className="text-[#A1A5B0] text-sm">UX Research & Wireframing</div>
+              <div className="text-[#F2F3F5] font-semibold text-lg">TechFlow Inc • Website Redesign</div>
+              <div className="text-[#A1A5B0]">UX Research & Wireframing</div>
             </div>
 
-            {/* Recent Sessions */}
-            <div className="space-y-2">
-              <div className="flex items-center justify-between p-3 bg-gradient-to-r from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
-                <div>
-                  <div className="text-[#F2F3F5] font-medium text-sm">StartupLab • Mobile App</div>
-                  <div className="text-[#A1A5B0] text-xs">React Native Development</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-[#F2F3F5] font-mono font-bold">1:45:30</div>
-                  <div className="text-[#A1A5B0] text-xs">Completed</div>
-                </div>
+            {/* Time Summary Cards */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="p-4 bg-gradient-to-br from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/30 transition-all">
+                <div className="text-[#A1A5B0] text-sm mb-2">{t('features.today')}</div>
+                <div className="text-[#F2F3F5] text-2xl font-bold">6h 45m</div>
+                <div className="text-[#3DDC97] text-xs font-medium">+2h vs yesterday</div>
               </div>
-              
-              <div className="flex items-center justify-between p-3 bg-gradient-to-r from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
-                <div>
-                  <div className="text-[#F2F3F5] font-medium text-sm">E-Store Solutions • Database</div>
-                  <div className="text-[#A1A5B0] text-xs">Query optimization</div>
-                </div>
-                <div className="text-right">
-                  <div className="text-[#F2F3F5] font-mono font-bold">0:58:15</div>
-                  <div className="text-[#A1A5B0] text-xs">Yesterday</div>
-                </div>
+              <div className="p-4 bg-gradient-to-br from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/30 transition-all">
+                <div className="text-[#A1A5B0] text-sm mb-2">{t('features.thisWeek')}</div>
+                <div className="text-[#F2F3F5] text-2xl font-bold">32h 15m</div>
+                <div className="text-[#D5FF3F] text-xs font-medium">4 clients active</div>
               </div>
             </div>
-            
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-3 bg-gradient-to-br from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
-                <div className="text-[#A1A5B0] text-xs mb-1">{t('features.today')}</div>
-                <div className="text-[#F2F3F5] text-lg font-bold">6h 45m</div>
-              </div>
-              <div className="p-3 bg-gradient-to-br from-[#0B0E12]/40 to-[#1A1F2E]/20 rounded-xl border border-[#2A2F3C]/30">
-                <div className="text-[#A1A5B0] text-xs mb-1">{t('features.thisWeek')}</div>
-                <div className="text-[#F2F3F5] text-lg font-bold">32h 15m</div>
-              </div>
+
+            {/* Quick Actions */}
+            <div className="flex gap-2">
+              <button className="flex-1 p-3 bg-[#D5FF3F]/10 border border-[#D5FF3F]/30 rounded-lg text-[#D5FF3F] text-sm font-medium hover:bg-[#D5FF3F]/20 transition-all">
+                ⏱️ New Timer
+              </button>
+              <button className="flex-1 p-3 bg-[#0B0E12]/40 border border-[#2A2F3C]/50 rounded-lg text-[#A1A5B0] text-sm font-medium hover:border-[#D5FF3F]/30 transition-all">
+                📊 View Reports
+              </button>
             </div>
           </div>
         </div>
@@ -221,84 +209,90 @@ export default function Features() {
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-            {/* Revenue Overview */}
-            <div className="flex items-center justify-between p-4 bg-[#0B0E12]/50 rounded-lg border border-[#1E232C]/50">
-              <div>
-                <div className="text-[#F2F3F5] font-medium">{t('features.billing.revenueThisMonth')}</div>
-                <div className="text-2xl font-bold text-[#3DDC97]">6,290 CAD</div>
-              </div>
-              <div className="text-right">
-                <div className="text-[#A1A5B0] text-sm">{t('features.billing.invoices')}</div>
-                <div className="text-[#D5FF3F] font-semibold">2/3 {t('features.billing.paid')}</div>
-              </div>
-            </div>
-            
-            {/* Recent Invoices */}
-            <div className="space-y-2">
-              <div className="text-[#F2F3F5] text-sm font-medium mb-2">{t('features.billing.recentInvoices')}</div>
-              <div className="flex items-center justify-between p-3 bg-[#0B0E12]/30 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">TF</span>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+            {/* Left side - Revenue & Invoices */}
+            <div className="space-y-4">
+              {/* Revenue Overview */}
+              <div className="p-6 bg-gradient-to-br from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50">
+                <div className="flex items-center justify-between mb-4">
                   <div>
-                    <div className="text-[#F2F3F5] text-xs font-medium">#2025-001</div>
-                    <div className="text-[#A1A5B0] text-xs">TechFlow Inc</div>
+                    <div className="text-[#A1A5B0] text-sm">{t('features.billing.revenueThisMonth')}</div>
+                    <div className="text-3xl font-bold text-[#3DDC97]">6,290 CAD</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[#A1A5B0] text-sm">{t('features.billing.invoices')}</div>
+                    <div className="text-[#D5FF3F] font-semibold text-lg">2/3 {t('features.billing.paid')}</div>
                   </div>
                 </div>
-                <div className="text-right">
-                  <div className="text-[#3DDC97] text-xs font-semibold">2,040 CAD</div>
-                  <div className="text-[#A1A5B0] text-xs">Payée</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-between p-3 bg-[#0B0E12]/30 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">SL</span>
+                
+                {/* Quick stats */}
+                <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#2A2F3C]/30">
+                  <div className="text-center">
+                    <div className="text-[#F2F3F5] font-bold">82 CAD</div>
+                    <div className="text-[#A1A5B0] text-xs">Taux/h</div>
                   </div>
-                  <div>
-                    <div className="text-[#F2F3F5] text-xs font-medium">#2025-002</div>
-                    <div className="text-[#A1A5B0] text-xs">StartupLab</div>
+                  <div className="text-center">
+                    <div className="text-[#F2F3F5] font-bold">89h</div>
+                    <div className="text-[#A1A5B0] text-xs">Facturées</div>
                   </div>
-                </div>
-                <div className="text-right">
-                  <div className="text-[#D5FF3F] text-xs font-semibold">1,530 CAD</div>
-                  <div className="text-[#A1A5B0] text-xs">{t('features.billing.pending')}</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-between p-3 bg-[#0B0E12]/30 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center">
-                    <span className="text-white font-bold text-xs">ES</span>
+                  <div className="text-center">
+                    <div className="text-[#F2F3F5] font-bold">4</div>
+                    <div className="text-[#A1A5B0] text-xs">Clients</div>
                   </div>
-                  <div>
-                    <div className="text-[#F2F3F5] text-xs font-medium">#2024-078</div>
-                    <div className="text-[#A1A5B0] text-xs">E-Store Solutions</div>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="text-[#3DDC97] text-xs font-semibold">2,720 CAD</div>
-                  <div className="text-[#A1A5B0] text-xs">Payée</div>
                 </div>
               </div>
             </div>
-            
-            {/* Stats */}
-            <div className="space-y-3">
-              <div className="text-[#F2F3F5] text-sm font-medium mb-2">{t('features.billing.statistics')}</div>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-[#A1A5B0]">{t('features.billing.averageRate')}</span>
-                  <span className="text-[#F2F3F5] font-medium">82 CAD/h</span>
+
+            {/* Right side - Recent Invoices */}
+            <div className="space-y-4">
+              <div className="text-[#F2F3F5] font-medium mb-3">{t('features.billing.recentInvoices')}</div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#3DDC97]/40 transition-all duration-300">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#3b82f6] to-[#1d4ed8] flex items-center justify-center">
+                      <span className="text-white font-bold">TF</span>
+                    </div>
+                    <div>
+                      <div className="text-[#F2F3F5] font-medium">#2025-001</div>
+                      <div className="text-[#A1A5B0] text-sm">TechFlow Inc</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[#3DDC97] font-bold">2,040 CAD</div>
+                    <div className="text-[#3DDC97] text-xs bg-[#3DDC97]/10 px-2 py-1 rounded">Payée</div>
+                  </div>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-[#A1A5B0]">{t('features.billing.billedHours')}</span>
-                  <span className="text-[#F2F3F5] font-medium">89h</span>
+                
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#D5FF3F]/40 transition-all duration-300">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#10b981] to-[#059669] flex items-center justify-center">
+                      <span className="text-white font-bold">SL</span>
+                    </div>
+                    <div>
+                      <div className="text-[#F2F3F5] font-medium">#2025-002</div>
+                      <div className="text-[#A1A5B0] text-sm">StartupLab</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[#D5FF3F] font-bold">1,530 CAD</div>
+                    <div className="text-[#D5FF3F] text-xs bg-[#D5FF3F]/10 px-2 py-1 rounded">{t('features.billing.pending')}</div>
+                  </div>
                 </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-[#A1A5B0]">{t('features.billing.activeClients')}</span>
-                  <span className="text-[#F2F3F5] font-medium">4</span>
+                
+                <div className="flex items-center justify-between p-4 bg-gradient-to-r from-[#0B0E12]/60 to-[#1A1F2E]/40 rounded-xl border border-[#2A2F3C]/50 hover:border-[#3DDC97]/40 transition-all duration-300">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#f59e0b] to-[#d97706] flex items-center justify-center">
+                      <span className="text-white font-bold">ES</span>
+                    </div>
+                    <div>
+                      <div className="text-[#F2F3F5] font-medium">#2024-078</div>
+                      <div className="text-[#A1A5B0] text-sm">E-Store Solutions</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-[#3DDC97] font-bold">2,720 CAD</div>
+                    <div className="text-[#3DDC97] text-xs bg-[#3DDC97]/10 px-2 py-1 rounded">Payée</div>
+                  </div>
                 </div>
               </div>
             </div>
