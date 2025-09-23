@@ -100,9 +100,6 @@ export function Pricing() {
         
         {/* Header */}
         <div className="text-center mb-20">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#C8D64F]/10 border border-[#C8D64F]/20 mb-6">
-            <span className="text-[#C8D64F] text-sm font-medium">{safeT('pricing.badge')}</span>
-          </div>
           <h2 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6">
             {safeT('pricing.title')}
           </h2>
@@ -118,7 +115,7 @@ export function Pricing() {
             {/* Free Plan */}
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
-              <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full">
+              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full">
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.free.title')}
@@ -132,7 +129,7 @@ export function Pricing() {
                 <Button 
                   asChild 
                   variant="outline"
-                  className="w-full mb-8 bg-transparent border-white/20 text-white hover:bg-white/5 hover:border-white/30"
+                  className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
                 >
                   <Link href="/signup?plan=free">Get started</Link>
                 </Button>
@@ -147,13 +144,13 @@ export function Pricing() {
 
             {/* Pro Plan - Featured */}
             <div className="relative group scale-105 lg:scale-110">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-[#C8D64F]/10 to-[#C8D64F]/5 rounded-2xl"></div>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-white text-black text-xs font-semibold px-3 py-1 rounded-full">
+                <div className="bg-[#C8D64F] text-black text-xs font-semibold px-3 py-1 rounded-full">
                   Popular
                 </div>
               </div>
-              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full">
+              <div className="relative bg-black/60 backdrop-blur-xl border-2 border-[#C8D64F]/30 rounded-2xl p-8 h-full">
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.pro.title')}
@@ -166,7 +163,7 @@ export function Pricing() {
                 
                 <Button 
                   asChild
-                  className="w-full mb-8 bg-white text-black hover:bg-white/90 font-semibold"
+                  className="w-full mb-8 bg-[#C8D64F] text-black hover:bg-[#A8B940] font-semibold"
                 >
                   <Link href="/signup?plan=pro">Start free trial</Link>
                 </Button>
@@ -182,7 +179,7 @@ export function Pricing() {
             {/* Business Plan */}
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
-              <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-8 h-full">
+              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full">
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.business.title')}
@@ -195,7 +192,7 @@ export function Pricing() {
                 <Button 
                   asChild 
                   variant="outline"
-                  className="w-full mb-8 bg-transparent border-white/20 text-white hover:bg-white/5 hover:border-white/30"
+                  className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
                 >
                   <Link href="/contact">Contact sales</Link>
                 </Button>

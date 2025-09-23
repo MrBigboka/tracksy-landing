@@ -8,13 +8,10 @@ export default function Features() {
   return (
     <section id="features" className="container mx-auto px-4 py-24 sm:py-32">
       <div className="text-center mb-20">
-        <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D5FF3F]/10 border border-[#D5FF3F]/20 mb-6">
-          <span className="text-[#D5FF3F] text-sm font-medium">Features</span>
-        </div>
-        <h2 className="mb-6 text-5xl font-bold tracking-tight text-[#F2F3F5] sm:text-6xl bg-gradient-to-r from-[#F2F3F5] to-[#D5FF3F] bg-clip-text text-transparent">
+        <h2 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6">
           {t('features.title')}
         </h2>
-        <p className="text-xl text-[#A1A5B0] max-w-3xl mx-auto leading-relaxed">
+        <p className="text-xl text-white/60 max-w-2xl mx-auto">
           {t('features.subtitle')}
         </p>
       </div>
