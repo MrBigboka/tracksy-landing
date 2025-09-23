@@ -101,11 +101,11 @@ export default function RootLayout({
           <ClientWrapper>
             <div className="fixed inset-0 z-0 bg-black">
               <Plasma
-                color="#C8D64F"
+                color="#8B9A3F"
                 speed={0.6}
                 direction="forward"
                 scale={1.1}
-                opacity={0.7}
+                opacity={0.25}
                 mouseInteractive={true}
               />
             </div>
