@@ -60,29 +60,27 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           animationPhase === 'initial' ? 'scale-0 opacity-0' :
           animationPhase === 'complete' ? 'scale-110' : 'scale-100 opacity-100'
         }`}>
-          {/* Logo with white to green fill effect */}
+          {/* Logo with shadow to color fill effect */}
           <div className="relative">
-            {/* Background logo (always visible as white) */}
+            {/* Background logo (shadow/silhouette) */}
             <div className="relative">
               <Image 
                 src="/Tracksy_logo.png" 
                 alt="Tracksy" 
                 width={320} 
                 height={106} 
-                className="h-24 w-auto filter brightness-0 invert"
+                className="h-24 w-auto"
                 style={{ 
-                  filter: animationPhase === 'whitePhase' ? 'brightness(0) invert(1)' : 
-                         animationPhase === 'greenFill' || animationPhase === 'complete' ? 'brightness(0) invert(1)' : 
-                         'brightness(0) invert(1)'
+                  filter: 'brightness(0) saturate(0) contrast(100%) opacity(0.3)'
                 }}
                 priority
               />
             </div>
 
-            {/* Animated green overlay that fills the logo */}
+            {/* Animated color overlay that fills the logo */}
             <div className="absolute inset-0 overflow-hidden">
               <div 
-                className={`relative transition-all duration-1200 ease-out ${
+                className={`relative transition-all duration-1500 ease-out ${
                   animationPhase === 'greenFill' || animationPhase === 'complete' ? 'w-full' : 'w-0'
                 }`}
                 style={{
@@ -96,9 +94,6 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
                   width={320} 
                   height={106} 
                   className="h-24 w-auto"
-                  style={{ 
-                    filter: 'brightness(0) saturate(100%) invert(84%) sepia(93%) saturate(1352%) hue-rotate(39deg) brightness(103%) contrast(97%)'
-                  }}
                 />
               </div>
             </div>
@@ -120,15 +115,15 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
           {/* Animated dots */}
           <div className="flex items-center justify-center gap-2">
             <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-              animationPhase === 'whitePhase' ? 'bg-white animate-pulse' :
+              animationPhase === 'whitePhase' ? 'bg-gray-500 animate-pulse' :
               animationPhase === 'greenFill' || animationPhase === 'complete' ? 'bg-[#C8D64F] animate-bounce' : 'bg-gray-600'
             }`} style={{ animationDelay: '0ms' }}></div>
             <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-              animationPhase === 'whitePhase' ? 'bg-white animate-pulse' :
+              animationPhase === 'whitePhase' ? 'bg-gray-500 animate-pulse' :
               animationPhase === 'greenFill' || animationPhase === 'complete' ? 'bg-[#C8D64F] animate-bounce' : 'bg-gray-600'
             }`} style={{ animationDelay: '150ms' }}></div>
             <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-              animationPhase === 'whitePhase' ? 'bg-white animate-pulse' :
+              animationPhase === 'whitePhase' ? 'bg-gray-500 animate-pulse' :
               animationPhase === 'greenFill' || animationPhase === 'complete' ? 'bg-[#C8D64F] animate-bounce' : 'bg-gray-600'
             }`} style={{ animationDelay: '300ms' }}></div>
           </div>
@@ -140,7 +135,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
         <div className={`absolute inset-0 transition-all duration-2000 ${
           animationPhase === 'greenFill' || animationPhase === 'complete' ? 
           'bg-gradient-radial from-[#C8D64F]/10 via-transparent to-transparent scale-150' : 
-          'bg-gradient-radial from-white/5 via-transparent to-transparent scale-100'
+          'bg-gradient-radial from-gray-500/5 via-transparent to-transparent scale-100'
         }`}></div>
       </div>
     </div>
