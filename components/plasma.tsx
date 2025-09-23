@@ -1,12 +1,13 @@
 "use client"
 
-import type React from "react"
-import { useEffect, useRef } from "react"
+import React, { useEffect, useRef } from 'react'
+import { Renderer, Program, Mesh, Triangle } from 'ogl'
+import './Plasma.css'
 
 interface PlasmaProps {
   color?: string
   speed?: number
-  direction?: "forward" | "reverse" | "pingpong"
+  direction?: 'forward' | 'reverse' | 'pingpong'
   scale?: number
   opacity?: number
   mouseInteractive?: boolean
@@ -14,269 +15,192 @@ interface PlasmaProps {
 
 const hexToRgb = (hex: string): [number, number, number] => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  if (!result) return [0.784, 0.839, 0.310] // Default to #C8D64F
-  return [
-    Number.parseInt(result[1], 16) / 255,
-    Number.parseInt(result[2], 16) / 255,
-    Number.parseInt(result[3], 16) / 255,
-  ]
+  if (!result) return [1, 0.5, 0.2]
+  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
 }
 
-const vertexShader = `
-  attribute vec4 position;
-  void main() {
-    gl_Position = position;
-  }
+const vertex = `#version 300 es
+precision highp float;
+in vec2 position;
+in vec2 uv;
+out vec2 vUv;
+void main() {
+  vUv = uv;
+  gl_Position = vec4(position, 0.0, 1.0);
+}
 `
 
-const fragmentShader = `
-  precision mediump float;
-  uniform vec2 u_resolution;
-  uniform float u_time;
-  uniform vec3 u_color;
-  uniform float u_speed;
-  uniform float u_direction;
-  uniform float u_scale;
-  uniform float u_opacity;
-  uniform vec2 u_mouse;
-  uniform float u_mouseInteractive;
+const fragment = `#version 300 es
+precision highp float;
+uniform vec2 iResolution;
+uniform float iTime;
+uniform vec3 uCustomColor;
+uniform float uUseCustomColor;
+uniform float uSpeed;
+uniform float uDirection;
+uniform float uScale;
+uniform float uOpacity;
+uniform vec2 uMouse;
+uniform float uMouseInteractive;
+out vec4 fragColor;
 
-  void main() {
-    vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-    uv = (uv - 0.5) * u_scale + 0.5;
+void mainImage(out vec4 o, vec2 C) {
+  vec2 center = iResolution.xy * 0.5;
+  C = (C - center) / uScale + center;
+  
+  vec2 mouseOffset = (uMouse - center) * 0.0002;
+  C += mouseOffset * length(C - center) * step(0.5, uMouseInteractive);
+  
+  float i, d, z, T = iTime * uSpeed * uDirection;
+  vec3 O, p, S;
+
+  for (vec2 r = iResolution.xy, Q; ++i < 60.; O += o.w/d*o.xyz) {
+    p = z*normalize(vec3(C-.5*r,r.y)); 
+    p.z -= 4.; 
+    S = p;
+    d = p.y-T;
     
-    // Mouse interaction
-    if (u_mouseInteractive > 0.5) {
-      vec2 mouse = u_mouse / u_resolution.xy;
-      float dist = distance(uv, mouse);
-      uv += (mouse - uv) * 0.15 * exp(-dist * 3.0);
-    }
-    
-    float time = u_time * u_speed * u_direction;
-    
-    // Enhanced plasma effect with more complexity
-    float x = uv.x;
-    float y = uv.y;
-    
-    float v = 0.0;
-    // Primary waves
-    v += sin((x + time) * 8.0);
-    v += sin((y + time * 1.2) * 8.0);
-    v += sin((x + y + time * 0.8) * 8.0);
-    
-    // Secondary complexity
-    float cx = x + 0.6 * sin(time / 4.0);
-    float cy = y + 0.6 * cos(time / 3.0);
-    v += sin(sqrt(80.0 * (cx * cx + cy * cy)) + time * 1.5);
-    
-    // Additional layers for richness
-    v += 0.5 * sin((x * 2.0 + time * 0.7) * 6.0);
-    v += 0.3 * sin((y * 3.0 + time * 0.9) * 4.0);
-    
-    v = v / 6.5;
-    
-    // Create vibrant plasma colors with better distribution
-    vec3 col = vec3(
-      sin(v * 3.14159 + time * 0.3),
-      sin(v * 3.14159 + 2.094 + time * 0.2), // 2π/3
-      sin(v * 3.14159 + 4.188 + time * 0.4)  // 4π/3
-    );
-    
-    // Enhance with custom color tint
-    col = mix(col * 0.8, col * u_color, 0.9);
-    col = abs(col);
-    
-    // Add brightness and saturation
-    col = pow(col, vec3(0.8));
-    col = mix(col, col * u_color, 0.6);
-    
-    gl_FragColor = vec4(col * u_opacity, u_opacity);
+    p.x += .4*(1.+p.y)*sin(d + p.x*0.1)*cos(.34*d + p.x*0.05); 
+    Q = p.xz *= mat2(cos(p.y+vec4(0,11,33,0)-T)); 
+    z+= d = abs(sqrt(length(Q*Q)) - .25*(5.+S.y))/3.+8e-4; 
+    o = 1.+sin(S.y+p.z*.5+S.z-length(S-p)+vec4(2,1,0,8));
   }
-`
+  
+  o.xyz = tanh(O/1e4);
+}
+
+bool finite1(float x){ return !(isnan(x) || isinf(x)); }
+vec3 sanitize(vec3 c){
+  return vec3(
+    finite1(c.r) ? c.r : 0.0,
+    finite1(c.g) ? c.g : 0.0,
+    finite1(c.b) ? c.b : 0.0
+  );
+}
+
+void main() {
+  vec4 o = vec4(0.0);
+  mainImage(o, gl_FragCoord.xy);
+  vec3 rgb = sanitize(o.rgb);
+  
+  float intensity = (rgb.r + rgb.g + rgb.b) / 3.0;
+  vec3 customColor = intensity * uCustomColor;
+  vec3 finalColor = mix(rgb, customColor, step(0.5, uUseCustomColor));
+  
+  float alpha = length(rgb) * uOpacity;
+  fragColor = vec4(finalColor, alpha);
+}`
 
 export const Plasma: React.FC<PlasmaProps> = ({
-  color = "#C8D64F",
+  color = '#C8D64F',
   speed = 1,
-  direction = "forward",
+  direction = 'forward',
   scale = 1,
-  opacity = 0.3,
-  mouseInteractive = true,
+  opacity = 0.6,
+  mouseInteractive = true
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const animationRef = useRef<number>()
-  const mouseRef = useRef({ x: 0, y: 0 })
-  
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const mousePos = useRef({ x: 0, y: 0 })
+
   useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
+    if (!containerRef.current) return
 
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl")
-    if (!gl) {
-      console.warn("WebGL not supported")
-      return
-    }
+    const useCustomColor = color ? 1.0 : 0.0
+    const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
 
-    // Create shader program
-    const createShader = (gl: WebGLRenderingContext, type: number, source: string) => {
-      const shader = gl.createShader(type)
-      if (!shader) return null
-      
-      gl.shaderSource(shader, source)
-      gl.compileShader(shader)
-      
-      if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error("Shader compile error:", gl.getShaderInfoLog(shader))
-        gl.deleteShader(shader)
-        return null
+    const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0
+
+    const renderer = new Renderer({
+      webgl: 2,
+      alpha: true,
+      antialias: false,
+      dpr: Math.min(window.devicePixelRatio || 1, 2)
+    })
+    const gl = renderer.gl
+    const canvas = gl.canvas as HTMLCanvasElement
+    canvas.style.display = 'block'
+    canvas.style.width = '100%'
+    canvas.style.height = '100%'
+    containerRef.current.appendChild(canvas)
+
+    const geometry = new Triangle(gl)
+
+    const program = new Program(gl, {
+      vertex: vertex,
+      fragment: fragment,
+      uniforms: {
+        iTime: { value: 0 },
+        iResolution: { value: new Float32Array([1, 1]) },
+        uCustomColor: { value: new Float32Array(customColorRgb) },
+        uUseCustomColor: { value: useCustomColor },
+        uSpeed: { value: speed * 0.4 },
+        uDirection: { value: directionMultiplier },
+        uScale: { value: scale },
+        uOpacity: { value: opacity },
+        uMouse: { value: new Float32Array([0, 0]) },
+        uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 }
       }
-      
-      return shader
-    }
+    })
 
-    const createProgram = (gl: WebGLRenderingContext, vertexShader: WebGLShader, fragmentShader: WebGLShader) => {
-      const program = gl.createProgram()
-      if (!program) return null
-      
-      gl.attachShader(program, vertexShader)
-      gl.attachShader(program, fragmentShader)
-      gl.linkProgram(program)
-      
-      if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-        console.error("Program link error:", gl.getProgramInfoLog(program))
-        gl.deleteProgram(program)
-        return null
-      }
-      
-      return program
-    }
+    const mesh = new Mesh(gl, { geometry, program })
 
-    const vShader = createShader(gl, gl.VERTEX_SHADER, vertexShader)
-    const fShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShader)
-    
-    if (!vShader || !fShader) return
-
-    const program = createProgram(gl, vShader, fShader)
-    if (!program) return
-
-    // Create geometry (full screen quad)
-    const positions = new Float32Array([
-      -1, -1, 1, -1, -1, 1,
-      -1, 1, 1, -1, 1, 1,
-    ])
-
-    const positionBuffer = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-    gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW)
-
-    const positionLocation = gl.getAttribLocation(program, "position")
-    const resolutionLocation = gl.getUniformLocation(program, "u_resolution")
-    const timeLocation = gl.getUniformLocation(program, "u_time")
-    const colorLocation = gl.getUniformLocation(program, "u_color")
-    const speedLocation = gl.getUniformLocation(program, "u_speed")
-    const directionLocation = gl.getUniformLocation(program, "u_direction")
-    const scaleLocation = gl.getUniformLocation(program, "u_scale")
-    const opacityLocation = gl.getUniformLocation(program, "u_opacity")
-    const mouseLocation = gl.getUniformLocation(program, "u_mouse")
-    const mouseInteractiveLocation = gl.getUniformLocation(program, "u_mouseInteractive")
-
-    // Resize handler
-    const resize = () => {
-      const displayWidth = canvas.clientWidth
-      const displayHeight = canvas.clientHeight
-      
-      if (canvas.width !== displayWidth || canvas.height !== displayHeight) {
-        canvas.width = displayWidth
-        canvas.height = displayHeight
-      }
-      
-      gl.viewport(0, 0, canvas.width, canvas.height)
-    }
-
-    // Mouse handler
-    const handleMouseMove = (event: MouseEvent) => {
+    const handleMouseMove = (e: MouseEvent) => {
       if (!mouseInteractive) return
-      const rect = canvas.getBoundingClientRect()
-      mouseRef.current = {
-        x: event.clientX - rect.left,
-        y: rect.height - (event.clientY - rect.top), // Flip Y coordinate
-      }
+      const rect = containerRef.current!.getBoundingClientRect()
+      mousePos.current.x = e.clientX - rect.left
+      mousePos.current.y = e.clientY - rect.top
+      const mouseUniform = program.uniforms.uMouse.value as Float32Array
+      mouseUniform[0] = mousePos.current.x
+      mouseUniform[1] = mousePos.current.y
     }
 
-    // Setup
-    resize()
-    window.addEventListener("resize", resize)
     if (mouseInteractive) {
-      canvas.addEventListener("mousemove", handleMouseMove)
+      containerRef.current.addEventListener('mousemove', handleMouseMove)
     }
 
-    // Animation loop
-    const startTime = Date.now()
-    const animate = () => {
-      const currentTime = (Date.now() - startTime) / 1000
-      
-      gl.clearColor(0, 0, 0, 0)
-      gl.clear(gl.COLOR_BUFFER_BIT)
-      gl.enable(gl.BLEND)
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-
-      gl.useProgram(program)
-
-      // Set uniforms
-      gl.uniform2f(resolutionLocation, canvas.width, canvas.height)
-      gl.uniform1f(timeLocation, currentTime)
-      
-      const [r, g, b] = hexToRgb(color)
-      gl.uniform3f(colorLocation, r, g, b)
-      
-      gl.uniform1f(speedLocation, speed)
-      gl.uniform1f(directionLocation, direction === "reverse" ? -1 : direction === "pingpong" ? Math.sin(currentTime * 0.5) : 1)
-      gl.uniform1f(scaleLocation, scale)
-      gl.uniform1f(opacityLocation, opacity)
-      gl.uniform2f(mouseLocation, mouseRef.current.x, mouseRef.current.y)
-      gl.uniform1f(mouseInteractiveLocation, mouseInteractive ? 1 : 0)
-
-      // Set attributes
-      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
-      gl.enableVertexAttribArray(positionLocation)
-      gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
-
-      // Draw
-      gl.drawArrays(gl.TRIANGLES, 0, 6)
-
-      animationRef.current = requestAnimationFrame(animate)
+    const setSize = () => {
+      const rect = containerRef.current!.getBoundingClientRect()
+      const width = Math.max(1, Math.floor(rect.width))
+      const height = Math.max(1, Math.floor(rect.height))
+      renderer.setSize(width, height)
+      const res = program.uniforms.iResolution.value as Float32Array
+      res[0] = gl.drawingBufferWidth
+      res[1] = gl.drawingBufferHeight
     }
 
-    animate()
+    const ro = new ResizeObserver(setSize)
+    ro.observe(containerRef.current)
+    setSize()
 
-    // Cleanup
+    let raf = 0
+    const t0 = performance.now()
+    const loop = (t: number) => {
+      let timeValue = (t - t0) * 0.001
+
+      if (direction === 'pingpong') {
+        const cycle = Math.sin(timeValue * 0.5) * directionMultiplier
+        ;(program.uniforms.uDirection as any).value = cycle
+      }
+
+      ;(program.uniforms.iTime as any).value = timeValue
+      renderer.render({ scene: mesh })
+      raf = requestAnimationFrame(loop)
+    }
+    raf = requestAnimationFrame(loop)
+
     return () => {
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      if (mouseInteractive && containerRef.current) {
+        containerRef.current.removeEventListener('mousemove', handleMouseMove)
       }
-      window.removeEventListener("resize", resize)
-      if (mouseInteractive) {
-        canvas.removeEventListener("mousemove", handleMouseMove)
-      }
-      
-      // Cleanup WebGL resources
-      gl.deleteProgram(program)
-      gl.deleteShader(vShader)
-      gl.deleteShader(fShader)
-      gl.deleteBuffer(positionBuffer)
+      try {
+        containerRef.current?.removeChild(canvas)
+      } catch {}
     }
   }, [color, speed, direction, scale, opacity, mouseInteractive])
 
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ 
-        display: 'block',
-        width: '100%',
-        height: '100%'
-      }}
-    />
-  )
+  return <div ref={containerRef} className="plasma-container" />
 }
 
 export default Plasma

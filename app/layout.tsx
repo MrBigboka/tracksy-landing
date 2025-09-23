@@ -102,10 +102,10 @@ export default function RootLayout({
             <div className="fixed inset-0 z-0 bg-black">
               <Plasma
                 color="#C8D64F"
-                speed={1.0}
+                speed={0.6}
                 direction="forward"
-                scale={1.0}
-                opacity={0.8}
+                scale={1.1}
+                opacity={0.7}
                 mouseInteractive={true}
               />
             </div>
