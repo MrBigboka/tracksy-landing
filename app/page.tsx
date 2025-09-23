@@ -75,18 +75,7 @@ export default function Page() {
 
   return (
     <>
-      {/* Pure yellow-lime animated background */}
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[#0B0E12]">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#D5FF3F] rounded-full blur-3xl animate-pulse" style={{animationDuration: '3s'}}></div>
-            <div className="absolute bottom-1/3 right-1/3 w-80 h-80 bg-[#B9E832] rounded-full blur-3xl animate-pulse" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
-            <div className="absolute top-1/2 right-1/4 w-64 h-64 bg-[#D5FF3F] rounded-full blur-3xl animate-pulse" style={{animationDuration: '5s', animationDelay: '2s'}}></div>
-          </div>
-        </div>
-      </div>
-      
-      <main className="relative min-h-[100dvh] bg-transparent text-[#F2F3F5] z-10">
+      <main className="relative min-h-[100dvh] bg-transparent text-[#F2F3F5]">
         <SiteHeader />
         <Hero />
         <Features />
