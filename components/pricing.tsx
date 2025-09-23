@@ -143,11 +143,8 @@ export function Pricing() {
     <section id="pricing" className="text-white" itemScope itemType="https://schema.org/PriceSpecification">
       <div className="container mx-auto px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-3xl text-center">
-          <div
-            className="mx-auto mb-4 inline-flex items-center rounded-full px-3 py-1 text-xs font-medium"
-            style={{ backgroundColor: "rgba(213,255,63,0.12)", color: ACCENT }}
-          >
-            {safeT('pricing.badge')}
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D5FF3F]/10 border border-[#D5FF3F]/20 mb-6">
+            <span className="text-[#D5FF3F] text-sm font-medium">{safeT('pricing.badge')}</span>
           </div>
           <h2 className="text-4xl font-extrabold tracking-tight text-[#F2F3F5] sm:text-5xl" itemProp="name">
             {safeT('pricing.title')}
@@ -171,7 +168,7 @@ export function Pricing() {
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {/* Free */}
           <Card
-            className="relative overflow-hidden rounded-2xl bg-[#141820] border border-[#1E232C] shadow-[0_12px_40px_rgba(0,0,0,0.3)] transition-all duration-300"
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1F2E]/80 via-[#141820]/90 to-[#0B0E12] border border-[#2A2F3C] shadow-[0_12px_40px_rgba(0,0,0,0.3)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] transition-all duration-300 hover:scale-[1.02]"
             itemScope
             itemType="https://schema.org/Offer"
           >
@@ -208,17 +205,19 @@ export function Pricing() {
 
           {/* Pro */}
           <Card
-            className="relative overflow-hidden rounded-2xl bg-[#141820] border-2 border-[#D5FF3F] shadow-[0_12px_40px_rgba(213,255,63,0.2)] transition-all duration-300"
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1F2E]/80 via-[#141820]/90 to-[#0B0E12] border-2 border-[#D5FF3F] shadow-[0_12px_40px_rgba(213,255,63,0.2)] hover:shadow-[0_25px_60px_rgba(213,255,63,0.3)] transition-all duration-300 hover:scale-[1.02] transform-gpu"
             itemScope
             itemType="https://schema.org/Offer"
           >
+            {/* Glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#D5FF3F]/5 via-transparent to-[#3DDC97]/5 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
             <div
               className="absolute right-4 top-4 rounded-full px-2 py-0.5 text-[10px] font-semibold"
               style={{ backgroundColor: ACCENT, color: "#0B0E12" }}
             >
               {safeT('pricing.pro.popular')}
             </div>
-            <CardHeader className="space-y-3 pb-4">
+            <CardHeader className="relative z-10 space-y-3 pb-4">
               <div className="text-sm font-semibold text-[#F2F3F5]" itemProp="name">
                 {safeT('pricing.pro.title')}
               </div>
@@ -241,7 +240,7 @@ export function Pricing() {
               </div>
             </CardHeader>
 
-            <CardContent className="pt-0">
+            <CardContent className="relative z-10 pt-0">
               <ul className="grid gap-2" itemProp="description">
                 {(Array.isArray(safeT('pricing.pro.features')) ? safeT('pricing.pro.features') as string[] : []).map((f: string, i: number) => (
                   <FeatureItem key={i} text={f} />
@@ -253,7 +252,7 @@ export function Pricing() {
 
           {/* Business */}
           <Card
-            className="relative overflow-hidden rounded-2xl bg-[#141820] border border-[#1E232C] shadow-[0_16px_50px_rgba(0,0,0,0.4)] transition-all duration-300"
+            className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1A1F2E]/80 via-[#141820]/90 to-[#0B0E12] border border-[#2A2F3C] shadow-[0_16px_50px_rgba(0,0,0,0.4)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[1.02]"
             itemScope
             itemType="https://schema.org/Offer"
           >

@@ -9,7 +9,7 @@ export default function Features() {
     <section id="features" className="container mx-auto px-4 py-24 sm:py-32">
       <div className="text-center mb-20">
         <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D5FF3F]/10 border border-[#D5FF3F]/20 mb-6">
-          <span className="text-[#D5FF3F] text-sm font-medium">{t('features.badge')}</span>
+          <span className="text-[#D5FF3F] text-sm font-medium">Features</span>
         </div>
         <h2 className="mb-6 text-5xl font-bold tracking-tight text-[#F2F3F5] sm:text-6xl bg-gradient-to-r from-[#F2F3F5] to-[#D5FF3F] bg-clip-text text-transparent">
           {t('features.title')}
@@ -174,15 +174,6 @@ export default function Features() {
               </div>
             </div>
 
-            {/* Quick Actions */}
-            <div className="flex gap-2">
-              <button className="flex-1 p-3 bg-[#D5FF3F]/10 border border-[#D5FF3F]/30 rounded-lg text-[#D5FF3F] text-sm font-medium hover:bg-[#D5FF3F]/20 transition-all">
-                ⏱️ New Timer
-              </button>
-              <button className="flex-1 p-3 bg-[#0B0E12]/40 border border-[#2A2F3C]/50 rounded-lg text-[#A1A5B0] text-sm font-medium hover:border-[#D5FF3F]/30 transition-all">
-                📊 View Reports
-              </button>
-            </div>
           </div>
         </div>
 

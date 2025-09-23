@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { Instagram, Twitter, Youtube, MessageCircle } from "lucide-react"
+import { Twitter, Youtube } from "lucide-react"
 import LazyVideo from "./lazy-video"
 import Image from "next/image"
 import { useTranslation } from "@/hooks/use-translation"
@@ -148,7 +148,7 @@ export function AppverseFooter() {
             {/* Brand */}
             <div className="space-y-3">
               <div className="flex items-center">
-                <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={120} height={40} className="h-8 w-auto" />
+                <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={150} height={50} className="h-10 w-auto" />
               </div>
               <p className="max-w-sm text-sm text-neutral-400">{safeT('footer.description')}</p>
             </div>
@@ -191,30 +191,6 @@ export function AppverseFooter() {
                       aria-label="Subscribe to Tracksy on YouTube"
                     >
                       YouTube
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Instagram className="h-4 w-4 text-neutral-400" />
-                    <a
-                      href="https://instagram.com/tracksy_app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#D5FF3F]"
-                      aria-label="Follow Tracksy on Instagram"
-                    >
-                      Instagram
-                    </a>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4 text-neutral-400" />
-                    <a
-                      href="https://threads.com/tracksy_app"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:text-[#D5FF3F]"
-                      aria-label="Follow Tracksy on Threads"
-                    >
-                      Threads
                     </a>
                   </li>
                 </ul>

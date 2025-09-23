@@ -27,9 +27,12 @@ export function FAQ() {
   }
 
   return (
-    <section className="py-16 sm:py-24">
+    <section id="faq" className="py-16 sm:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#D5FF3F]/10 border border-[#D5FF3F]/20 mb-6">
+            <span className="text-[#D5FF3F] text-sm font-medium">FAQ</span>
+          </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-[#F2F3F5] mb-4">
             {t('faq.title')}
           </h2>

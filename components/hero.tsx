@@ -7,12 +7,23 @@ import Image from "next/image"
 export function Hero() {
   const { t } = useTranslation()
 
+  const handleWatchDemo = (e: React.MouseEvent) => {
+    e.preventDefault()
+    const video = document.querySelector('video') as HTMLVideoElement
+    if (video) {
+      if (video.requestFullscreen) {
+        video.requestFullscreen()
+      }
+      video.play()
+    }
+  }
+
   return (
     <section className="relative isolate overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center py-14 sm:py-20">
           <div className="mb-5 flex items-center justify-center">
-            <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={200} height={60} className="h-12 w-auto" />
+            <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={240} height={80} className="h-16 w-auto" />
           </div>
           <h1 className="mt-6 text-center text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
             <span className="block text-[#F2F3F5]">{t('hero.title')}</span>
@@ -28,10 +39,8 @@ export function Hero() {
                 {t('hero.cta')}
               </a>
             </Button>
-            <Button asChild variant="outline" className="rounded-full border-[#1E232C] bg-transparent px-8 py-3 text-[#F2F3F5] hover:bg-[#1A1F27] hover:text-[#F2F3F5] text-lg">
-              <a href="#demo" rel="noopener noreferrer">
-                {t('hero.watchDemo')}
-              </a>
+            <Button onClick={handleWatchDemo} variant="outline" className="rounded-full border-[#1E232C] bg-transparent px-8 py-3 text-[#F2F3F5] hover:bg-[#1A1F27] hover:text-[#F2F3F5] text-lg">
+              {t('hero.watchDemo')}
             </Button>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-[#A1A5B0] text-sm">

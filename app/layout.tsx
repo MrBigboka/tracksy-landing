@@ -98,11 +98,11 @@ export default function RootLayout({
         <TranslationProvider defaultLanguage="en">
           <div className="fixed inset-0 z-0 bg-black">
             <Plasma
-              color="#8b5cf6"
+              color="#D5FF3F"
               speed={0.8}
               direction="forward"
               scale={1.5}
-              opacity={0.4}
+              opacity={0.3}
               mouseInteractive={true}
             />
           </div>
