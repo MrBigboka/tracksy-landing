@@ -5,6 +5,8 @@ import { Inter } from "next/font/google"
 import Script from "next/script"
 import Plasma from "@/components/plasma"
 import { TranslationProvider } from "@/components/translation-provider"
+import { SplashScreen } from "@/components/splash-screen"
+import { ClientWrapper } from "@/components/client-wrapper"
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
@@ -96,17 +98,19 @@ export default function RootLayout({
       </head>
       <body>
         <TranslationProvider defaultLanguage="en">
-          <div className="fixed inset-0 z-0 bg-black">
-            <Plasma
-              color="#D5FF3F"
-              speed={0.8}
-              direction="forward"
-              scale={1.5}
-              opacity={0.3}
-              mouseInteractive={true}
-            />
-          </div>
-          <div className="relative z-10">{children}</div>
+          <ClientWrapper>
+            <div className="fixed inset-0 z-0 bg-black">
+              <Plasma
+                color="#C8D64F"
+                speed={0.8}
+                direction="forward"
+                scale={1.5}
+                opacity={0.3}
+                mouseInteractive={true}
+              />
+            </div>
+            <div className="relative z-10">{children}</div>
+          </ClientWrapper>
         </TranslationProvider>
       </body>
     </html>
