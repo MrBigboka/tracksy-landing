@@ -22,13 +22,13 @@ type Currency = "INR" | "CAD"
 const PRICES: Record<Currency, { trial: string; pro: string; business: string; save: string }> = {
   INR: {
     trial: "₹0",
-    pro: "₹1,500",
+    pro: "₹750",
     business: "₹3,900",
     save: "14 jours gratuits",
   },
   CAD: {
     trial: "0 CAD",
-    pro: "19 CAD",
+    pro: "9 USD",
     business: "49 CAD",
     save: "14 jours gratuits",
   },
@@ -78,7 +78,7 @@ export function Pricing() {
         'pricing.free.cta': 'Get started',
         'pricing.free.features': ['1 client', '3 projects', 'Basic time tracking', 'Basic reports', 'Email support'],
         'pricing.pro.title': 'Pro',
-        'pricing.pro.price': '$19 CAD',
+        'pricing.pro.price': '$9 USD',
         'pricing.pro.period': '/month',
         'pricing.pro.popular': 'Popular',
         'pricing.pro.cta': 'Start free trial',
@@ -156,8 +156,8 @@ export function Pricing() {
                     {safeT('pricing.pro.title')}
                   </h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-white">$19</span>
-                    <span className="text-white/60 text-sm">CAD /month</span>
+                    <span className="text-4xl font-bold text-white">$9</span>
+                    <span className="text-white/60 text-sm">USD /month</span>
                   </div>
                 </div>
                 

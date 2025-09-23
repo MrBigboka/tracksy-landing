@@ -78,24 +78,21 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
             </div>
 
             {/* Animated color overlay that fills the logo */}
-            <div className="absolute inset-0 overflow-hidden">
-              <div 
-                className={`relative transition-all duration-1500 ease-out ${
-                  animationPhase === 'greenFill' || animationPhase === 'complete' ? 'w-full' : 'w-0'
-                }`}
-                style={{
-                  clipPath: animationPhase === 'greenFill' || animationPhase === 'complete' ? 
-                    'inset(0 0 0 0)' : 'inset(0 100% 0 0)'
-                }}
-              >
-                <Image 
-                  src="/Tracksy_logo.png" 
-                  alt="Tracksy" 
-                  width={320} 
-                  height={106} 
-                  className="h-24 w-auto"
-                />
-              </div>
+            <div 
+              className="absolute inset-0 overflow-hidden"
+              style={{
+                clipPath: animationPhase === 'greenFill' || animationPhase === 'complete' ? 
+                  'inset(0 0 0 0)' : 'inset(0 100% 0 0)',
+                transition: 'clip-path 1500ms ease-out'
+              }}
+            >
+              <Image 
+                src="/Tracksy_logo.png" 
+                alt="Tracksy" 
+                width={320} 
+                height={106} 
+                className="h-24 w-auto"
+              />
             </div>
 
             {/* Subtle glow effect */}
