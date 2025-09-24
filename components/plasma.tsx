@@ -197,13 +197,9 @@ export const Plasma: React.FC<PlasmaProps> = ({
     checkCompatibility()
   }, [])
 
-  // Use optimized mobile plasma instead of basic fallback
-  if (shouldUseFallback) {
-    return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
-  }
-
+  // WebGL effect - only runs when not using fallback
   useEffect(() => {
-    if (!containerRef.current) return
+    if (shouldUseFallback || !containerRef.current) return
 
     try {
       const useCustomColor = color ? 1.0 : 0.0
@@ -306,6 +302,12 @@ export const Plasma: React.FC<PlasmaProps> = ({
     }
   }, [color, speed, direction, scale, opacity, mouseInteractive])
 
+  // Use optimized mobile plasma instead of WebGL for fallback cases
+  if (shouldUseFallback) {
+    return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
+  }
+
+  // Render WebGL container for desktop
   return <div ref={containerRef} className="plasma-container" />
 }
 
