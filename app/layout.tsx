@@ -3,7 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
-import Plasma from "@/components/plasma"
+import PlasmaSimple from "@/components/plasma-simple"
 import { TranslationProvider } from "@/components/translation-provider"
 import { SplashScreen } from "@/components/splash-screen"
 import { ClientWrapper } from "@/components/client-wrapper"
@@ -99,24 +99,16 @@ export default function RootLayout({
       <body>
         <TranslationProvider defaultLanguage="en">
           <ClientWrapper>
-            <div 
-              className="fixed inset-0 z-0 bg-black" 
-              style={{ 
-                WebkitTransform: 'translateZ(0)', 
-                transform: 'translateZ(0)',
-                WebkitBackfaceVisibility: 'hidden',
-                backfaceVisibility: 'hidden',
-                willChange: 'transform'
-              }}
-            >
-              <Plasma
-                color="#8B9A3F"
-                speed={0.6}
-                direction="forward"
-                scale={1.1}
-                opacity={0.25}
-                mouseInteractive={true}
-              />
+            <div className="fixed inset-0 z-0 bg-black">
+              <div className="absolute inset-0 opacity-40" style={{
+                background: `
+                  radial-gradient(circle at 20% 30%, #8B9A3F40 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, #8B9A3F35 0%, transparent 60%),
+                  radial-gradient(circle at 40% 90%, #8B9A3F45 0%, transparent 45%),
+                  radial-gradient(circle at 60% 50%, #8B9A3F38 0%, transparent 40%),
+                  radial-gradient(circle at 10% 70%, #8B9A3F32 0%, transparent 50%)
+                `
+              }}></div>
             </div>
             <div className="relative z-10">
               {children}
