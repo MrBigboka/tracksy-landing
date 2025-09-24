@@ -19,7 +19,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 p-4">
-      <div className="container mx-auto max-w-4xl">
+      <div className="max-w-[1400px] mx-auto px-4">
         <div className="flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
           {/* Brand Logo */}
           <Link href="/" className="flex items-center">

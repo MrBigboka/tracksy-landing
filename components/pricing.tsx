@@ -96,20 +96,20 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="text-white">
-      <div className="container mx-auto px-4 py-24 sm:py-32">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-12 py-24 sm:py-32">
         
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl sm:text-6xl font-bold tracking-tight text-white mb-6">
+          <h2 className="text-6xl sm:text-7xl font-bold tracking-tight text-white mb-8">
             {safeT('pricing.title')}
           </h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto">
+          <p className="text-2xl text-white/60 max-w-3xl mx-auto">
             {safeT('pricing.subtitle')}
           </p>
         </div>
 
         {/* Pricing Cards */}
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Free Plan */}

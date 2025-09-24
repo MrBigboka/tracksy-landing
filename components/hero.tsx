@@ -36,17 +36,17 @@ export function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center justify-center py-14 sm:py-20">
+      <div className="max-w-[1400px] mx-auto px-8 lg:px-12">
+        <div className="flex flex-col items-center justify-center py-20 sm:py-32">
           <div className="mb-5 flex items-center justify-center">
-            <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={240} height={80} className="h-16 w-auto" />
+            <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={320} height={110} className="h-20 w-auto" />
           </div>
-          <h1 className="mt-6 text-center text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="mt-8 text-center text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl">
             <span className="block text-[#F2F3F5]">{t('hero.title')}</span>
             <span className="block text-[#D5FF3F] drop-shadow-[0_0_20px_rgba(213,255,63,0.35)]">{t('hero.titleHighlight')}</span>
             <span className="block text-[#F2F3F5]">{t('hero.titleEnd')}</span>
           </h1>
-          <p className="mt-6 text-center text-xl text-[#A1A5B0] max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="mt-8 text-center text-2xl text-[#A1A5B0] max-w-4xl mx-auto leading-relaxed mb-12">
             {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
