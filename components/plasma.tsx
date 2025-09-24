@@ -162,7 +162,8 @@ export const Plasma: React.FC<PlasmaProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
-  const [shouldUseFallback, setShouldUseFallback] = useState(true)
+  const [shouldUseFallback, setShouldUseFallback] = useState(false)
+  const [isCheckingCompatibility, setIsCheckingCompatibility] = useState(true)
   const [webglSupported, setWebglSupported] = useState(false)
 
   // Check device capabilities on mount
@@ -171,12 +172,14 @@ export const Plasma: React.FC<PlasmaProps> = ({
       // Use optimized version for mobile (but still animated!)
       if (isMobile()) {
         setShouldUseFallback(true)
+        setIsCheckingCompatibility(false)
         return
       }
 
       // Use fallback only for very old Safari
       if (isOldSafari()) {
         setShouldUseFallback(true)
+        setIsCheckingCompatibility(false)
         return
       }
 
@@ -188,9 +191,11 @@ export const Plasma: React.FC<PlasmaProps> = ({
         
         setWebglSupported(hasWebGL2)
         setShouldUseFallback(!hasWebGL2)
+        setIsCheckingCompatibility(false)
       } catch (error) {
         console.warn('WebGL check failed, using mobile version:', error)
         setShouldUseFallback(true)
+        setIsCheckingCompatibility(false)
       }
     }
 
@@ -301,6 +306,11 @@ export const Plasma: React.FC<PlasmaProps> = ({
       setShouldUseFallback(true)
     }
   }, [color, speed, direction, scale, opacity, mouseInteractive])
+
+  // Show loading state while checking compatibility
+  if (isCheckingCompatibility) {
+    return <div className="plasma-container"><div className="absolute inset-0 bg-black/20" /></div>
+  }
 
   // Use optimized mobile plasma instead of WebGL for fallback cases
   if (shouldUseFallback) {
