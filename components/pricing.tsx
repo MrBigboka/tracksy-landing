@@ -72,21 +72,21 @@ export function Pricing() {
         'pricing.badge': 'Pricing',
         'pricing.title': 'Simple. Transparent. Effective.',
         'pricing.subtitle': 'No hidden fees. Start free and scale as you grow.',
-        'pricing.free.title': 'Free',
+        'pricing.free.title': 'Gratuit',
         'pricing.free.price': '$0',
         'pricing.free.period': 'forever',
-        'pricing.free.cta': 'Get started',
+        'pricing.free.cta': 'Commencer',
         'pricing.free.features': ['1 client', '3 projects', 'Basic time tracking', 'Basic reports', 'Email support'],
         'pricing.pro.title': 'Pro',
         'pricing.pro.price': '$9 USD',
         'pricing.pro.period': '/month',
-        'pricing.pro.popular': 'Popular',
-        'pricing.pro.cta': 'Start free trial',
+        'pricing.pro.popular': 'Populaire',
+        'pricing.pro.cta': 'Essai gratuit',
         'pricing.pro.features': ['Everything in Free', 'Unlimited clients & projects', 'Advanced reports', 'Custom invoicing', 'Priority support'],
         'pricing.business.title': 'Business',
         'pricing.business.price': 'Custom',
         'pricing.business.period': '',
-        'pricing.business.cta': 'Contact sales',
+        'pricing.business.cta': 'Nous contacter',
         'pricing.business.features': ['Everything in Pro', 'Team collaboration', 'Advanced integrations', 'Dedicated support', 'Custom training']
       }
       return fallbacks[key] || key
@@ -113,9 +113,9 @@ export function Pricing() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
             {/* Free Plan */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
-              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full">
+            <div className="relative group hover:scale-105 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl group-hover:from-white/8"></div>
+              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full group-hover:border-white/30 group-hover:shadow-xl group-hover:shadow-white/10 transition-all duration-300">
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.free.title')}
@@ -131,7 +131,7 @@ export function Pricing() {
                   variant="outline"
                   className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
                 >
-                  <Link href="/signup?plan=free">Get started</Link>
+                  <Link href="/signup?plan=free">{safeT('pricing.free.cta')}</Link>
                 </Button>
 
                 <ul className="space-y-4">
@@ -143,14 +143,14 @@ export function Pricing() {
             </div>
 
             {/* Pro Plan - Featured */}
-            <div className="relative group scale-105 lg:scale-110">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#C8D64F]/10 to-[#C8D64F]/5 rounded-2xl"></div>
+            <div className="relative group scale-105 lg:scale-110 hover:scale-110 lg:hover:scale-115 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-b from-[#C8D64F]/10 to-[#C8D64F]/5 rounded-2xl group-hover:from-[#C8D64F]/15 group-hover:to-[#C8D64F]/8"></div>
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
                 <div className="bg-[#C8D64F] text-black text-xs font-semibold px-3 py-1 rounded-full">
-                  Popular
+                  {safeT('pricing.pro.popular')}
                 </div>
               </div>
-              <div className="relative bg-black/60 backdrop-blur-xl border-2 border-[#C8D64F]/30 rounded-2xl p-8 h-full">
+              <div className="relative bg-black/60 backdrop-blur-xl border-2 border-[#C8D64F]/30 rounded-2xl p-8 h-full group-hover:border-[#C8D64F]/50 group-hover:shadow-2xl group-hover:shadow-[#C8D64F]/20 transition-all duration-300">
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.pro.title')}
@@ -165,7 +165,7 @@ export function Pricing() {
                   asChild
                   className="w-full mb-8 bg-[#C8D64F] text-black hover:bg-[#A8B940] font-semibold"
                 >
-                  <Link href="/signup?plan=pro">Start free trial</Link>
+                  <Link href="/signup?plan=pro">{safeT('pricing.pro.cta')}</Link>
                 </Button>
 
                 <ul className="space-y-4">
@@ -177,9 +177,9 @@ export function Pricing() {
             </div>
 
             {/* Business Plan */}
-            <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl"></div>
-              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full">
+            <div className="relative group hover:scale-105 transition-all duration-300">
+              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl group-hover:from-white/8"></div>
+              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full group-hover:border-white/30 group-hover:shadow-xl group-hover:shadow-white/10 transition-all duration-300">
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.business.title')}
@@ -194,7 +194,7 @@ export function Pricing() {
                   variant="outline"
                   className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
                 >
-                  <Link href="/contact">Contact sales</Link>
+                  <Link href="/contact">{safeT('pricing.business.cta')}</Link>
                 </Button>
 
                 <ul className="space-y-4">
@@ -208,18 +208,11 @@ export function Pricing() {
           </div>
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom info */}
         <div className="text-center mt-16">
-          <p className="text-white/60 mb-6">
+          <p className="text-white/60">
             All plans include a 14-day free trial. No credit card required.
           </p>
-          <Button 
-            asChild
-            variant="outline"
-            className="bg-transparent border-white/20 text-white hover:bg-white/5"
-          >
-            <Link href="#faq">View FAQ</Link>
-          </Button>
         </div>
 
       </div>
