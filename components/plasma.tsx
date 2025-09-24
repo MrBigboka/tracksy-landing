@@ -171,6 +171,12 @@ export const Plasma: React.FC<PlasmaProps> = ({
   opacity = 0.6,
   mouseInteractive = true
 }) => {
+  // FORCE L'AFFICHAGE TOUJOURS - PLUS DE LOGIQUE COMPLIQUÉE !
+  console.log('🎨 PLASMA: FORCED RENDER FOR DEBUGGING')
+  return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
+  
+  // Code original commenté pour debug
+  /*
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
   const [shouldUseFallback, setShouldUseFallback] = useState(true) // Force fallback pour voir quelque chose
