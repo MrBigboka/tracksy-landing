@@ -13,10 +13,18 @@ interface PlasmaProps {
   mouseInteractive?: boolean
 }
 
-// Mobile detection utility
-const isMobile = () => {
+// Safari and mobile detection utility
+const isSafariOrMobile = () => {
   if (typeof window === 'undefined') return false
-  return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  
+  const userAgent = navigator.userAgent
+  const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent)
+  const isOldSafari = /version\/([0-9]+)/.test(userAgent.toLowerCase()) && 
+                      parseInt(userAgent.toLowerCase().match(/version\/([0-9]+)/)?.[1] || '0') < 14
+  const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+  
+  // Use fallback for Safari (especially older versions) or mobile
+  return isSafari || isOldSafari || isMobile
 }
 
 const hexToRgb = (hex: string): [number, number, number] => {
@@ -97,8 +105,8 @@ void main() {
   fragColor = vec4(finalColor, alpha);
 }`
 
-// Simple mobile fallback component
-const MobilePlasmaFallback: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6 }) => {
+// Safari/Mobile compatible fallback component
+const SafePlasmaFallback: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6 }) => {
   return (
     <div className="plasma-container">
       <div className="mobile-plasma-bg absolute inset-0" />
@@ -116,39 +124,55 @@ export const Plasma: React.FC<PlasmaProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
-  const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [shouldUseFallback, setShouldUseFallback] = useState(true)
+  const [webglSupported, setWebglSupported] = useState(false)
 
-  // Check if mobile on mount
+  // Check Safari/mobile and WebGL support on mount
   useEffect(() => {
-    setIsMobileDevice(isMobile())
-    
-    const handleResize = () => {
-      setIsMobileDevice(isMobile())
+    const checkCompatibility = () => {
+      // Always use fallback for Safari or mobile
+      if (isSafariOrMobile()) {
+        setShouldUseFallback(true)
+        return
+      }
+
+      // Test WebGL2 support for other browsers
+      try {
+        const canvas = document.createElement('canvas')
+        const gl = canvas.getContext('webgl2')
+        const hasWebGL2 = !!gl
+        
+        setWebglSupported(hasWebGL2)
+        setShouldUseFallback(!hasWebGL2)
+      } catch (error) {
+        console.warn('WebGL check failed:', error)
+        setShouldUseFallback(true)
+      }
     }
-    
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+
+    checkCompatibility()
   }, [])
 
-  // Use simple fallback for mobile
-  if (isMobileDevice) {
-    return <MobilePlasmaFallback color={color} opacity={opacity} />
+  // Use safe fallback for Safari, mobile, or no WebGL2
+  if (shouldUseFallback) {
+    return <SafePlasmaFallback color={color} opacity={opacity} />
   }
 
   useEffect(() => {
     if (!containerRef.current) return
 
-    const useCustomColor = color ? 1.0 : 0.0
-    const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
+    try {
+      const useCustomColor = color ? 1.0 : 0.0
+      const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
 
-    const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0
+      const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0
 
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
-    })
+      const renderer = new Renderer({
+        webgl: 2,
+        alpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio || 1, 2)
+      })
     const gl = renderer.gl
     const canvas = gl.canvas as HTMLCanvasElement
     canvas.style.display = 'block'
@@ -230,6 +254,11 @@ export const Plasma: React.FC<PlasmaProps> = ({
       try {
         containerRef.current?.removeChild(canvas)
       } catch {}
+    }
+    } catch (error) {
+      console.warn('WebGL Plasma failed, falling back to CSS animation:', error)
+      // Force fallback on error
+      setShouldUseFallback(true)
     }
   }, [color, speed, direction, scale, opacity, mouseInteractive])
 
