@@ -17,15 +17,21 @@ export function ClientWrapper({ children }: ClientWrapperProps) {
     setIsClient(true)
   }, [])
 
-  // Prevent hydration issues by not rendering client-only components on SSR
+  // Show loading screen during SSR and splash screen loading
   if (!isClient) {
-    return <div className="min-h-screen bg-black">{children}</div>
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="animate-pulse text-[#C8D64F] text-xl">Loading...</div>
+        <div style={{ display: 'none' }}>{children}</div>
+      </div>
+    )
   }
 
+  // Always show splash screen on client load (mobile and desktop)
   return (
     <>
       {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-      {children}
+      {!showSplash && children}
     </>
   )
 }

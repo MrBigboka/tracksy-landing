@@ -106,7 +106,7 @@ export default function RootLayout({
                 direction="forward"
                 scale={1.1}
                 opacity={0.25}
-                mouseInteractive={false}
+                mouseInteractive={true}
               />
             </div>
             <div className="relative z-10">

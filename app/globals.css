@@ -3,23 +3,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Mobile Performance Optimizations */
+/* Gentle Mobile Optimizations - Keep functionality, improve performance */
 @media (max-width: 768px) {
-  /* Disable heavy backdrop-blur effects on mobile */
-  .backdrop-blur-xl,
-  .backdrop-blur-lg,
-  .backdrop-blur-md {
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    background-color: rgba(0, 0, 0, 0.3) !important;
+  /* Reduce backdrop-blur intensity instead of removing completely */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
   }
   
-  /* Optimize specific animated elements only */
+  .backdrop-blur-lg {
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+  }
+  
+  .backdrop-blur-md {
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+  }
+  
+  /* Hardware acceleration for smoother animations */
   .animate-pulse,
   .animate-bounce,
   .animate-spin {
     transform: translateZ(0);
-    backface-visibility: hidden;
+    will-change: transform;
   }
 }
 

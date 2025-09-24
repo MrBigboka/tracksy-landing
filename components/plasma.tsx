@@ -13,18 +13,18 @@ interface PlasmaProps {
   mouseInteractive?: boolean
 }
 
-// Safari and mobile detection utility
-const isSafariOrMobile = () => {
+// Device detection utilities
+const isMobile = () => {
   if (typeof window === 'undefined') return false
-  
-  const userAgent = navigator.userAgent
-  const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent)
-  const isOldSafari = /version\/([0-9]+)/.test(userAgent.toLowerCase()) && 
-                      parseInt(userAgent.toLowerCase().match(/version\/([0-9]+)/)?.[1] || '0') < 14
-  const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
-  
-  // Use fallback for Safari (especially older versions) or mobile
-  return isSafari || isOldSafari || isMobile
+  return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+}
+
+const isOldSafari = () => {
+  if (typeof window === 'undefined') return false
+  const userAgent = navigator.userAgent.toLowerCase()
+  const isActuallySafari = /^((?!chrome|android).)*safari/i.test(userAgent)
+  const versionMatch = userAgent.match(/version\/([0-9]+)/)
+  return isActuallySafari && versionMatch && parseInt(versionMatch[1]) < 14
 }
 
 const hexToRgb = (hex: string): [number, number, number] => {
@@ -105,11 +105,49 @@ void main() {
   fragColor = vec4(finalColor, alpha);
 }`
 
-// Safari/Mobile compatible fallback component
-const SafePlasmaFallback: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6 }) => {
+// Optimized mobile plasma - still beautiful but performant
+const OptimizedMobilePlasma: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6, speed = 1 }) => {
   return (
     <div className="plasma-container">
-      <div className="mobile-plasma-bg absolute inset-0" />
+      {/* Multiple gradient layers for depth */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          background: `
+            radial-gradient(circle at 20% 30%, ${color}12 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, ${color}08 0%, transparent 60%),
+            radial-gradient(circle at 40% 90%, ${color}15 0%, transparent 45%),
+            radial-gradient(circle at 90% 80%, ${color}06 0%, transparent 55%)
+          `,
+          animation: `plasma-float-1 ${20/speed}s ease-in-out infinite alternate`
+        }}
+      />
+      <div 
+        className="absolute inset-0 opacity-25"
+        style={{
+          background: `
+            radial-gradient(circle at 60% 50%, ${color}10 0%, transparent 40%),
+            radial-gradient(circle at 10% 70%, ${color}08 0%, transparent 50%)
+          `,
+          animation: `plasma-float-2 ${15/speed}s ease-in-out infinite alternate-reverse`
+        }}
+      />
+      
+      <style jsx>{`
+        @keyframes plasma-float-1 {
+          0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+          25% { transform: translate(-8px, -4px) rotate(0.5deg) scale(1.02); }
+          50% { transform: translate(-3px, -8px) rotate(1deg) scale(0.98); }
+          75% { transform: translate(5px, -2px) rotate(0.3deg) scale(1.01); }
+          100% { transform: translate(2px, -6px) rotate(-0.2deg) scale(0.99); }
+        }
+        @keyframes plasma-float-2 {
+          0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+          33% { transform: translate(4px, -3px) rotate(-0.4deg) scale(1.01); }
+          66% { transform: translate(-2px, 5px) rotate(0.8deg) scale(0.99); }
+          100% { transform: translate(-6px, 1px) rotate(-0.6deg) scale(1.02); }
+        }
+      `}</style>
     </div>
   )
 }
@@ -127,16 +165,22 @@ export const Plasma: React.FC<PlasmaProps> = ({
   const [shouldUseFallback, setShouldUseFallback] = useState(true)
   const [webglSupported, setWebglSupported] = useState(false)
 
-  // Check Safari/mobile and WebGL support on mount
+  // Check device capabilities on mount
   useEffect(() => {
     const checkCompatibility = () => {
-      // Always use fallback for Safari or mobile
-      if (isSafariOrMobile()) {
+      // Use optimized version for mobile (but still animated!)
+      if (isMobile()) {
         setShouldUseFallback(true)
         return
       }
 
-      // Test WebGL2 support for other browsers
+      // Use fallback only for very old Safari
+      if (isOldSafari()) {
+        setShouldUseFallback(true)
+        return
+      }
+
+      // Test WebGL2 support for desktop
       try {
         const canvas = document.createElement('canvas')
         const gl = canvas.getContext('webgl2')
@@ -145,7 +189,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
         setWebglSupported(hasWebGL2)
         setShouldUseFallback(!hasWebGL2)
       } catch (error) {
-        console.warn('WebGL check failed:', error)
+        console.warn('WebGL check failed, using mobile version:', error)
         setShouldUseFallback(true)
       }
     }
@@ -153,9 +197,9 @@ export const Plasma: React.FC<PlasmaProps> = ({
     checkCompatibility()
   }, [])
 
-  // Use safe fallback for Safari, mobile, or no WebGL2
+  // Use optimized mobile plasma instead of basic fallback
   if (shouldUseFallback) {
-    return <SafePlasmaFallback color={color} opacity={opacity} />
+    return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
   }
 
   useEffect(() => {
