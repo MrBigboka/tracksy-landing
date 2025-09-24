@@ -3,7 +3,7 @@ import "./globals.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
-import PlasmaSimple from "@/components/plasma-simple"
+import Plasma from "@/components/plasma"
 import { TranslationProvider } from "@/components/translation-provider"
 import { SplashScreen } from "@/components/splash-screen"
 import { ClientWrapper } from "@/components/client-wrapper"
@@ -109,10 +109,13 @@ export default function RootLayout({
                 willChange: 'transform'
               }}
             >
-              <PlasmaSimple
+              <Plasma
                 color="#8B9A3F"
                 speed={0.6}
+                direction="forward"
+                scale={1.1}
                 opacity={0.25}
+                mouseInteractive={true}
               />
             </div>
             <div className="relative z-10">

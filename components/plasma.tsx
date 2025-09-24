@@ -1,37 +1,23 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from 'react'
-import { Renderer, Program, Mesh, Triangle } from 'ogl'
-import './Plasma.css'
+import React, { useEffect, useRef } from 'react';
+import { Renderer, Program, Mesh, Triangle } from 'ogl';
+import './Plasma.css';
 
 interface PlasmaProps {
-  color?: string
-  speed?: number
-  direction?: 'forward' | 'reverse' | 'pingpong'
-  scale?: number
-  opacity?: number
-  mouseInteractive?: boolean
-}
-
-// Device detection utilities
-const isMobile = () => {
-  if (typeof window === 'undefined') return false
-  return window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-}
-
-const isOldSafari = () => {
-  if (typeof window === 'undefined') return false
-  const userAgent = navigator.userAgent.toLowerCase()
-  const isActuallySafari = /^((?!chrome|android).)*safari/i.test(userAgent)
-  const versionMatch = userAgent.match(/version\/([0-9]+)/)
-  return isActuallySafari && versionMatch && parseInt(versionMatch[1]) < 14
+  color?: string;
+  speed?: number;
+  direction?: 'forward' | 'reverse' | 'pingpong';
+  scale?: number;
+  opacity?: number;
+  mouseInteractive?: boolean;
 }
 
 const hexToRgb = (hex: string): [number, number, number] => {
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
-  if (!result) return [1, 0.5, 0.2]
-  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255]
-}
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  if (!result) return [1, 0.5, 0.2];
+  return [parseInt(result[1], 16) / 255, parseInt(result[2], 16) / 255, parseInt(result[3], 16) / 255];
+};
 
 const vertex = `#version 300 es
 precision highp float;
@@ -42,7 +28,7 @@ void main() {
   vUv = uv;
   gl_Position = vec4(position, 0.0, 1.0);
 }
-`
+`;
 
 const fragment = `#version 300 es
 precision highp float;
@@ -103,258 +89,126 @@ void main() {
   
   float alpha = length(rgb) * uOpacity;
   fragColor = vec4(finalColor, alpha);
-}`
-
-// Optimized mobile plasma - still beautiful but performant  
-const OptimizedMobilePlasma: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6, speed = 1 }) => {
-  return (
-    <div className="plasma-container">
-      {/* Multiple gradient layers for depth - MORE VISIBLE */}
-      <div 
-        className="mobile-plasma-bg absolute inset-0 opacity-40"
-        style={{
-          background: `
-            radial-gradient(circle at 20% 30%, ${color}30 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, ${color}25 0%, transparent 60%),
-            radial-gradient(circle at 40% 90%, ${color}35 0%, transparent 45%),
-            radial-gradient(circle at 90% 80%, ${color}20 0%, transparent 55%)
-          `,
-          animation: `plasma-float-1 ${20/speed}s ease-in-out infinite alternate`
-        }}
-      />
-      <div 
-        className="mobile-plasma-bg absolute inset-0 opacity-50"
-        style={{
-          background: `
-            radial-gradient(circle at 60% 50%, ${color}28 0%, transparent 40%),
-            radial-gradient(circle at 10% 70%, ${color}22 0%, transparent 50%),
-            radial-gradient(circle at 85% 15%, ${color}18 0%, transparent 60%)
-          `,
-          animation: `plasma-float-2 ${15/speed}s ease-in-out infinite alternate-reverse`
-        }}
-      />
-      <div 
-        className="mobile-plasma-bg absolute inset-0 opacity-30"
-        style={{
-          background: `
-            radial-gradient(circle at 30% 80%, ${color}32 0%, transparent 35%),
-            radial-gradient(circle at 70% 10%, ${color}26 0%, transparent 55%)
-          `,
-          animation: `plasma-float-1 ${25/speed}s ease-in-out infinite alternate`
-        }}
-      />
-      
-      <style jsx>{`
-        @keyframes plasma-float-1 {
-          0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-          25% { transform: translate(-12px, -6px) rotate(0.8deg) scale(1.05); }
-          50% { transform: translate(-5px, -12px) rotate(1.5deg) scale(0.95); }
-          75% { transform: translate(8px, -3px) rotate(0.5deg) scale(1.03); }
-          100% { transform: translate(3px, -8px) rotate(-0.3deg) scale(0.97); }
-        }
-        @keyframes plasma-float-2 {
-          0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-          33% { transform: translate(6px, -5px) rotate(-0.6deg) scale(1.02); }
-          66% { transform: translate(-3px, 8px) rotate(1.2deg) scale(0.98); }
-          100% { transform: translate(-8px, 2px) rotate(-0.9deg) scale(1.04); }
-        }
-      `}</style>
-    </div>
-  )
-}
+}`;
 
 export const Plasma: React.FC<PlasmaProps> = ({
-  color = '#C8D64F',
+  color = '#ffffff',
   speed = 1,
   direction = 'forward',
   scale = 1,
-  opacity = 0.6,
+  opacity = 1,
   mouseInteractive = true
 }) => {
-  // FORCE L'AFFICHAGE TOUJOURS - PLUS DE LOGIQUE COMPLIQUÉE !
-  console.log('🎨 PLASMA: FORCED RENDER FOR DEBUGGING')
-  return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
-  
-  // Code original commenté pour debug
-  /*
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const mousePos = useRef({ x: 0, y: 0 })
-  const [shouldUseFallback, setShouldUseFallback] = useState(true) // Force fallback pour voir quelque chose
-  const [isCheckingCompatibility, setIsCheckingCompatibility] = useState(false) // Skip compatibility check
-  const [webglSupported, setWebglSupported] = useState(false)
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const mousePos = useRef({ x: 0, y: 0 });
 
-  // Check device capabilities on mount
   useEffect(() => {
-    const checkCompatibility = () => {
-      console.log('🎨 Plasma: Checking compatibility...')
-      console.log('🎨 Window width:', window.innerWidth)
-      console.log('🎨 User agent:', navigator.userAgent)
-      console.log('🎨 Is mobile:', isMobile())
-      console.log('🎨 Is old Safari:', isOldSafari())
+    if (!containerRef.current) return;
 
-      // Use optimized version for mobile (but still animated!)
-      if (isMobile()) {
-        console.log('🎨 Using mobile plasma fallback')
-        setShouldUseFallback(true)
-        setIsCheckingCompatibility(false)
-        return
-      }
-
-      // Use fallback only for very old Safari
-      if (isOldSafari()) {
-        console.log('🎨 Using old Safari fallback')
-        setShouldUseFallback(true)
-        setIsCheckingCompatibility(false)
-        return
-      }
-
-      // Test WebGL2 support for desktop
-      try {
-        const canvas = document.createElement('canvas')
-        const gl = canvas.getContext('webgl2')
-        const hasWebGL2 = !!gl
-        
-        console.log('🎨 WebGL2 supported:', hasWebGL2)
-        
-        setWebglSupported(hasWebGL2)
-        setShouldUseFallback(!hasWebGL2)
-        setIsCheckingCompatibility(false)
-        
-        if (hasWebGL2) {
-          console.log('🎨 Using WebGL plasma')
-        } else {
-          console.log('🎨 WebGL2 not supported, using fallback')
-        }
-      } catch (error) {
-        console.warn('🎨 WebGL check failed, using mobile version:', error)
-        setShouldUseFallback(true)
-        setIsCheckingCompatibility(false)
-      }
-    }
-
-    checkCompatibility()
-  }, [])
-
-  // WebGL effect - only runs when not using fallback
-  useEffect(() => {
-    if (shouldUseFallback || !containerRef.current) return
+    console.log('🎨 Starting WebGL Plasma with color:', color);
 
     try {
-      const useCustomColor = color ? 1.0 : 0.0
-      const customColorRgb = color ? hexToRgb(color) : [1, 1, 1]
+      const useCustomColor = color ? 1.0 : 0.0;
+      const customColorRgb = color ? hexToRgb(color) : [1, 1, 1];
 
-      const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0
+      const directionMultiplier = direction === 'reverse' ? -1.0 : 1.0;
 
       const renderer = new Renderer({
         webgl: 2,
         alpha: true,
         antialias: false,
         dpr: Math.min(window.devicePixelRatio || 1, 2)
-      })
-    const gl = renderer.gl
-    const canvas = gl.canvas as HTMLCanvasElement
-    canvas.style.display = 'block'
-    canvas.style.width = '100%'
-    canvas.style.height = '100%'
-    containerRef.current.appendChild(canvas)
+      });
+      const gl = renderer.gl;
+      const canvas = gl.canvas as HTMLCanvasElement;
+      canvas.style.display = 'block';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      containerRef.current.appendChild(canvas);
 
-    const geometry = new Triangle(gl)
+      const geometry = new Triangle(gl);
 
-    const program = new Program(gl, {
-      vertex: vertex,
-      fragment: fragment,
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new Float32Array([1, 1]) },
-        uCustomColor: { value: new Float32Array(customColorRgb) },
-        uUseCustomColor: { value: useCustomColor },
-        uSpeed: { value: speed * 0.4 },
-        uDirection: { value: directionMultiplier },
-        uScale: { value: scale },
-        uOpacity: { value: opacity },
-        uMouse: { value: new Float32Array([0, 0]) },
-        uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 }
-      }
-    })
+      const program = new Program(gl, {
+        vertex: vertex,
+        fragment: fragment,
+        uniforms: {
+          iTime: { value: 0 },
+          iResolution: { value: new Float32Array([1, 1]) },
+          uCustomColor: { value: new Float32Array(customColorRgb) },
+          uUseCustomColor: { value: useCustomColor },
+          uSpeed: { value: speed * 0.4 },
+          uDirection: { value: directionMultiplier },
+          uScale: { value: scale },
+          uOpacity: { value: opacity },
+          uMouse: { value: new Float32Array([0, 0]) },
+          uMouseInteractive: { value: mouseInteractive ? 1.0 : 0.0 }
+        }
+      });
 
-    const mesh = new Mesh(gl, { geometry, program })
+      const mesh = new Mesh(gl, { geometry, program });
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!mouseInteractive) return
-      const rect = containerRef.current!.getBoundingClientRect()
-      mousePos.current.x = e.clientX - rect.left
-      mousePos.current.y = e.clientY - rect.top
-      const mouseUniform = program.uniforms.uMouse.value as Float32Array
-      mouseUniform[0] = mousePos.current.x
-      mouseUniform[1] = mousePos.current.y
-    }
+      const handleMouseMove = (e: MouseEvent) => {
+        if (!mouseInteractive) return;
+        const rect = containerRef.current!.getBoundingClientRect();
+        mousePos.current.x = e.clientX - rect.left;
+        mousePos.current.y = e.clientY - rect.top;
+        const mouseUniform = program.uniforms.uMouse.value as Float32Array;
+        mouseUniform[0] = mousePos.current.x;
+        mouseUniform[1] = mousePos.current.y;
+      };
 
-    if (mouseInteractive) {
-      containerRef.current.addEventListener('mousemove', handleMouseMove)
-    }
-
-    const setSize = () => {
-      const rect = containerRef.current!.getBoundingClientRect()
-      const width = Math.max(1, Math.floor(rect.width))
-      const height = Math.max(1, Math.floor(rect.height))
-      renderer.setSize(width, height)
-      const res = program.uniforms.iResolution.value as Float32Array
-      res[0] = gl.drawingBufferWidth
-      res[1] = gl.drawingBufferHeight
-    }
-
-    const ro = new ResizeObserver(setSize)
-    ro.observe(containerRef.current)
-    setSize()
-
-    let raf = 0
-    const t0 = performance.now()
-    const loop = (t: number) => {
-      let timeValue = (t - t0) * 0.001
-
-      if (direction === 'pingpong') {
-        const cycle = Math.sin(timeValue * 0.5) * directionMultiplier
-        ;(program.uniforms.uDirection as any).value = cycle
+      if (mouseInteractive) {
+        containerRef.current.addEventListener('mousemove', handleMouseMove);
       }
 
-      ;(program.uniforms.iTime as any).value = timeValue
-      renderer.render({ scene: mesh })
-      raf = requestAnimationFrame(loop)
-    }
-    raf = requestAnimationFrame(loop)
+      const setSize = () => {
+        const rect = containerRef.current!.getBoundingClientRect();
+        const width = Math.max(1, Math.floor(rect.width));
+        const height = Math.max(1, Math.floor(rect.height));
+        renderer.setSize(width, height);
+        const res = program.uniforms.iResolution.value as Float32Array;
+        res[0] = gl.drawingBufferWidth;
+        res[1] = gl.drawingBufferHeight;
+      };
 
-    return () => {
-      cancelAnimationFrame(raf)
-      ro.disconnect()
-      if (mouseInteractive && containerRef.current) {
-        containerRef.current.removeEventListener('mousemove', handleMouseMove)
-      }
-      try {
-        containerRef.current?.removeChild(canvas)
-      } catch {}
-    }
+      const ro = new ResizeObserver(setSize);
+      ro.observe(containerRef.current);
+      setSize();
+
+      let raf = 0;
+      const t0 = performance.now();
+      const loop = (t: number) => {
+        let timeValue = (t - t0) * 0.001;
+
+        if (direction === 'pingpong') {
+          const cycle = Math.sin(timeValue * 0.5) * directionMultiplier;
+          (program.uniforms.uDirection as any).value = cycle;
+        }
+
+        (program.uniforms.iTime as any).value = timeValue;
+        renderer.render({ scene: mesh });
+        raf = requestAnimationFrame(loop);
+      };
+      raf = requestAnimationFrame(loop);
+
+      console.log('🎨 WebGL Plasma initialized successfully!');
+
+      return () => {
+        cancelAnimationFrame(raf);
+        ro.disconnect();
+        if (mouseInteractive && containerRef.current) {
+          containerRef.current.removeEventListener('mousemove', handleMouseMove);
+        }
+        try {
+          containerRef.current?.removeChild(canvas);
+        } catch {}
+      };
     } catch (error) {
-      console.warn('WebGL Plasma failed, falling back to CSS animation:', error)
-      // Force fallback on error
-      setShouldUseFallback(true)
+      console.error('🎨 WebGL Plasma failed:', error);
     }
-  }, [color, speed, direction, scale, opacity, mouseInteractive])
+  }, [color, speed, direction, scale, opacity, mouseInteractive]);
 
-  // Show loading state while checking compatibility
-  if (isCheckingCompatibility) {
-    console.log('🎨 Rendering loading state...')
-    return <div className="plasma-container"><div className="absolute inset-0 bg-red-500/20" /></div>
-  }
+  return <div ref={containerRef} className="plasma-container" />;
+};
 
-  // Use optimized mobile plasma instead of WebGL for fallback cases
-  if (shouldUseFallback) {
-    console.log('🎨 Rendering fallback plasma...')
-    return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
-  }
-
-  // Render WebGL container for desktop
-  console.log('🎨 Rendering WebGL plasma container...')
-  return <div ref={containerRef} className="plasma-container" />
-}
-
-export default Plasma
+export default Plasma;
