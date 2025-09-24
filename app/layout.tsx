@@ -109,7 +109,7 @@ export default function RootLayout({
                 mouseInteractive={false}
               />
             </div>
-            <div className="relative z-10 will-change-scroll" style={{ contain: 'layout style paint' }}>
+            <div className="relative z-10">
               {children}
             </div>
           </ClientWrapper>

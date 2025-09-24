@@ -11,28 +11,15 @@
   .backdrop-blur-md {
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
   }
   
-  /* Simplify complex gradients on mobile */
-  .bg-gradient-to-br,
-  .bg-gradient-to-r {
-    background: rgba(0, 0, 0, 0.4) !important;
-  }
-  
-  /* Optimize transform animations for mobile */
-  * {
+  /* Optimize specific animated elements only */
+  .animate-pulse,
+  .animate-bounce,
+  .animate-spin {
     transform: translateZ(0);
     backface-visibility: hidden;
-    perspective: 1000px;
-  }
-  
-  /* Reduce animation complexity */
-  .animate-pulse {
-    animation: mobile-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-  
-  .animate-bounce {
-    animation: mobile-bounce 1s infinite;
   }
 }
 

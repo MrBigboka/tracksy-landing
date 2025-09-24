@@ -100,24 +100,9 @@ void main() {
 // Simple mobile fallback component
 const MobilePlasmaFallback: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6 }) => {
   return (
-    <>
-      <style>{`
-        @keyframes subtle-float {
-          0% { transform: translate(0, 0) rotate(0deg); }
-          50% { transform: translate(-5px, -3px) rotate(0.5deg); }
-          100% { transform: translate(3px, -5px) rotate(-0.3deg); }
-        }
-        .mobile-plasma-bg {
-          background: radial-gradient(circle at 30% 20%, ${color}08 0%, transparent 50%), 
-                      radial-gradient(circle at 70% 80%, ${color}05 0%, transparent 60%);
-          animation: subtle-float 15s ease-in-out infinite alternate;
-          will-change: transform;
-        }
-      `}</style>
-      <div className="plasma-container">
-        <div className="mobile-plasma-bg absolute inset-0 opacity-20" />
-      </div>
-    </>
+    <div className="plasma-container">
+      <div className="mobile-plasma-bg absolute inset-0" />
+    </div>
   )
 }
 
