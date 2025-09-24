@@ -105,47 +105,58 @@ void main() {
   fragColor = vec4(finalColor, alpha);
 }`
 
-// Optimized mobile plasma - still beautiful but performant
+// Optimized mobile plasma - still beautiful but performant  
 const OptimizedMobilePlasma: React.FC<PlasmaProps> = ({ color = '#C8D64F', opacity = 0.6, speed = 1 }) => {
   return (
     <div className="plasma-container">
-      {/* Multiple gradient layers for depth */}
+      {/* Multiple gradient layers for depth - MORE VISIBLE */}
       <div 
-        className="absolute inset-0 opacity-20"
+        className="mobile-plasma-bg absolute inset-0 opacity-40"
         style={{
           background: `
-            radial-gradient(circle at 20% 30%, ${color}12 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, ${color}08 0%, transparent 60%),
-            radial-gradient(circle at 40% 90%, ${color}15 0%, transparent 45%),
-            radial-gradient(circle at 90% 80%, ${color}06 0%, transparent 55%)
+            radial-gradient(circle at 20% 30%, ${color}30 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, ${color}25 0%, transparent 60%),
+            radial-gradient(circle at 40% 90%, ${color}35 0%, transparent 45%),
+            radial-gradient(circle at 90% 80%, ${color}20 0%, transparent 55%)
           `,
           animation: `plasma-float-1 ${20/speed}s ease-in-out infinite alternate`
         }}
       />
       <div 
-        className="absolute inset-0 opacity-25"
+        className="mobile-plasma-bg absolute inset-0 opacity-50"
         style={{
           background: `
-            radial-gradient(circle at 60% 50%, ${color}10 0%, transparent 40%),
-            radial-gradient(circle at 10% 70%, ${color}08 0%, transparent 50%)
+            radial-gradient(circle at 60% 50%, ${color}28 0%, transparent 40%),
+            radial-gradient(circle at 10% 70%, ${color}22 0%, transparent 50%),
+            radial-gradient(circle at 85% 15%, ${color}18 0%, transparent 60%)
           `,
           animation: `plasma-float-2 ${15/speed}s ease-in-out infinite alternate-reverse`
+        }}
+      />
+      <div 
+        className="mobile-plasma-bg absolute inset-0 opacity-30"
+        style={{
+          background: `
+            radial-gradient(circle at 30% 80%, ${color}32 0%, transparent 35%),
+            radial-gradient(circle at 70% 10%, ${color}26 0%, transparent 55%)
+          `,
+          animation: `plasma-float-1 ${25/speed}s ease-in-out infinite alternate`
         }}
       />
       
       <style jsx>{`
         @keyframes plasma-float-1 {
           0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-          25% { transform: translate(-8px, -4px) rotate(0.5deg) scale(1.02); }
-          50% { transform: translate(-3px, -8px) rotate(1deg) scale(0.98); }
-          75% { transform: translate(5px, -2px) rotate(0.3deg) scale(1.01); }
-          100% { transform: translate(2px, -6px) rotate(-0.2deg) scale(0.99); }
+          25% { transform: translate(-12px, -6px) rotate(0.8deg) scale(1.05); }
+          50% { transform: translate(-5px, -12px) rotate(1.5deg) scale(0.95); }
+          75% { transform: translate(8px, -3px) rotate(0.5deg) scale(1.03); }
+          100% { transform: translate(3px, -8px) rotate(-0.3deg) scale(0.97); }
         }
         @keyframes plasma-float-2 {
           0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-          33% { transform: translate(4px, -3px) rotate(-0.4deg) scale(1.01); }
-          66% { transform: translate(-2px, 5px) rotate(0.8deg) scale(0.99); }
-          100% { transform: translate(-6px, 1px) rotate(-0.6deg) scale(1.02); }
+          33% { transform: translate(6px, -5px) rotate(-0.6deg) scale(1.02); }
+          66% { transform: translate(-3px, 8px) rotate(1.2deg) scale(0.98); }
+          100% { transform: translate(-8px, 2px) rotate(-0.9deg) scale(1.04); }
         }
       `}</style>
     </div>
@@ -162,15 +173,22 @@ export const Plasma: React.FC<PlasmaProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const mousePos = useRef({ x: 0, y: 0 })
-  const [shouldUseFallback, setShouldUseFallback] = useState(false)
-  const [isCheckingCompatibility, setIsCheckingCompatibility] = useState(true)
+  const [shouldUseFallback, setShouldUseFallback] = useState(true) // Force fallback pour voir quelque chose
+  const [isCheckingCompatibility, setIsCheckingCompatibility] = useState(false) // Skip compatibility check
   const [webglSupported, setWebglSupported] = useState(false)
 
   // Check device capabilities on mount
   useEffect(() => {
     const checkCompatibility = () => {
+      console.log('🎨 Plasma: Checking compatibility...')
+      console.log('🎨 Window width:', window.innerWidth)
+      console.log('🎨 User agent:', navigator.userAgent)
+      console.log('🎨 Is mobile:', isMobile())
+      console.log('🎨 Is old Safari:', isOldSafari())
+
       // Use optimized version for mobile (but still animated!)
       if (isMobile()) {
+        console.log('🎨 Using mobile plasma fallback')
         setShouldUseFallback(true)
         setIsCheckingCompatibility(false)
         return
@@ -178,6 +196,7 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
       // Use fallback only for very old Safari
       if (isOldSafari()) {
+        console.log('🎨 Using old Safari fallback')
         setShouldUseFallback(true)
         setIsCheckingCompatibility(false)
         return
@@ -189,11 +208,19 @@ export const Plasma: React.FC<PlasmaProps> = ({
         const gl = canvas.getContext('webgl2')
         const hasWebGL2 = !!gl
         
+        console.log('🎨 WebGL2 supported:', hasWebGL2)
+        
         setWebglSupported(hasWebGL2)
         setShouldUseFallback(!hasWebGL2)
         setIsCheckingCompatibility(false)
+        
+        if (hasWebGL2) {
+          console.log('🎨 Using WebGL plasma')
+        } else {
+          console.log('🎨 WebGL2 not supported, using fallback')
+        }
       } catch (error) {
-        console.warn('WebGL check failed, using mobile version:', error)
+        console.warn('🎨 WebGL check failed, using mobile version:', error)
         setShouldUseFallback(true)
         setIsCheckingCompatibility(false)
       }
@@ -309,15 +336,18 @@ export const Plasma: React.FC<PlasmaProps> = ({
 
   // Show loading state while checking compatibility
   if (isCheckingCompatibility) {
-    return <div className="plasma-container"><div className="absolute inset-0 bg-black/20" /></div>
+    console.log('🎨 Rendering loading state...')
+    return <div className="plasma-container"><div className="absolute inset-0 bg-red-500/20" /></div>
   }
 
   // Use optimized mobile plasma instead of WebGL for fallback cases
   if (shouldUseFallback) {
+    console.log('🎨 Rendering fallback plasma...')
     return <OptimizedMobilePlasma color={color} opacity={opacity} speed={speed} />
   }
 
   // Render WebGL container for desktop
+  console.log('🎨 Rendering WebGL plasma container...')
   return <div ref={containerRef} className="plasma-container" />
 }
 

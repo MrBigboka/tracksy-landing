@@ -99,7 +99,16 @@ export default function RootLayout({
       <body>
         <TranslationProvider defaultLanguage="en">
           <ClientWrapper>
-            <div className="fixed inset-0 z-0 bg-black will-change-transform">
+            <div 
+              className="fixed inset-0 z-0 bg-black" 
+              style={{ 
+                WebkitTransform: 'translateZ(0)', 
+                transform: 'translateZ(0)',
+                WebkitBackfaceVisibility: 'hidden',
+                backfaceVisibility: 'hidden',
+                willChange: 'transform'
+              }}
+            >
               <Plasma
                 color="#8B9A3F"
                 speed={0.6}
