@@ -54,7 +54,7 @@ export function SiteHeader() {
                          hover:bg-[#B9E832] hover:shadow-md hover:scale-[1.02]
                          transition-all"
             >
-              <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer">{t('hero.cta')}</a>
+              <a href="https://app.tracksy.me" rel="noopener noreferrer">{t('hero.cta')}</a>
             </Button>
           </div>
 
@@ -115,7 +115,7 @@ export function SiteHeader() {
                                hover:bg-[#B9E832] hover:shadow-md hover:scale-[1.02]
                                transition-all"
                   >
-                    <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer">{t('hero.cta')}</a>
+                    <a href="https://app.tracksy.me" rel="noopener noreferrer">{t('hero.cta')}</a>
                   </Button>
                 </div>
               </SheetContent>

@@ -70,7 +70,7 @@ export function AppverseFooter() {
                   asChild
                   className="rounded-full bg-[#D5FF3F] px-8 py-3 text-[#0B0E12] hover:bg-[#B9E832] font-semibold text-lg w-fit"
                 >
-                  <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer">
+                  <a href="https://app.tracksy.me" rel="noopener noreferrer">
                     {safeT('mobile.cta')}
                   </a>
                 </Button>

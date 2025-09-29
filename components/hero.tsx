@@ -51,7 +51,7 @@ export function Hero() {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
             <Button asChild className="rounded-full bg-[#C8D64F] px-12 py-6 text-[#0B0E12] hover:bg-[#A8B940] font-bold text-xl shadow-2xl shadow-[#C8D64F]/25 hover:shadow-3xl hover:shadow-[#C8D64F]/35 hover:scale-[1.05] transition-all duration-300 min-h-[60px] min-w-[220px]">
-              <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+              <a href="https://app.tracksy.me" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                 {t('hero.cta')}
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>

@@ -131,7 +131,7 @@ export function Pricing() {
                   variant="outline"
                   className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
                 >
-                  <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer">{safeT('pricing.free.cta')}</a>
+                  <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.free.cta')}</a>
                 </Button>
 
                 <ul className="space-y-4">
@@ -165,7 +165,7 @@ export function Pricing() {
                   asChild
                   className="w-full mb-8 bg-[#C8D64F] text-black hover:bg-[#A8B940] font-semibold"
                 >
-                  <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer">{safeT('pricing.pro.cta')}</a>
+                  <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.pro.cta')}</a>
                 </Button>
 
                 <ul className="space-y-4">
@@ -194,7 +194,7 @@ export function Pricing() {
                   variant="outline"
                   className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
                 >
-                  <a href="https://app.tracksy.me" target="_blank" rel="noopener noreferrer">{safeT('pricing.business.cta')}</a>
+                  <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.business.cta')}</a>
                 </Button>
 
                 <ul className="space-y-4">
