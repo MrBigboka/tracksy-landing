@@ -7,6 +7,7 @@ import PlasmaSimple from "@/components/plasma-simple"
 import { TranslationProvider } from "@/components/translation-provider"
 import { SplashScreen } from "@/components/splash-screen"
 import { ClientWrapper } from "@/components/client-wrapper"
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
@@ -113,6 +114,7 @@ export default function RootLayout({
             <div className="relative z-10">
               {children}
             </div>
+            <Analytics />
           </ClientWrapper>
         </TranslationProvider>
       </body>

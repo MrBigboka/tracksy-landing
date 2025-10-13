@@ -13,7 +13,6 @@
     "titleEnd": "VOTRE BUSINESS.",
     "subtitle": "Fini de jongler entre Toggl, QuickBooks et Excel. Tracksy combine tout en un seul outil : suivi du temps, gestion de projets, facturation automatique.",
     "cta": "Commencer gratuitement",
-    "watchDemo": "Voir la démo",
     "freeTrial": "14 jours d'essai gratuit",
     "noCard": "Aucune carte requise",
     "quickSetup": "Setup en 2 minutes",
@@ -22,7 +21,13 @@
   "features": {
     "title": "Pourquoi choisir Tracksy?",
     "subtitle": "Tout ce dont tu as besoin pour gérer ton business de freelance en un seul endroit",
-    "badge": "✨ Fonctionnalités",
+    "badge": " Fonctionnalités",
+    "realtime": {
+      "title": "Vois ton revenu en temps réel",
+      "subtitle": "Chaque minute travaillée se transforme instantanément en revenus visibles. Plus besoin d'attendre la fin du mois pour savoir combien tu as gagné.",
+      "liveUpdate": "Mise à jour en direct",
+      "perProject": "Par projet et client"
+    },
     "organizework": {
       "title": "Organise ton travail par client et projet",
       "subtitle": "Suivi en temps réel de tes projets et clients"
@@ -51,7 +56,6 @@
     "badge": "Nos tarifs",
     "title": "Simple. Transparent. Efficace.",
     "subtitle": "Aucun frais cachés. Commencez gratuitement et évoluez selon vos besoins.",
-    "mainCta": "Commencer gratuitement",
     "free": {
       "title": "Gratuit",
       "price": "0$",
