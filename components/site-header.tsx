@@ -2,14 +2,17 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { ShimmerButton } from "@/components/ui/shimmer-button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import Image from "next/image"
-import { Menu, Briefcase, Tag, HelpCircle, FileText, Info } from "lucide-react"
+import { Menu, Briefcase, Tag, HelpCircle, FileText, Info, Zap } from "lucide-react"
 import { LanguageSelector } from "@/components/language-selector"
 import { useTranslation } from "@/hooks/use-translation"
+import { useState, useEffect } from "react"
 
 export function SiteHeader() {
   const { t } = useTranslation()
+  const [scrolled, setScrolled] = useState(false)
   
   const links = [
     { href: "#features", label: t('nav.features'), icon: Tag },
@@ -17,18 +20,29 @@ export function SiteHeader() {
     { href: "#faq", label: t('nav.faq'), icon: FileText },
   ]
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <header className="sticky top-0 z-50 p-4">
+    <header className="sticky top-0 z-50 p-4 transition-all duration-300">
       <div className="max-w-[1400px] mx-auto px-4">
-        <div className="flex h-14 items-center justify-between px-6 liquid-glass-header rounded-full">
+        <div className={`flex h-14 items-center justify-between px-6 rounded-full transition-all duration-300 ${
+          scrolled ? 'liquid-glass-header shadow-lg' : 'bg-transparent'
+        }`}>
           {/* Brand Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/Tracksy_logo.png"
               alt="Tracksy logo"
-              width={120}
-              height={40}
-              className="h-8 w-auto"
+              width={160}
+              height={55}
+              className="h-12 w-auto"
             />
           </Link>
 
@@ -48,14 +62,19 @@ export function SiteHeader() {
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageSelector />
-            <Button
-              asChild
-              className="bg-[#D5FF3F] text-[#0B0E12] font-medium rounded-lg px-6 py-2.5
-                         hover:bg-[#B9E832] hover:shadow-md hover:scale-[1.02]
-                         transition-all"
-            >
-              <a href="https://app.tracksy.me" rel="noopener noreferrer">{t('hero.cta')}</a>
-            </Button>
+            <a href="https://app.tracksy.me" rel="noopener noreferrer">
+              <ShimmerButton
+                className="px-6 py-2.5 font-semibold text-black text-sm flex items-center gap-2"
+                shimmerColor="#ffffff"
+                shimmerSize="0.15em"
+                shimmerDuration="2s"
+                background="linear-gradient(135deg, #D5FF3F 0%, #C8D64F 50%, #B9E832 100%)"
+                borderRadius="9999px"
+              >
+                <Zap className="w-4 h-4" />
+                {t('hero.cta')}
+              </ShimmerButton>
+            </a>
           </div>
 
           {/* Mobile Nav */}
@@ -63,11 +82,11 @@ export function SiteHeader() {
             <Sheet>
               <SheetTrigger asChild>
                 <Button
-                  variant="outline"
+                  variant="ghost"
                   size="icon"
-                  className="border-gray-700 bg-gray-900/80 text-gray-200 hover:bg-gray-800"
+                  className="text-white hover:text-[#D5FF3F] hover:bg-white/10 transition-colors"
                 >
-                  <Menu className="h-5 w-5" />
+                  <Menu className="h-6 w-6" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
@@ -80,9 +99,9 @@ export function SiteHeader() {
                   <Image
                     src="/Tracksy_logo.png"
                     alt="Tracksy logo"
-                    width={120}
-                    height={40}
-                    className="h-6 w-auto"
+                    width={160}
+                    height={55}
+                    className="h-12 w-auto"
                   />
                 </div>
 
@@ -109,14 +128,19 @@ export function SiteHeader() {
 
                 {/* CTA Button at Bottom */}
                 <div className="mt-auto border-t border-gray-800 p-4">
-                  <Button
-                    asChild
-                    className="w-full bg-[#D5FF3F] text-[#0B0E12] font-medium rounded-lg px-6 py-2.5
-                               hover:bg-[#B9E832] hover:shadow-md hover:scale-[1.02]
-                               transition-all"
-                  >
-                    <a href="https://app.tracksy.me" rel="noopener noreferrer">{t('hero.cta')}</a>
-                  </Button>
+                  <a href="https://app.tracksy.me" rel="noopener noreferrer" className="block">
+                    <ShimmerButton
+                      className="w-full px-6 py-2.5 font-semibold text-black text-sm flex items-center justify-center gap-2"
+                      shimmerColor="#ffffff"
+                      shimmerSize="0.15em"
+                      shimmerDuration="2s"
+                      background="linear-gradient(135deg, #D5FF3F 0%, #C8D64F 50%, #B9E832 100%)"
+                      borderRadius="9999px"
+                    >
+                      <Zap className="w-4 h-4" />
+                      {t('hero.cta')}
+                    </ShimmerButton>
+                  </a>
                 </div>
               </SheetContent>
             </Sheet>

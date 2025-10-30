@@ -8,11 +8,12 @@
     "getStarted": "Get Started"
   },
   "hero": {
-    "title": "TRACK YOUR TIME.",
-    "titleHighlight": "SIMPLIFY",
-    "titleEnd": "YOUR BUSINESS.",
-    "subtitle": "Stop juggling between Toggl, QuickBooks and Excel. Tracksy combines everything in one tool: time tracking, project management, automatic invoicing.",
+    "title": "The all-in-one solution for",
+    "titleHighlight": "freelancers",
+    "titleEnd": "and consultants",
+    "subtitle": "Track your time, manage your projects, and invoice your clients automatically. Tracksy replaces 5 tools with one simple and powerful platform.",
     "cta": "Start free trial",
+    "watchDemo": "Watch demo",
     "freeTrial": "14-day free trial",
     "noCard": "No card required",
     "quickSetup": "2-minute setup",
@@ -20,8 +21,23 @@
   },
   "features": {
     "title": "Why choose Tracksy?",
-    "subtitle": "Everything you need to manage your freelance business in one place",
+    "subtitle": "Three essential features to manage your business",
     "badge": "✨ Features",
+    "feature1": {
+      "badge": "Time tracking",
+      "title": "Precise and automatic timer",
+      "description": "Start your timer with one click and track every minute worked. Tracksy automatically records your sessions by client and project."
+    },
+    "feature2": {
+      "badge": "Invoicing",
+      "title": "Invoices in 1 click",
+      "description": "Generate your professional invoices automatically based on your recorded time. No more manual paperwork."
+    },
+    "feature3": {
+      "badge": "Real-time revenue",
+      "title": "See your earnings instantly",
+      "description": "Every minute worked transforms into visible revenue. No need to wait until the end of the month to know how much you've earned."
+    },
     "realtime": {
       "title": "See your revenue in real-time",
       "subtitle": "Every minute worked instantly transforms into visible revenue. No need to wait until the end of the month to know how much you've earned.",
@@ -54,9 +70,11 @@
   },
   "pricing": {
     "badge": "Our Pricing",
-    "title": "Simple. Transparent. Effective.",
-    "subtitle": "No hidden fees. Start free and scale as you grow.",
+    "title": "Choose Your Plan",
+    "subtitle": "Start free or unlock full features. No hidden fees.",
     "free": {
+      "category": "Starter",
+      "categoryDesc": "For freelancers getting started",
       "title": "Free",
       "price": "$0",
       "period": "forever",
@@ -70,8 +88,10 @@
       "cta": "Start for free"
     },
     "pro": {
+      "category": "Professional",
+      "categoryDesc": "For established freelancers",
       "title": "Pro",
-      "price": "$9 USD",
+      "price": "$5",
       "period": "/month",
       "popular": "POPULAR",
       "trial": "14-day free trial",
@@ -96,8 +116,64 @@
         "Dedicated phone support",
         "Custom training"
       ],
-      "cta": "Contact us"
+      "cta": "Contact us",
+      "category": "Enterprise",
+      "categoryDesc": "For teams and businesses",
+      "sectionTitle": "Business & Teams",
+      "sectionDescription": "Need collaborative features for your team? We offer custom solutions for businesses with advanced needs."
+    },
+    "lifetime": {
+      "category": "Premium",
+      "categoryDesc": "Best long-term value",
+      "title": "Lifetime Access",
+      "price": "$29.99",
+      "period": "one-time",
+      "limited": "Limited: Only 100 spots available",
+      "bestValue": "BEST VALUE",
+      "cta": "Get Lifetime Access",
+      "feature1": "Everything in Pro",
+      "feature2": "Pay once, use forever",
+      "feature3": "All future updates included"
+    },
+    "trialInfo": "All plans include a 14-day free trial. No credit card required."
+  },
+  "demo": {
+    "badge": "DEMO",
+    "title": "See Tracksy in action",
+    "subtitle": "Discover how Tracksy simplifies time tracking, invoicing, and revenue management for freelancers and businesses.",
+    "card1": {
+      "title": "Precise time tracking",
+      "description": "Start your timer with one click and track every minute worked. Tracksy automatically records your sessions by client and project."
+    },
+    "card2": {
+      "title": "Automated invoicing",
+      "description": "Generate professional invoices automatically based on your recorded time. No more manual calculations."
+    },
+    "card3": {
+      "title": "Real-time revenue tracking",
+      "description": "Every minute worked transforms into visible revenue. Track your earnings in real-time."
+    },
+    "card4": {
+      "title": "Watch the full demo",
+      "description": "See how Tracksy can transform your workflow in less than 2 minutes."
     }
+  },
+  "footer": {
+    "product": "Product",
+    "roadmap": "Roadmap",
+    "changelog": "Changelog",
+    "company": "Company",
+    "about": "About Us",
+    "careers": "Careers",
+    "press": "Press Kit",
+    "resources": "Resources",
+    "community": "Community",
+    "contact": "Contact",
+    "docs": "Documentation",
+    "legal": "Legal",
+    "instagram": "Instagram",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "faq": {
     "title": "Frequently asked questions",
@@ -130,20 +206,6 @@
         "answer": "The Tracksy mobile app is in development and will be available soon on iOS and Android. In the meantime, our web interface is fully responsive and works perfectly on mobile."
       }
     ]
-  },
-  "footer": {
-    "description": "Time tracking and business management solution for freelancers.",
-    "product": "Product",
-    "features": "Features",
-    "pricing": "Pricing",
-    "company": "Company",
-    "about": "About",
-    "contact": "Contact",
-    "legal": "Legal",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service",
-    "cookies": "Cookie Policy",
-    "allRightsReserved": "All rights reserved"
   },
   "mobile": {
     "badge": "READY TO START?",

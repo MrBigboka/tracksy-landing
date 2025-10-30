@@ -10,17 +10,17 @@
     backdrop-filter: blur(4px) !important;
     -webkit-backdrop-filter: blur(4px) !important;
   }
-  
+
   .backdrop-blur-lg {
     backdrop-filter: blur(3px) !important;
     -webkit-backdrop-filter: blur(3px) !important;
   }
-  
+
   .backdrop-blur-md {
     backdrop-filter: blur(2px) !important;
     -webkit-backdrop-filter: blur(2px) !important;
   }
-  
+
   /* Hardware acceleration for smoother animations */
   .animate-pulse,
   .animate-bounce,
@@ -60,7 +60,7 @@
   --tracksy-surface-light: #1A1F2E;
   --tracksy-border: #2A2F3C;
   --tracksy-border-light: #1E232C;
-  
+
   /* Shadcn/UI compatibility */
   --background: oklch(0.04 0 0); /* ~#0B0E12 */
   --foreground: oklch(0.95 0 0); /* ~#F2F3F5 */
@@ -171,6 +171,27 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  @keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+  @keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+    }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+    }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+    }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+    }
+  }
 }
 
 @layer base {
@@ -194,7 +215,7 @@
   .border-tracksy-accent { border-color: var(--tracksy-accent); }
   .border-tracksy-border { border-color: var(--tracksy-border); }
   .border-tracksy-border-light { border-color: var(--tracksy-border-light); }
-  
+
   /* Glass effects with Tracksy colors */
   .tracksy-glass {
     background: rgba(200, 214, 79, 0.08);

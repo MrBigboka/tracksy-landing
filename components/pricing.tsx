@@ -67,74 +67,108 @@ export function Pricing() {
 
   // Helper function to safely get translations
   const safeT = (key: string): string | string[] => {
-    if (!mounted) {
-      const fallbacks: Record<string, any> = {
-        'pricing.badge': 'Pricing',
-        'pricing.title': 'Simple. Transparent. Effective.',
-        'pricing.subtitle': 'No hidden fees. Start free and scale as you grow.',
-        'pricing.free.title': 'Gratuit',
+    const fallbacks: Record<string, any> = {
+      'pricing.badge': 'Pricing',
+        'pricing.title': 'Choose Your Plan',
+        'pricing.subtitle': 'Start free or unlock full features. No hidden fees.',
+        'pricing.free.category': 'Starter',
+        'pricing.free.categoryDesc': 'For freelancers getting started',
+        'pricing.free.title': 'Free',
         'pricing.free.price': '$0',
         'pricing.free.period': 'forever',
-        'pricing.free.cta': 'Commencer',
+        'pricing.free.cta': 'Start for free',
         'pricing.free.features': ['1 client', '3 projects', 'Basic time tracking', 'Basic reports', 'Email support'],
+        'pricing.pro.category': 'Professional',
+        'pricing.pro.categoryDesc': 'For established freelancers',
         'pricing.pro.title': 'Pro',
-        'pricing.pro.price': '$9 USD',
+        'pricing.pro.price': '$5',
         'pricing.pro.period': '/month',
-        'pricing.pro.popular': 'Populaire',
-        'pricing.pro.cta': 'Essai gratuit',
+        'pricing.pro.popular': 'Popular',
+        'pricing.pro.cta': 'Start free trial',
         'pricing.pro.features': ['Everything in Free', 'Unlimited clients & projects', 'Advanced reports', 'Custom invoicing', 'Priority support'],
+        'pricing.lifetime.category': 'Premium',
+        'pricing.lifetime.categoryDesc': 'Best long-term value',
+        'pricing.lifetime.title': 'Lifetime Access',
+        'pricing.lifetime.price': '$29.99',
+        'pricing.lifetime.period': 'one-time',
+        'pricing.lifetime.bestValue': 'BEST VALUE',
+        'pricing.lifetime.cta': 'Get Lifetime Access',
+        'pricing.lifetime.feature1': 'Everything in Pro',
+        'pricing.lifetime.feature2': 'Pay once, use forever',
+        'pricing.lifetime.feature3': 'All future updates included',
+        'pricing.business.category': 'Enterprise',
+        'pricing.business.categoryDesc': 'For teams and businesses',
         'pricing.business.title': 'Business',
-        'pricing.business.price': 'Custom',
-        'pricing.business.period': '',
-        'pricing.business.cta': 'Nous contacter',
-        'pricing.business.features': ['Everything in Pro', 'Team collaboration', 'Advanced integrations', 'Dedicated support', 'Custom training']
-      }
+        'pricing.business.price': 'Custom pricing',
+        'pricing.business.cta': 'Contact us',
+        'pricing.business.features': ['Everything in Pro', 'Team collaboration', 'Advanced integrations', 'Dedicated support', 'Custom training'],
+        'pricing.business.sectionTitle': 'Business & Teams',
+        'pricing.business.sectionDescription': 'Need collaborative features for your team? We offer custom solutions for businesses with advanced needs.',
+        'pricing.trialInfo': 'All plans include a 14-day free trial. No credit card required.'
+    }
+    
+    if (!mounted) {
       return fallbacks[key] || key
     }
-    return t(key)
+    
+    const translation = t(key)
+    return translation || fallbacks[key] || key
   }
 
   return (
-    <section id="pricing" className="text-white">
-      <div className="max-w-[1400px] mx-auto px-8 lg:px-12 py-24 sm:py-32">
+    <section id="pricing" className="relative py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8">
+      {/* Subtle Grid Pattern Background */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(to right, #D5FF3F 1px, transparent 1px),
+            linear-gradient(to bottom, #D5FF3F 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
+      <div className="max-w-7xl mx-auto relative">
         
         {/* Header */}
-        <div className="text-center mb-20">
-          <h2 className="text-6xl sm:text-7xl font-bold tracking-tight text-white mb-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3 px-4">
             {safeT('pricing.title')}
           </h2>
-          <p className="text-2xl text-white/60 max-w-3xl mx-auto">
+          <p className="text-sm sm:text-base text-white/50 max-w-xl mx-auto px-4">
             {safeT('pricing.subtitle')}
           </p>
         </div>
 
         {/* Pricing Cards */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
             
             {/* Free Plan */}
             <div className="relative group hover:scale-105 transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl group-hover:from-white/8"></div>
-              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full group-hover:border-white/30 group-hover:shadow-xl group-hover:shadow-white/10 transition-all duration-300">
-                <div className="mb-8">
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 h-full group-hover:border-white/20 group-hover:bg-white/10 transition-all duration-300 flex flex-col shadow-xl">
+                <div className="mb-6">
+                  <div className="mb-4 pb-4 border-b border-white/10">
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-1">{safeT('pricing.free.category')}</p>
+                    <p className="text-sm text-white/60">{safeT('pricing.free.categoryDesc')}</p>
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.free.title')}
                   </h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-white">$0</span>
-                    <span className="text-white/60 text-sm">forever</span>
+                    <span className="text-4xl font-bold text-white">{safeT('pricing.free.price')}</span>
+                    <span className="text-white/60 text-sm">{safeT('pricing.free.period')}</span>
                   </div>
                 </div>
                 
                 <Button 
                   asChild 
                   variant="outline"
-                  className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
+                  className="w-full mb-6 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40 rounded-full"
                 >
                   <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.free.cta')}</a>
                 </Button>
 
-                <ul className="space-y-4">
+                <ul className="space-y-3 flex-1">
                   {(Array.isArray(safeT('pricing.free.features')) ? safeT('pricing.free.features') as string[] : []).map((feature: string, i: number) => (
                     <FeatureItem key={i} text={feature} />
                   ))}
@@ -142,33 +176,31 @@ export function Pricing() {
               </div>
             </div>
 
-            {/* Pro Plan - Featured */}
-            <div className="relative group scale-105 lg:scale-110 hover:scale-110 lg:hover:scale-115 transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-b from-[#C8D64F]/10 to-[#C8D64F]/5 rounded-2xl group-hover:from-[#C8D64F]/15 group-hover:to-[#C8D64F]/8"></div>
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                <div className="bg-[#C8D64F] text-black text-xs font-semibold px-3 py-1 rounded-full">
-                  {safeT('pricing.pro.popular')}
-                </div>
-              </div>
-              <div className="relative bg-black/60 backdrop-blur-xl border-2 border-[#C8D64F]/30 rounded-2xl p-8 h-full group-hover:border-[#C8D64F]/50 group-hover:shadow-2xl group-hover:shadow-[#C8D64F]/20 transition-all duration-300">
-                <div className="mb-8">
+            {/* Pro Plan - Monthly */}
+            <div className="relative group hover:scale-105 transition-all duration-300">
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 h-full group-hover:border-white/20 group-hover:bg-white/10 transition-all duration-300 flex flex-col shadow-xl">
+                <div className="mb-6">
+                  <div className="mb-4 pb-4 border-b border-white/10">
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-1">{safeT('pricing.pro.category')}</p>
+                    <p className="text-sm text-white/60">{safeT('pricing.pro.categoryDesc')}</p>
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
                     {safeT('pricing.pro.title')}
                   </h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold text-white">$9</span>
-                    <span className="text-white/60 text-sm">USD /month</span>
+                    <span className="text-4xl font-bold text-white">{safeT('pricing.pro.price')}</span>
+                    <span className="text-white/60 text-sm">{safeT('pricing.pro.period')}</span>
                   </div>
                 </div>
                 
                 <Button 
                   asChild
-                  className="w-full mb-8 bg-[#C8D64F] text-black hover:bg-[#A8B940] font-semibold"
+                  className="w-full mb-6 bg-[#C8D64F] text-black hover:bg-[#A8B940] font-semibold rounded-full"
                 >
                   <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.pro.cta')}</a>
                 </Button>
 
-                <ul className="space-y-4">
+                <ul className="space-y-3 flex-1">
                   {(Array.isArray(safeT('pricing.pro.features')) ? safeT('pricing.pro.features') as string[] : []).map((feature: string, i: number) => (
                     <FeatureItem key={i} text={feature} />
                   ))}
@@ -176,32 +208,70 @@ export function Pricing() {
               </div>
             </div>
 
-            {/* Business Plan */}
+            {/* Lifetime Plan - Featured */}
             <div className="relative group hover:scale-105 transition-all duration-300">
-              <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-2xl group-hover:from-white/8"></div>
-              <div className="relative bg-black/40 backdrop-blur-xl border border-white/20 rounded-2xl p-8 h-full group-hover:border-white/30 group-hover:shadow-xl group-hover:shadow-white/10 transition-all duration-300">
-                <div className="mb-8">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                <div className="bg-[#D5FF3F] text-black text-xs font-semibold px-3 py-1 rounded-full">
+                  {safeT('pricing.lifetime.bestValue')}
+                </div>
+              </div>
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 h-full group-hover:border-[#D5FF3F]/30 group-hover:bg-white/10 transition-all duration-300 flex flex-col shadow-xl">
+                <div className="mb-6">
+                  <div className="mb-4 pb-4 border-b border-white/10">
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-1">{safeT('pricing.lifetime.category')}</p>
+                    <p className="text-sm text-white/60">{safeT('pricing.lifetime.categoryDesc')}</p>
+                  </div>
                   <h3 className="text-lg font-semibold text-white mb-2">
-                    {safeT('pricing.business.title')}
+                    {safeT('pricing.lifetime.title')}
                   </h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold text-white">Custom</span>
+                    <span className="text-4xl font-bold text-white">{safeT('pricing.lifetime.price')}</span>
+                    <span className="text-white/60 text-sm">{safeT('pricing.lifetime.period')}</span>
+                  </div>
+                </div>
+                
+                <Button 
+                  asChild
+                  className="w-full mb-6 bg-[#D5FF3F] text-black hover:bg-[#C8D64F] font-semibold rounded-full"
+                >
+                  <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.lifetime.cta')}</a>
+                </Button>
+
+                <ul className="space-y-3 flex-1">
+                  <FeatureItem text={safeT('pricing.lifetime.feature1') as string} />
+                  <FeatureItem text={safeT('pricing.lifetime.feature2') as string} />
+                  <FeatureItem text={safeT('pricing.lifetime.feature3') as string} />
+                </ul>
+              </div>
+            </div>
+
+            {/* Business Plan - 4th column */}
+            <div className="relative group hover:scale-105 transition-all duration-300">
+              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 h-full group-hover:border-white/20 group-hover:bg-white/10 transition-all duration-300 flex flex-col shadow-xl">
+                <div className="mb-6">
+                  <div className="mb-4 pb-4 border-b border-white/10">
+                    <p className="text-xs font-semibold text-white/40 uppercase tracking-wider mb-1">{safeT('pricing.business.category')}</p>
+                    <p className="text-sm text-white/60">{safeT('pricing.business.categoryDesc')}</p>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    {safeT('pricing.business.sectionTitle')}
+                  </h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl font-bold text-white">{safeT('pricing.business.price')}</span>
                   </div>
                 </div>
                 
                 <Button 
                   asChild 
                   variant="outline"
-                  className="w-full mb-8 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40"
+                  className="w-full mb-6 bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white/40 rounded-full"
                 >
-                  <a href="https://app.tracksy.me" rel="noopener noreferrer">{safeT('pricing.business.cta')}</a>
+                  <a href="mailto:support@tracksy.me">{safeT('pricing.business.cta')}</a>
                 </Button>
 
-                <ul className="space-y-4">
-                  {(Array.isArray(safeT('pricing.business.features')) ? safeT('pricing.business.features') as string[] : []).map((feature: string, i: number) => (
-                    <FeatureItem key={i} text={feature} />
-                  ))}
-                </ul>
+                <div className="text-sm text-white/60 text-left flex-1">
+                  <p>{safeT('pricing.business.sectionDescription')}</p>
+                </div>
               </div>
             </div>
 
@@ -209,9 +279,9 @@ export function Pricing() {
         </div>
 
         {/* Bottom info */}
-        <div className="text-center mt-16">
-          <p className="text-white/60">
-            All plans include a 14-day free trial. No credit card required.
+        <div className="text-center mt-12">
+          <p className="text-white/60 text-sm">
+            {safeT('pricing.trialInfo')}
           </p>
         </div>
 

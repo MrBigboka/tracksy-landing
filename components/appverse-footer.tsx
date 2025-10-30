@@ -42,7 +42,20 @@ export function AppverseFooter() {
         'nav.pricing': 'Pricing',
         'nav.faq': 'FAQ',
         'footer.privacy': 'Privacy Policy',
-        'footer.terms': 'Terms of Service'
+        'footer.terms': 'Terms of Service',
+        'footer.product': 'Product',
+        'footer.roadmap': 'Roadmap',
+        'footer.changelog': 'Changelog',
+        'footer.company': 'Company',
+        'footer.about': 'About Us',
+        'footer.careers': 'Careers',
+        'footer.press': 'Press Kit',
+        'footer.resources': 'Resources',
+        'footer.community': 'Community',
+        'footer.contact': 'Contact',
+        'footer.docs': 'Documentation',
+        'footer.legal': 'Legal',
+        'footer.instagram': 'Instagram'
       }
       return fallbacks[key] || key
     }
@@ -53,9 +66,10 @@ export function AppverseFooter() {
     <section className="text-white">
 
       {/* Download the app */}
-      <div className="container mx-auto px-4 py-12 sm:py-16">
-        <Card className="relative overflow-hidden rounded-3xl liquid-glass p-6 sm:p-10">
-          <div className="relative grid items-center gap-8 md:grid-cols-2">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto">
+          <Card className="relative overflow-hidden rounded-3xl liquid-glass p-6 sm:p-10">
+            <div className="relative grid items-center gap-8 md:grid-cols-2">
             {/* Left copy */}
             <div>
               <p className="mb-2 text-[11px] tracking-widest text-[#D5FF3F]">{safeT('mobile.badge')}</p>
@@ -109,105 +123,108 @@ export function AppverseFooter() {
             </div>
 
             {/* Right mockup */}
-            <div className="mx-auto w-full max-w-[320px]">
-              <div className="relative rounded-[28px] liquid-glass p-2 shadow-2xl">
-                <div className="relative aspect-[9/19] w-full overflow-hidden rounded-2xl bg-black">
-                  {/* Lazy-loaded video fills the screen */}
-                  <div className="absolute inset-0 h-full w-full bg-gradient-to-br from-[#141820] to-[#0B0E12] flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-[#D5FF3F] rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg className="w-8 h-8 text-[#0B0E12]" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                      </div>
-                      <p className="text-[#A1A5B0] text-sm">{safeT('mobile.appAvailable')}</p>
-                    </div>
-                  </div>
-                  {/* On-screen content */}
-                  <div className="relative p-3">
-                    <div className="mx-auto mb-3 h-1.5 w-16 rounded-full bg-white/20" />
-                    <div className="space-y-1 px-1">
-                      <div className="text-2xl font-extrabold text-[#D5FF3F]">{safeT('mobile.appTitle')}</div>
-                      <p className="text-xs text-[#A1A5B0]">{safeT('mobile.appSubtitle')}</p>
-                      <div className="mt-3 inline-flex items-center rounded-full bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-wider text-[#D5FF3F]">
-                        {safeT('mobile.comingSoon')}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="mx-auto w-full max-w-[300px] group">
+              <Image 
+                src="/DemoTracksy.png" 
+                alt="Tracksy Mobile App - Suivez votre temps partout" 
+                width={600} 
+                height={338} 
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-110"
+                priority
+              />
             </div>
           </div>
         </Card>
+        </div>
       </div>
 
       {/* Footer */}
       <footer className="border-t border-white/10 pb-20 md:pb-10">
-        <div className="container mx-auto px-4 py-10">
-          <div className="grid gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
-            {/* Brand */}
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={150} height={50} className="h-10 w-auto" />
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+              {/* Brand */}
+              <div className="col-span-2 md:col-span-1 lg:col-span-1">
+                <div className="flex items-center mb-4">
+                  <Image src="/Tracksy_logo.png" alt="Tracksy" width={160} height={55} className="h-12 w-auto" />
+                </div>
               </div>
-              <p className="max-w-sm text-sm text-neutral-400">{safeT('footer.description')}</p>
-            </div>
 
-            {/* Navigation */}
-            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-2">
+              {/* Product */}
               <div>
-                <h5 className="mb-2 text-xs font-semibold uppercase tracking-widest text-neutral-400">{safeT('mobile.navigation')}</h5>
-                <ul className="space-y-2 text-sm text-neutral-300">
-                  <li><Link href="#" className="hover:text-[#D5FF3F]">{safeT('mobile.home')}</Link></li>
-                  <li><Link href="#features" className="hover:text-[#D5FF3F]">{safeT('nav.features')}</Link></li>
-                  <li><Link href="#pricing" className="hover:text-[#D5FF3F]">{safeT('nav.pricing')}</Link></li>
-                  <li><Link href="#faq" className="hover:text-[#D5FF3F]">{safeT('nav.faq')}</Link></li>
-                  <li><Link href="#blog" className="hover:text-[#D5FF3F]">{safeT('mobile.blog')}</Link></li>
-                  <li><Link href="#support" className="hover:text-[#D5FF3F]">{safeT('mobile.support')}</Link></li>
+                <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.product')}</h5>
+                <ul className="space-y-3 text-sm text-neutral-400">
+                  <li><Link href="#features" className="hover:text-white transition-colors">{safeT('nav.features')}</Link></li>
+                  <li><Link href="#pricing" className="hover:text-white transition-colors">{safeT('nav.pricing')}</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.roadmap')}</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.changelog')}</Link></li>
                 </ul>
               </div>
+
+              {/* Company */}
               <div>
-                <h5 className="mb-2 text-xs font-semibold uppercase tracking-widest text-neutral-400">{safeT('mobile.socialMedia')}</h5>
-                <ul className="space-y-2 text-sm text-neutral-300">
-                  <li className="flex items-center gap-2">
-                    <Twitter className="h-4 w-4 text-neutral-400" />
-                    <a
-                      href="https://twitter.com/tracksy_app"
+                <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.company')}</h5>
+                <ul className="space-y-3 text-sm text-neutral-400">
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.about')}</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('mobile.blog')}</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.careers')}</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.press')}</Link></li>
+                </ul>
+              </div>
+
+              {/* Resources */}
+              <div>
+                <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.resources')}</h5>
+                <ul className="space-y-3 text-sm text-neutral-400">
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.community')}</Link></li>
+                  <li><Link href="mailto:support@tracksy.me" className="hover:text-white transition-colors">{safeT('footer.contact')}</Link></li>
+                  <li><Link href="#faq" className="hover:text-white transition-colors">{safeT('nav.faq')}</Link></li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.docs')}</Link></li>
+                </ul>
+              </div>
+
+              {/* Legal */}
+              <div>
+                <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.legal')}</h5>
+                <ul className="space-y-3 text-sm text-neutral-400">
+                  <li>
+                    <a 
+                      href="https://twitter.com/TracksyApp"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#D5FF3F]"
-                      aria-label="Follow Tracksy on Twitter"
+                      className="hover:text-white transition-colors inline-flex items-center gap-2"
                     >
-                      X/Twitter
+                      <Twitter className="h-4 w-4" />
+                      Twitter
                     </a>
                   </li>
-                  <li className="flex items-center gap-2">
-                    <Youtube className="h-4 w-4 text-neutral-400" />
-                    <a
+                  <li>
+                    <a 
                       href="https://www.youtube.com/@tracksy"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="hover:text-[#D5FF3F]"
-                      aria-label="Subscribe to Tracksy on YouTube"
+                      className="hover:text-white transition-colors inline-flex items-center gap-2"
                     >
+                      <Youtube className="h-4 w-4" />
                       YouTube
                     </a>
                   </li>
+                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.instagram')}</Link></li>
                 </ul>
               </div>
             </div>
-          </div>
 
-          {/* Bottom bar */}
-          <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-neutral-500 sm:flex-row">
-            <p>{safeT('mobile.copyright')}</p>
-            <div className="flex items-center gap-6">
-              <Link href="/privacy" className="hover:text-[#D5FF3F]">
-                {safeT('footer.privacy')}
-              </Link>
-              <Link href="/terms" className="hover:text-[#D5FF3F]">
-                {safeT('footer.terms')}
-              </Link>
+            {/* Bottom bar */}
+            <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-neutral-500">
+              <p>{safeT('mobile.copyright')}</p>
+              <div className="flex items-center gap-6">
+                <Link href="/privacy" className="hover:text-white transition-colors">
+                  {safeT('footer.privacy')}
+                </Link>
+                <Link href="/terms" className="hover:text-white transition-colors">
+                  {safeT('footer.terms')}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

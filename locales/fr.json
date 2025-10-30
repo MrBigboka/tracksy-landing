@@ -8,11 +8,12 @@
     "getStarted": "Commencer"
   },
   "hero": {
-    "title": "SUIVEZ VOTRE TEMPS.",
-    "titleHighlight": "SIMPLIFIEZ",
-    "titleEnd": "VOTRE BUSINESS.",
-    "subtitle": "Fini de jongler entre Toggl, QuickBooks et Excel. Tracksy combine tout en un seul outil : suivi du temps, gestion de projets, facturation automatique.",
+    "title": "La solution tout-en-un pour",
+    "titleHighlight": "freelances",
+    "titleEnd": "et consultants",
+    "subtitle": "Suivez votre temps, gérez vos projets et facturez vos clients automatiquement. Tracksy remplace 5 outils par une seule plateforme simple et puissante.",
     "cta": "Commencer gratuitement",
+    "watchDemo": "Voir la démo",
     "freeTrial": "14 jours d'essai gratuit",
     "noCard": "Aucune carte requise",
     "quickSetup": "Setup en 2 minutes",
@@ -20,8 +21,23 @@
   },
   "features": {
     "title": "Pourquoi choisir Tracksy?",
-    "subtitle": "Tout ce dont tu as besoin pour gérer ton business de freelance en un seul endroit",
+    "subtitle": "Trois fonctionnalités essentielles pour gérer votre business",
     "badge": " Fonctionnalités",
+    "feature1": {
+      "badge": "Suivi du temps",
+      "title": "Timer précis et automatique",
+      "description": "Démarrez votre timer en un clic et suivez chaque minute travaillée. Tracksy enregistre automatiquement vos sessions par client et projet."
+    },
+    "feature2": {
+      "badge": "Facturation",
+      "title": "Factures en 1 clic",
+      "description": "Générez vos factures professionnelles automatiquement basées sur votre temps enregistré. Fini la paperasse manuelle."
+    },
+    "feature3": {
+      "badge": "Revenus en temps réel",
+      "title": "Visualisez vos gains instantanément",
+      "description": "Chaque minute travaillée se transforme en revenus visibles. Plus besoin d'attendre la fin du mois pour savoir combien vous avez gagné."
+    },
     "realtime": {
       "title": "Vois ton revenu en temps réel",
       "subtitle": "Chaque minute travaillée se transforme instantanément en revenus visibles. Plus besoin d'attendre la fin du mois pour savoir combien tu as gagné.",
@@ -54,9 +70,11 @@
   },
   "pricing": {
     "badge": "Nos tarifs",
-    "title": "Simple. Transparent. Efficace.",
-    "subtitle": "Aucun frais cachés. Commencez gratuitement et évoluez selon vos besoins.",
+    "title": "Choisissez votre plan",
+    "subtitle": "Commencez gratuitement ou débloquez toutes les fonctionnalités. Aucun frais caché.",
     "free": {
+      "category": "Débutant",
+      "categoryDesc": "Pour les freelances qui débutent",
       "title": "Gratuit",
       "price": "0$",
       "period": "pour toujours",
@@ -70,8 +88,10 @@
       "cta": "Commencer gratuitement"
     },
     "pro": {
+      "category": "Professionnel",
+      "categoryDesc": "Pour les freelances établis",
       "title": "Pro",
-      "price": "9$ US",
+      "price": "5$",
       "period": "/mois",
       "popular": "POPULAIRE",
       "trial": "Essai gratuit 14 jours",
@@ -96,8 +116,64 @@
         "Support dédié par téléphone",
         "Formation personnalisée"
       ],
-      "cta": "Nous contacter"
+      "cta": "Nous contacter",
+      "category": "Entreprise",
+      "categoryDesc": "Pour les équipes et entreprises",
+      "sectionTitle": "Business & Équipes",
+      "sectionDescription": "Besoin de fonctionnalités collaboratives pour votre équipe ? Nous offrons des solutions personnalisées pour les entreprises avec des besoins avancés."
+    },
+    "lifetime": {
+      "category": "Premium",
+      "categoryDesc": "Meilleure valeur à long terme",
+      "title": "Accès à vie",
+      "price": "29,99$",
+      "period": "paiement unique",
+      "limited": "Limité : Seulement 100 places disponibles",
+      "bestValue": "MEILLEURE VALEUR",
+      "cta": "Obtenir l'accès à vie",
+      "feature1": "Tout du plan Pro",
+      "feature2": "Payez une fois, utilisez à vie",
+      "feature3": "Toutes les mises à jour futures incluses"
+    },
+    "trialInfo": "Tous les plans incluent un essai gratuit de 14 jours. Aucune carte de crédit requise."
+  },
+  "demo": {
+    "badge": "DÉMO",
+    "title": "Découvrez Tracksy en action",
+    "subtitle": "Découvrez comment Tracksy simplifie le suivi du temps, la facturation et la gestion des revenus pour les freelances et les entreprises.",
+    "card1": {
+      "title": "Suivi du temps précis",
+      "description": "Démarrez votre minuteur en un clic et suivez chaque minute travaillée. Tracksy enregistre automatiquement vos sessions par client et projet."
+    },
+    "card2": {
+      "title": "Facturation automatisée",
+      "description": "Générez vos factures professionnelles automatiquement basées sur votre temps enregistré. Fini les calculs manuels."
+    },
+    "card3": {
+      "title": "Revenus en temps réel",
+      "description": "Chaque minute travaillée se transforme en revenus visibles. Suivez vos gains en temps réel."
+    },
+    "card4": {
+      "title": "Regardez la démo complète",
+      "description": "Découvrez comment Tracksy peut transformer votre flux de travail en moins de 2 minutes."
     }
+  },
+  "footer": {
+    "product": "Produit",
+    "roadmap": "Feuille de route",
+    "changelog": "Historique des versions",
+    "company": "Entreprise",
+    "about": "À propos",
+    "careers": "Carrières",
+    "press": "Kit de presse",
+    "resources": "Ressources",
+    "community": "Communauté",
+    "contact": "Contact",
+    "docs": "Documentation",
+    "legal": "Légal",
+    "instagram": "Instagram",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
   },
   "faq": {
     "title": "Questions fréquemment posées",
@@ -130,20 +206,6 @@
         "answer": "L'application mobile Tracksy est en développement et sera disponible bientôt sur iOS et Android. En attendant, notre interface web est entièrement responsive et fonctionne parfaitement sur mobile."
       }
     ]
-  },
-  "footer": {
-    "description": "Solution de suivi du temps et de gestion d'entreprise pour les freelances.",
-    "product": "Produit",
-    "features": "Fonctionnalités",
-    "pricing": "Tarifs",
-    "company": "Entreprise",
-    "about": "À propos",
-    "contact": "Contact",
-    "legal": "Légal",
-    "privacy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation",
-    "cookies": "Politique de cookies",
-    "allRightsReserved": "Tous droits réservés"
   },
   "mobile": {
     "badge": "PRÊT À COMMENCER?",

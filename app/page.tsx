@@ -1,6 +1,6 @@
 import { SiteHeader } from "@/components/site-header"
 import { Hero } from "@/components/hero"
-import Features from "@/components/features"
+import FeaturesBento from "@/components/features-bento"
 import { Pricing } from "@/components/pricing"
 import { FAQ } from "@/components/faq"
 import { AppverseFooter } from "@/components/appverse-footer"
@@ -12,7 +12,7 @@ export const dynamic = "force-static"
 export default function Page() {
   // Structured data for pricing
   const pricingStructuredData = {
-    "@context": "https://schema.org",
+  "@context": "https://schema.org",
     "@type": "WebPageElement",
     "@id": "https://tracksy.app/#pricing",
     name: "Pricing Plans",
@@ -78,7 +78,7 @@ export default function Page() {
       <main className="relative min-h-[100dvh] bg-transparent text-[#F2F3F5]">
         <SiteHeader />
         <Hero />
-        <Features />
+        <FeaturesBento />
         <Pricing />
         <FAQ />
         <AppverseFooter />
