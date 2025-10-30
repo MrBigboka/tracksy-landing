@@ -55,7 +55,7 @@ export default function FeaturesBento() {
         
         {/* Feature 1 - Timer (Large) */}
         <div 
-          className="group relative md:col-span-2 lg:col-span-2 lg:row-span-2 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 overflow-hidden hover:border-[#D5FF3F]/30 transition-all duration-300"
+          className="group relative md:col-span-2 lg:col-span-2 lg:row-span-2 bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6 md:p-8 overflow-hidden hover:border-[#D5FF3F]/30 transition-all duration-300"
           onMouseMove={handleMouseMove}
         >
           <div 
@@ -93,7 +93,7 @@ export default function FeaturesBento() {
 
         {/* Feature 2 - Facturation (Medium) */}
         <div 
-          className="group relative lg:col-span-1 lg:row-span-1 backdrop-blur-xl border border-white/10 rounded-2xl p-6 overflow-hidden hover:border-[#D5FF3F]/30 transition-all duration-300"
+          className="group relative lg:col-span-1 lg:row-span-1 bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6 overflow-hidden hover:border-[#D5FF3F]/30 transition-all duration-300"
           onMouseMove={handleMouseMove}
         >
           <div 
@@ -131,7 +131,7 @@ export default function FeaturesBento() {
 
         {/* Feature 3 - Revenus (Medium) */}
         <div 
-          className="group relative lg:col-span-1 lg:row-span-1 backdrop-blur-xl border border-white/10 rounded-2xl p-6 overflow-hidden hover:border-[#D5FF3F]/30 transition-all duration-300"
+          className="group relative lg:col-span-1 lg:row-span-1 bg-black/20 backdrop-blur-xl border border-white/10 rounded-2xl p-6 overflow-hidden hover:border-[#D5FF3F]/30 transition-all duration-300"
           onMouseMove={handleMouseMove}
         >
           <div 

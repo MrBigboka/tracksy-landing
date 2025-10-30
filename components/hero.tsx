@@ -2,9 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import { ShimmerButton } from "@/components/ui/shimmer-button"
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
 import { useTranslation } from "@/hooks/use-translation"
-import Image from "next/image"
+import { ChevronRight, Sparkles } from "lucide-react"
 import { motion } from "motion/react"
+import { cn } from "@/lib/utils"
 
 export function Hero() {
   const { t } = useTranslation()
@@ -48,14 +50,21 @@ export function Hero() {
 
       <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12">
         <div className="flex flex-col items-center justify-center py-10 md:py-20">
-          {/* Logo */}
+          {/* Animated Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="mb-8 flex items-center justify-center"
           >
-            <Image src="/Tracksy_logo.png" alt="Tracksy logo" width={280} height={96} className="h-16 w-auto sm:h-20" />
+            <div className="group relative mx-auto flex items-center justify-center rounded-full px-4 py-1.5 bg-white/5 border border-white/10 hover:border-[#D5FF3F]/30 transition-all duration-300">
+              <Sparkles className="size-3.5 text-[#D5FF3F]" />
+              <hr className="mx-2 h-4 w-px shrink-0 bg-white/20" />
+              <span className="text-sm font-medium text-white/90">
+                Tracksy v2.0 • Lifetime Offer
+              </span>
+              <ChevronRight className="ml-1 size-3.5 text-white/60 transition-all duration-300 ease-in-out group-hover:translate-x-0.5 group-hover:text-[#D5FF3F]" />
+            </div>
           </motion.div>
 
           {/* Animated Title */}
@@ -179,13 +188,13 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.3 }}
-            className="relative z-10 mt-16 sm:mt-20 w-full max-w-6xl rounded-2xl border border-white/10 bg-white/5 p-3 sm:p-4 shadow-2xl backdrop-blur-sm"
+            className="relative z-10 mt-16 sm:mt-20 mb-16 sm:mb-20 w-full max-w-6xl"
           >
-            <div className="w-full overflow-hidden rounded-xl border border-white/10 relative">
+            <div className="w-full overflow-hidden rounded-2xl relative group/video">
               <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
                 <video
-                  className="absolute top-0 left-0 w-full h-full object-contain rounded-xl bg-black"
-                  controls
+                  id="hero-video"
+                  className="absolute top-0 left-0 w-full h-full object-contain rounded-2xl bg-black"
                   muted
                   playsInline
                   preload="metadata"
@@ -201,31 +210,24 @@ export function Hero() {
                   }}
                 >
                   <source src="https://www.tracksy.me/tracksy.me.mp4" type="video/mp4" />
-                  <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-[#141820] to-[#0B0E12]">
-                    <div className="text-center">
-                      <button
-                        onClick={handleWatchDemo}
-                        className="group w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-[#D5FF3F] via-[#C8D64F] to-[#B9E832] rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg shadow-[#D5FF3F]/30 hover:shadow-2xl hover:shadow-[#D5FF3F]/60 transition-all duration-300 hover:scale-110 cursor-pointer border-4 border-[#D5FF3F]/20"
-                      >
-                        <svg className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-[#0B0E12] ml-1 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                      </button>
-                      <p className="text-[#A1A5B0] text-lg sm:text-xl font-medium px-4">{t('hero.browserNotSupported')}</p>
-                    </div>
-                  </div>
                 </video>
+                
+                {/* Custom Play Button Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <button
+                    onClick={handleWatchDemo}
+                    className="pointer-events-auto group w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-[#D5FF3F] via-[#C8D64F] to-[#B9E832] rounded-full flex items-center justify-center shadow-lg shadow-[#D5FF3F]/30 hover:shadow-2xl hover:shadow-[#D5FF3F]/60 transition-all duration-300 hover:scale-110 cursor-pointer border-4 border-[#D5FF3F]/20"
+                  >
+                    <svg className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 text-[#0B0E12] ml-1 transition-transform group-hover:scale-110" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
-          
-          {/* Dark gradient overlay starting from video center */}
-          <div className="absolute left-0 right-0 h-96 bg-gradient-to-b from-transparent via-black/50 to-black pointer-events-none z-20" style={{ top: 'calc(50vh + 10rem)' }} />
         </div>
       </div>
-      
-      {/* Gradient transition effect */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-black pointer-events-none" />
     </section>
   )
 }
