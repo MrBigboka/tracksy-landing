@@ -71,71 +71,61 @@
   "pricing": {
     "badge": "Our Pricing",
     "title": "Choose Your Plan",
-    "subtitle": "Start free or unlock full features. No hidden fees.",
+    "subtitle": "Start free, then unlock full features with Pro. 14-day free trial included.",
     "free": {
       "category": "Starter",
       "categoryDesc": "For freelancers getting started",
       "title": "Free",
       "price": "$0",
       "period": "forever",
-      "features": [
-        "1 client",
-        "3 projects",
-        "Timer and time tracking",
-        "Basic reports",
-        "PDF export (with watermark)"
-      ],
-      "cta": "Start for free"
+      "cta": "Start for free",
+      "feature1": "1 client max",
+      "feature2": "2 projects max",
+      "feature3": "5 sessions/day",
+      "feature4": "PDF with watermark",
+      "feature5": "CSV export"
     },
-    "pro": {
+    "proMonthly": {
       "category": "Professional",
-      "categoryDesc": "For established freelancers",
-      "title": "Pro",
-      "price": "$5",
+      "categoryDesc": "Full access, billed monthly",
+      "title": "Pro Monthly",
+      "price": "$7.99",
       "period": "/month",
-      "popular": "POPULAR",
-      "trial": "14-day free trial",
-      "features": [
-        "Everything in Free +",
-        "Unlimited clients & projects",
-        "Advanced reports and analytics",
-        "Custom invoice templates",
-        "Clean PDF/CSV export",
-        "Priority email support"
-      ],
-      "cta": "Start free trial"
+      "cta": "Start 14-day trial",
+      "feature1": "Unlimited clients",
+      "feature2": "Unlimited projects",
+      "feature3": "Unlimited sessions",
+      "feature4": "PDF without watermark",
+      "feature5": "CSV export included",
+      "feature6": "Priority support"
     },
-    "business": {
-      "title": "Business",
-      "price": "Custom pricing",
-      "period": "",
-      "features": [
-        "Everything in Pro +",
-        "Team collaboration",
-        "Advanced integrations",
-        "Dedicated phone support",
-        "Custom training"
-      ],
-      "cta": "Contact us",
-      "category": "Enterprise",
-      "categoryDesc": "For teams and businesses",
-      "sectionTitle": "Business & Teams",
-      "sectionDescription": "Need collaborative features for your team? We offer custom solutions for businesses with advanced needs."
+    "proAnnual": {
+      "category": "Professional",
+      "categoryDesc": "Best value, billed yearly",
+      "title": "Pro Annual",
+      "price": "$6.58",
+      "period": "/month",
+      "save": "Save 30%",
+      "billedAs": "Billed as $79/year",
+      "cta": "Start 14-day trial",
+      "feature1": "Everything in Pro Monthly",
+      "feature2": "Save 30% vs monthly",
+      "feature3": "All future updates"
     },
     "lifetime": {
       "category": "Premium",
-      "categoryDesc": "Best long-term value",
-      "title": "Lifetime Access",
-      "price": "$29.99",
+      "categoryDesc": "Pay once, use forever",
+      "title": "Lifetime",
+      "price": "$39.99",
       "period": "one-time",
-      "limited": "Limited: Only 100 spots available",
-      "bestValue": "BEST VALUE",
+      "bestValue": "LIMITED OFFER",
       "cta": "Get Lifetime Access",
       "feature1": "Everything in Pro",
       "feature2": "Pay once, use forever",
-      "feature3": "All future updates included"
+      "feature3": "All future updates included",
+      "feature4": "Priority support forever"
     },
-    "trialInfo": "All plans include a 14-day free trial. No credit card required."
+    "trialInfo": "14-day free trial on all Pro plans. No credit card required to start."
   },
   "demo": {
     "badge": "DEMO",

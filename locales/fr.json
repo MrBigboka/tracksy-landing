@@ -71,71 +71,61 @@
   "pricing": {
     "badge": "Nos tarifs",
     "title": "Choisissez votre plan",
-    "subtitle": "Commencez gratuitement ou débloquez toutes les fonctionnalités. Aucun frais caché.",
+    "subtitle": "Commencez gratuitement, puis débloquez tout avec Pro. Essai gratuit de 14 jours inclus.",
     "free": {
       "category": "Débutant",
       "categoryDesc": "Pour les freelances qui débutent",
       "title": "Gratuit",
       "price": "0$",
       "period": "pour toujours",
-      "features": [
-        "1 client",
-        "3 projets",
-        "Timer et suivi du temps",
-        "Rapports de base",
-        "Export PDF (avec filigrane)"
-      ],
-      "cta": "Commencer gratuitement"
+      "cta": "Commencer gratuitement",
+      "feature1": "1 client max",
+      "feature2": "2 projets max",
+      "feature3": "5 sessions/jour",
+      "feature4": "PDF avec filigrane",
+      "feature5": "Export CSV"
     },
-    "pro": {
+    "proMonthly": {
       "category": "Professionnel",
-      "categoryDesc": "Pour les freelances établis",
-      "title": "Pro",
-      "price": "5$",
+      "categoryDesc": "Accès complet, facturé mensuellement",
+      "title": "Pro Mensuel",
+      "price": "7,99$",
       "period": "/mois",
-      "popular": "POPULAIRE",
-      "trial": "Essai gratuit 14 jours",
-      "features": [
-        "Tout du plan Gratuit +",
-        "Clients et projets illimités",
-        "Rapports avancés et analytics",
-        "Templates de factures personnalisés",
-        "Export PDF/CSV propre",
-        "Support prioritaire par email"
-      ],
-      "cta": "Commencer l'essai gratuit"
+      "cta": "Essai gratuit 14 jours",
+      "feature1": "Clients illimités",
+      "feature2": "Projets illimités",
+      "feature3": "Sessions illimitées",
+      "feature4": "PDF sans filigrane",
+      "feature5": "Export CSV inclus",
+      "feature6": "Support prioritaire"
     },
-    "business": {
-      "title": "Business",
-      "price": "Tarif personnalisé",
-      "period": "",
-      "features": [
-        "Tout du plan Pro +",
-        "Collaboration d'équipe",
-        "Intégrations avancées",
-        "Support dédié par téléphone",
-        "Formation personnalisée"
-      ],
-      "cta": "Nous contacter",
-      "category": "Entreprise",
-      "categoryDesc": "Pour les équipes et entreprises",
-      "sectionTitle": "Business & Équipes",
-      "sectionDescription": "Besoin de fonctionnalités collaboratives pour votre équipe ? Nous offrons des solutions personnalisées pour les entreprises avec des besoins avancés."
+    "proAnnual": {
+      "category": "Professionnel",
+      "categoryDesc": "Meilleure valeur, facturé annuellement",
+      "title": "Pro Annuel",
+      "price": "6,58$",
+      "period": "/mois",
+      "save": "Économisez 30%",
+      "billedAs": "Facturé 79$/an",
+      "cta": "Essai gratuit 14 jours",
+      "feature1": "Tout du Pro Mensuel",
+      "feature2": "Économisez 30% vs mensuel",
+      "feature3": "Toutes les mises à jour"
     },
     "lifetime": {
       "category": "Premium",
-      "categoryDesc": "Meilleure valeur à long terme",
-      "title": "Accès à vie",
-      "price": "29,99$",
+      "categoryDesc": "Payez une fois, utilisez à vie",
+      "title": "À vie",
+      "price": "39,99$",
       "period": "paiement unique",
-      "limited": "Limité : Seulement 100 places disponibles",
-      "bestValue": "MEILLEURE VALEUR",
+      "bestValue": "OFFRE LIMITÉE",
       "cta": "Obtenir l'accès à vie",
       "feature1": "Tout du plan Pro",
       "feature2": "Payez une fois, utilisez à vie",
-      "feature3": "Toutes les mises à jour futures incluses"
+      "feature3": "Toutes les mises à jour futures incluses",
+      "feature4": "Support prioritaire à vie"
     },
-    "trialInfo": "Tous les plans incluent un essai gratuit de 14 jours. Aucune carte de crédit requise."
+    "trialInfo": "Essai gratuit de 14 jours sur tous les plans Pro. Aucune carte de crédit requise."
   },
   "demo": {
     "badge": "DÉMO",
