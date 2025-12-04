@@ -141,19 +141,21 @@ export function AppverseFooter() {
             <div className="grid gap-8 sm:gap-12 grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
               {/* Brand */}
               <div className="col-span-2 md:col-span-1 lg:col-span-1">
-                <div className="flex items-center mb-4">
+                <Link href="/" className="flex items-center mb-4">
                   <Image src="/Tracksy_logo.png" alt="Tracksy" width={160} height={55} className="h-12 w-auto" />
-                </div>
+                </Link>
+                <p className="text-sm text-neutral-500 max-w-[200px]">
+                  Simple time tracking for freelancers. No bloat.
+                </p>
               </div>
 
               {/* Product */}
               <div>
                 <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.product')}</h5>
                 <ul className="space-y-3 text-sm text-neutral-400">
-                  <li><Link href="#features" className="hover:text-white transition-colors">{safeT('nav.features')}</Link></li>
-                  <li><Link href="#pricing" className="hover:text-white transition-colors">{safeT('nav.pricing')}</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.roadmap')}</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.changelog')}</Link></li>
+                  <li><Link href="/#features" className="hover:text-white transition-colors">{safeT('nav.features')}</Link></li>
+                  <li><Link href="/pricing" className="hover:text-white transition-colors">{safeT('nav.pricing')}</Link></li>
+                  <li><Link href="/toggl-alternative" className="hover:text-white transition-colors">vs Toggl</Link></li>
                 </ul>
               </div>
 
@@ -161,27 +163,23 @@ export function AppverseFooter() {
               <div>
                 <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.company')}</h5>
                 <ul className="space-y-3 text-sm text-neutral-400">
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.about')}</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('mobile.blog')}</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.careers')}</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.press')}</Link></li>
+                  <li><Link href="/about" className="hover:text-white transition-colors">{safeT('footer.about')}</Link></li>
+                  <li><Link href="/use-cases/freelance-consultant-time-tracking" className="hover:text-white transition-colors">Use Cases</Link></li>
                 </ul>
               </div>
 
-              {/* Resources */}
+              {/* Support */}
               <div>
-                <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.resources')}</h5>
+                <h5 className="mb-4 text-sm font-semibold text-white">Support</h5>
                 <ul className="space-y-3 text-sm text-neutral-400">
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.community')}</Link></li>
-                  <li><Link href="mailto:support@tracksy.me" className="hover:text-white transition-colors">{safeT('footer.contact')}</Link></li>
-                  <li><Link href="#faq" className="hover:text-white transition-colors">{safeT('nav.faq')}</Link></li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.docs')}</Link></li>
+                  <li><Link href="/faq" className="hover:text-white transition-colors">{safeT('nav.faq')}</Link></li>
+                  <li><a href="mailto:support@tracksy.me" className="hover:text-white transition-colors">{safeT('footer.contact')}</a></li>
                 </ul>
               </div>
 
-              {/* Legal */}
+              {/* Social & Legal */}
               <div>
-                <h5 className="mb-4 text-sm font-semibold text-white">{safeT('footer.legal')}</h5>
+                <h5 className="mb-4 text-sm font-semibold text-white">Connect</h5>
                 <ul className="space-y-3 text-sm text-neutral-400">
                   <li>
                     <a 
@@ -205,7 +203,6 @@ export function AppverseFooter() {
                       YouTube
                     </a>
                   </li>
-                  <li><Link href="#" className="hover:text-white transition-colors">{safeT('footer.instagram')}</Link></li>
                 </ul>
               </div>
             </div>
@@ -219,6 +216,9 @@ export function AppverseFooter() {
                 </Link>
                 <Link href="/terms" className="hover:text-white transition-colors">
                   {safeT('footer.terms')}
+                </Link>
+                <Link href="/cookies" className="hover:text-white transition-colors">
+                  Cookies
                 </Link>
               </div>
             </div>

@@ -20,10 +20,10 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Tracksy | Time Tracking & Business Management for Freelancers",
+    default: "Tracksy — Simple Time Tracking for Freelancers (No Bloat)",
     template: "%s | Tracksy"
   },
-  description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices, and grow your business. Free 14-day trial.",
+  description: "Track your time, export PDFs, and bill clients with one clean tool. A fast, minimalist Toggl alternative for freelancers and consultants.",
   keywords: [
     "time tracking",
     "freelancer time tracker",
@@ -53,18 +53,27 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Tracksy | Time Tracking & Business Management for Freelancers",
-    description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices. Free 14-day trial, no credit card required.",
+    title: "Tracksy — Simple Time Tracking for Freelancers (No Bloat)",
+    description: "Track your time, export PDFs, and bill clients with one clean tool. A fast, minimalist Toggl alternative for freelancers and consultants.",
     url: "https://tracksy.me",
     siteName: "Tracksy",
     locale: "en_CA",
     type: "website",
+    images: [
+      {
+        url: "https://tracksy.me/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Tracksy - Simple Time Tracking for Freelancers",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tracksy | Time Tracking for Freelancers",
-    description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices. Free 14-day trial!",
+    title: "Tracksy — Simple Time Tracking for Freelancers",
+    description: "Track your time, export PDFs, and bill clients with one clean tool. A fast, minimalist Toggl alternative.",
     creator: "@tracksy_app",
+    images: ["https://tracksy.me/og-image.png"],
   },
   robots: {
     index: true,

@@ -117,12 +117,11 @@ export default function FreelanceConsultantPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
       />
 
-      <SiteHeader />
-
-      <main className="relative min-h-screen bg-[#0B0E12] text-[#F2F3F5]">
+      <main className="relative min-h-[100dvh] bg-transparent text-[#F2F3F5]">
+        <SiteHeader />
         {/* Hero Section */}
         <section className="relative py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <p className="text-[#D5FF3F] text-sm font-medium mb-4 uppercase tracking-wider">
               Use case · Freelance / solo consultants
             </p>
@@ -160,8 +159,8 @@ export default function FreelanceConsultantPage() {
         </section>
 
         {/* Problem Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Stop losing hours to memory and manual logs
             </h2>
@@ -207,7 +206,7 @@ export default function FreelanceConsultantPage() {
 
         {/* Features Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Track every client, project, and task in one place
             </h2>
@@ -251,8 +250,8 @@ export default function FreelanceConsultantPage() {
         </section>
 
         {/* Billing Models Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Bill accurately for hourly, fixed-fee, and retainer work
             </h2>
@@ -322,7 +321,7 @@ export default function FreelanceConsultantPage() {
 
         {/* Client Reports Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Show clients exactly how you spent their budget
             </h2>
@@ -366,8 +365,8 @@ export default function FreelanceConsultantPage() {
         </section>
 
         {/* Weekly Example */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-8">
               How Tracksy fits into a real consulting week
             </h2>
@@ -400,7 +399,7 @@ export default function FreelanceConsultantPage() {
 
         {/* CTA Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               Try Tracksy on your next consulting project
             </h2>
@@ -438,8 +437,8 @@ export default function FreelanceConsultantPage() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-black/30">
-          <div className="max-w-4xl mx-auto">
+        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white/[0.02]">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-center">
               FAQ – Time tracking for freelance consultants
             </h2>
@@ -478,7 +477,7 @@ export default function FreelanceConsultantPage() {
 
         {/* Final CTA */}
         <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold mb-6">
               What to do next
             </h2>
@@ -526,9 +525,9 @@ export default function FreelanceConsultantPage() {
             </div>
           </div>
         </section>
-      </main>
 
-      <AppverseFooter />
+        <AppverseFooter />
+      </main>
     </>
   )
 }

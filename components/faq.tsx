@@ -1,12 +1,46 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ChevronDown } from "lucide-react"
 import { useTranslation } from "@/hooks/use-translation"
+import Script from "next/script"
+
+// SEO-optimized FAQ items for JSON-LD (always in English for Google)
+const seoFaqItems = [
+  {
+    question: "Is Tracksy free?",
+    answer: "Yes! Tracksy offers a free plan that includes 1 client, 2 projects, and 5 sessions per day. You can use it forever at no cost. For unlimited features, you can upgrade to Pro starting at $7.99/month or get lifetime access for $39.99."
+  },
+  {
+    question: "Is Tracksy an alternative to Toggl?",
+    answer: "Yes, Tracksy is a simple, minimalist alternative to Toggl Track. While Toggl has grown into an enterprise tool with many features, Tracksy focuses on what freelancers actually need: fast time tracking, client management, and PDF report exports. No bloat, just the essentials."
+  },
+  {
+    question: "Does Tracksy generate invoices?",
+    answer: "Yes! Tracksy can automatically generate professional invoices based on your tracked time. You can customize invoice templates, add your logo, and export them as PDF. The invoicing feature is available on all Pro plans."
+  },
+  {
+    question: "Does Tracksy export PDF reports?",
+    answer: "Absolutely. Tracksy allows you to export detailed PDF reports of your time entries, organized by client and project. Free plan exports include a watermark, while Pro plans offer clean, professional PDFs without watermarks."
+  },
+  {
+    question: "How does the 14-day free trial work?",
+    answer: "You can use all Pro features of Tracksy for 14 days without any restrictions. No credit card is required to start. At the end of the trial period, you can choose the paid Pro plan or continue with the limited free plan."
+  },
+  {
+    question: "Is my data secure with Tracksy?",
+    answer: "Security is our priority. All your data is encrypted in transit and at rest, hosted on secure servers, and we comply with data protection regulations. Your time tracking data is private and never shared with third parties."
+  }
+]
 
 export function FAQ() {
   const { t } = useTranslation()
   const [openItems, setOpenItems] = useState<number[]>([])
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleItem = (index: number) => {
     setOpenItems(prev => 
@@ -92,6 +126,28 @@ export function FAQ() {
           </div>
         </div>
       </div>
+
+      {/* FAQ JSON-LD Structured Data for Rich Snippets */}
+      {mounted && (
+        <Script
+          id="faq-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": seoFaqItems.map(item => ({
+                "@type": "Question",
+                "name": item.question,
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": item.answer
+                }
+              }))
+            }),
+          }}
+        />
+      )}
     </section>
   )
 }
