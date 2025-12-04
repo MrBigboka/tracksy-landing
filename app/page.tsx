@@ -10,67 +10,151 @@ import Script from "next/script"
 export const dynamic = "force-static"
 
 export default function Page() {
-  // Structured data for pricing
-  const pricingStructuredData = {
-  "@context": "https://schema.org",
-    "@type": "WebPageElement",
-    "@id": "https://tracksy.app/#pricing",
-    name: "Pricing Plans",
-    description: "Tracksy pricing plans - Free Trial, Pro, and Business packages for freelancers and teams",
-    url: "https://tracksy.app/#pricing",
-    mainEntity: {
-      "@type": "PriceSpecification",
-      name: "Time Tracking & Business Management",
-      description: "Professional time tracking and business management for freelancers",
-      offers: [
-        {
-          "@type": "Offer",
-          name: "Free Trial",
-          price: "0",
-          priceCurrency: "CAD",
-          description: "14-day free trial with full features",
-        },
-        {
-          "@type": "Offer",
-          name: "Pro Plan",
-          price: "19",
-          priceCurrency: "CAD",
-          description: "Complete freelance management solution",
-        },
-        {
-          "@type": "Offer",
-          name: "Business Plan",
-          price: "49",
-          priceCurrency: "CAD",
-          description: "Team collaboration and advanced features",
-        },
-      ],
+  // Organization structured data
+  const organizationStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://tracksy.me/#organization",
+    name: "Tracksy",
+    alternateName: "Tracksy Inc.",
+    url: "https://tracksy.me",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://tracksy.me/favicon-192x192.png",
+      width: 192,
+      height: 192,
+    },
+    description: "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
+    foundingDate: "2024",
+    email: "support@tracksy.me",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "CA",
+    },
+    sameAs: [
+      "https://app.tracksy.me"
+    ],
+  }
+
+  // SoftwareApplication structured data
+  const softwareStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://tracksy.me/#software",
+    name: "Tracksy",
+    applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Time Tracking Software",
+    operatingSystem: "Web, iOS, Android",
+    description: "All-in-one time tracking and business management app for freelancers. Track billable hours, manage clients & projects, generate invoices.",
+    url: "https://tracksy.me",
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Free Plan",
+        price: "0",
+        priceCurrency: "CAD",
+        description: "Basic time tracking with 1 client, 2 projects, 5 sessions/day",
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Pro Monthly",
+        price: "7.99",
+        priceCurrency: "CAD",
+        description: "Unlimited clients, projects, sessions. PDF exports without watermark.",
+        priceValidUntil: "2025-12-31",
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Pro Annual",
+        price: "79",
+        priceCurrency: "CAD",
+        description: "Same as Pro Monthly, billed annually. Save 30%.",
+        priceValidUntil: "2025-12-31",
+        availability: "https://schema.org/InStock",
+      },
+      {
+        "@type": "Offer",
+        name: "Lifetime",
+        price: "39.99",
+        priceCurrency: "CAD",
+        description: "Pay once, use forever. All Pro features included.",
+        availability: "https://schema.org/InStock",
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "50",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    featureList: [
+      "Time tracking with one-click timer",
+      "Client management",
+      "Project management",
+      "Invoice generation",
+      "PDF & CSV exports",
+      "Detailed reports & analytics",
+      "Multi-language support (EN/FR)",
+    ],
+    screenshot: "https://tracksy.me/DemoTracksy.png",
+  }
+
+  // WebSite structured data for sitelinks search
+  const websiteStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://tracksy.me/#website",
+    name: "Tracksy",
+    url: "https://tracksy.me",
+    description: "Time Tracking & Business Management for Freelancers",
+    publisher: {
+      "@id": "https://tracksy.me/#organization",
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://tracksy.me/?search={search_term_string}",
+      },
+      "query-input": "required name=search_term_string",
     },
   }
 
-  // Structured data for main page
-  const pageStructuredData = {
+  // WebPage structured data
+  const webPageStructuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://tracksy.app/",
-    name: "Tracksy | Track your time. Simplify your business.",
-    description:
-      "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
-    url: "https://tracksy.app/",
-    mainEntity: {
-      "@type": "Organization",
-      name: "Tracksy",
-      url: "https://tracksy.app",
-      description: "Time tracking and business management for freelancers",
+    "@id": "https://tracksy.me/#webpage",
+    url: "https://tracksy.me",
+    name: "Tracksy | Time Tracking & Business Management for Freelancers",
+    description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices. Free 14-day trial.",
+    isPartOf: {
+      "@id": "https://tracksy.me/#website",
     },
-    hasPart: [
-      {
-        "@type": "WebPageElement",
-        "@id": "https://tracksy.app/#pricing",
-        name: "Pricing Section",
-        url: "https://tracksy.app/#pricing",
-      },
-    ],
+    about: {
+      "@id": "https://tracksy.me/#software",
+    },
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: "https://tracksy.me/og-image.png",
+    },
+    datePublished: "2024-01-01",
+    dateModified: new Date().toISOString().split('T')[0],
+    inLanguage: "en-CA",
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: "https://tracksy.me",
+        },
+      ],
+    },
   }
 
   return (
@@ -86,20 +170,34 @@ export default function Page() {
 
       {/* JSON-LD structured data */}
       <Script
-        id="pricing-structured-data"
+        id="organization-structured-data"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pricingStructuredData),
+          __html: JSON.stringify(organizationStructuredData),
         }}
       />
 
       <Script
-        id="page-structured-data"
+        id="software-structured-data"
         type="application/ld+json"
-        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(pageStructuredData),
+          __html: JSON.stringify(softwareStructuredData),
+        }}
+      />
+
+      <Script
+        id="website-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteStructuredData),
+        }}
+      />
+
+      <Script
+        id="webpage-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(webPageStructuredData),
         }}
       />
     </>

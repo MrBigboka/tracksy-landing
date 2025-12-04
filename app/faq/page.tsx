@@ -1,9 +1,79 @@
+import { Metadata } from "next"
+import Script from "next/script"
 import { SiteHeader } from "@/components/site-header"
 import { AppverseFooter } from "@/components/appverse-footer"
+
+export const metadata: Metadata = {
+  title: "FAQ - Frequently Asked Questions",
+  description: "Find answers to common questions about Tracksy time tracking app. Learn about features, pricing, supported file formats, and how to get started.",
+  alternates: {
+    canonical: "https://tracksy.me/faq",
+  },
+  openGraph: {
+    title: "FAQ - Tracksy Time Tracking",
+    description: "Find answers to common questions about Tracksy time tracking app. Learn about features, pricing, and how to get started.",
+    url: "https://tracksy.me/faq",
+    type: "website",
+  },
+}
+
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "What types of projects can Tracksy track?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tracksy can track time for any type of project - from freelance work to client projects, personal tasks, and team collaborations."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "How long does it take to set up Tracksy?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Setup takes less than 2 minutes. Simply create an account, add your first client and project, and start tracking time immediately."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "What file formats does Tracksy support for exports?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tracksy supports PDF exports for invoices and reports, and CSV export for data analysis. Pro users get watermark-free PDF exports."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "How does Tracksy pricing work?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tracksy offers a free tier with basic features, Pro Monthly at $7.99/month, Pro Annual at $6.58/month (billed yearly), and a Lifetime option at $39.99 one-time payment."
+      }
+    },
+    {
+      "@type": "Question",
+      name: "Can I request changes or updates?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes! We continuously improve Tracksy based on user feedback. Contact support@tracksy.me with your suggestions or feature requests."
+      }
+    }
+  ]
+}
 
 export default function FAQPage() {
   return (
     <>
+      <Script
+        id="faq-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
       <SiteHeader />
       <section className="bg-[#0a0a0a] text-white py-16">
         <div className="container mx-auto px-4">

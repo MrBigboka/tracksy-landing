@@ -1,6 +1,6 @@
 import type React from "react"
 import "./globals.css"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import Script from "next/script"
 import PlasmaSimple from "@/components/plasma-simple"
@@ -11,36 +11,91 @@ import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ["latin"], display: "swap" })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#D5FF3F",
+}
+
 export const metadata: Metadata = {
-  title: "Tracksy | Track your time. Simplify your business.",
-  description:
-    "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
+  title: {
+    default: "Tracksy | Time Tracking & Business Management for Freelancers",
+    template: "%s | Tracksy"
+  },
+  description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices, and grow your business. Free 14-day trial.",
+  keywords: [
+    "time tracking",
+    "freelancer time tracker",
+    "time tracking app",
+    "billable hours tracker",
+    "project management",
+    "invoice generator",
+    "freelance business management",
+    "time tracker for freelancers",
+    "productivity app",
+    "work hours tracker",
+    "client management",
+    "freelance tools",
+    "time logging software",
+    "business management app"
+  ],
+  authors: [{ name: "Tracksy Inc.", url: "https://tracksy.me" }],
+  creator: "Tracksy Inc.",
+  publisher: "Tracksy Inc.",
   generator: "Next.js",
+  applicationName: "Tracksy",
+  referrer: "origin-when-cross-origin",
   metadataBase: new URL("https://tracksy.me"),
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Tracksy | Track your time. Simplify your business.",
-    description: "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
+    title: "Tracksy | Time Tracking & Business Management for Freelancers",
+    description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices. Free 14-day trial, no credit card required.",
     url: "https://tracksy.me",
     siteName: "Tracksy",
-    images: [
-      {
-        url: "/favicon-192x192.png",
-        width: 192,
-        height: 192,
-        alt: "Tracksy Logo",
-      },
-    ],
     locale: "en_CA",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tracksy | Track your time. Simplify your business.",
-    description: "All-in-one time tracking and business management for freelancers. Track time, manage projects, generate invoices, and grow your business.",
-    images: ["/favicon-192x192.png"],
+    title: "Tracksy | Time Tracking for Freelancers",
+    description: "All-in-one time tracking app for freelancers. Track billable hours, manage clients & projects, generate invoices. Free 14-day trial!",
+    creator: "@tracksy_app",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   alternates: {
     canonical: "https://tracksy.me",
+    languages: {
+      "en-CA": "https://tracksy.me",
+      "fr-CA": "https://tracksy.me",
+    },
+  },
+  category: "productivity",
+  classification: "Business Software",
+  verification: {
+    // Add your verification codes here when available
+    // google: "your-google-verification-code",
+    // yandex: "your-yandex-verification-code",
+  },
+  other: {
+    "msapplication-TileColor": "#D5FF3F",
+    "apple-mobile-web-app-title": "Tracksy",
   },
 }
 
@@ -72,10 +127,8 @@ export default function RootLayout({
 
         {/* PWA Manifest */}
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#D5FF3F" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Tracksy" />
 
         {/* Google Tag Manager (deferred) */}
         <Script id="gtm-script" strategy="lazyOnload">
