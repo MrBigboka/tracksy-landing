@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del \"C:\\Users\\15149\\VisualStudioProjects\\SmartScaling\\Tracksy\\tracksy\\public\\sitemap.xml\" \"C:\\Users\\15149\\VisualStudioProjects\\SmartScaling\\Tracksy\\tracksy\\public\\robots.txt\")",
+      "Bash(Remove-Item \"C:\\Users\\15149\\VisualStudioProjects\\SmartScaling\\Tracksy\\tracksy\\public\\sitemap.xml\", \"C:\\Users\\15149\\VisualStudioProjects\\SmartScaling\\Tracksy\\tracksy\\public\\robots.txt\" -Force)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

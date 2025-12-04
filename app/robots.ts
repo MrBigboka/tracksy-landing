@@ -7,10 +7,13 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: '*',
         allow: [
           '/',
+          '/about',
           '/faq',
           '/privacy',
           '/terms',
           '/cookies',
+          '/use-cases',
+          '/use-cases/*',
         ],
         disallow: [
           '/admin',
